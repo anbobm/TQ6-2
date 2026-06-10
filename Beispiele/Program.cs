@@ -4,7 +4,25 @@
     {
         // HelloWorld();
         // Variablen();
-        EinUndAusgabe();
+        // EinUndAusgabe();
+        TypUmwandlungen();
+    }
+
+    private static void TypUmwandlungen()
+    {
+        // UTF-8 oder ASCII "420"
+        // 00110100 00110010 00110000
+        string zahlAlsString = "420";
+
+        // diese Zahl als int (32 bit Integer mit Vorzeichen)
+        // 0000 0000 0000 0000 0000 0001 1010 0100
+        int zahl = Convert.ToInt32(zahlAlsString);
+        
+        // Implizite Typunwandlung (type cast), z.B. int in long -> ohne Probleme möglich, deswegen nicht explizit nötig
+        long großeZahl = zahl;
+
+        // Explizite Typumwandlung
+        zahl = (int)großeZahl;
     }
 
     private static void EinUndAusgabe()
