@@ -4,7 +4,18 @@
     {
         // HelloWorld();
         // Variablen();
+        EinUndAusgabe();
+    }
 
+    private static void EinUndAusgabe()
+    {
+        Console.WriteLine("Das ist eine ganze Zeile.");
+        Console.WriteLine("Das ist noch eine ganze Zeile.");
+
+        Console.WriteLine("Wie heißt du?");
+        var name = Console.ReadLine();
+
+        Console.WriteLine("Hallo " + name);
     }
 
     private static void Variablen()
