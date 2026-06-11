@@ -23,6 +23,29 @@
 
         // Explizite Typumwandlung
         zahl = (int)großeZahl;
+
+        // Suffixe für literale der numerischen Typen:
+
+        // decimal
+        var dec = 3.4m;
+
+        // float
+        var fl = 3.4f;
+
+        // double
+        var doub = 3.4;
+
+        // ganze Zahl aber binär angegeben (und mit optionalen Trennzeichen "_")
+        zahl = 0b_0001_0101_0110;
+
+        // ganze Zahl aber hexadezimal angegeben
+        zahl = 0xCAFE;
+
+        // Suffix für long-Literal
+        var andereZahl = 1L;
+
+        // Suffix für unsigned-Literal
+        andereZahl = 1U;
     }
 
     private static void EinUndAusgabe()
