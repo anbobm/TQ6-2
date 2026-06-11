@@ -6,7 +6,18 @@
         // Variablen();
         // EinUndAusgabe();
         // TypUmwandlungen();
-        ArithmetischeOperatoren();
+        // ArithmetischeOperatoren();
+        VergleichsOperatoren();
+    }
+
+    private static void VergleichsOperatoren()
+    {
+        var foo = 3 == 4;
+        foo = 3 != 4;
+        foo = 3 < 4;
+        foo = 3 > 4;
+        foo = 3 <= 4;
+        foo = 3 >= 4;
     }
 
     private static void ArithmetischeOperatoren()
