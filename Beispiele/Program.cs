@@ -7,7 +7,20 @@
         // EinUndAusgabe();
         // TypUmwandlungen();
         // ArithmetischeOperatoren();
-        VergleichsOperatoren();
+        // VergleichsOperatoren();
+        LogischeOperatoren();
+    }
+
+    private static void LogischeOperatoren()
+    {
+        var a = 3 >= 4;
+        var b = "foo" == "foo";
+
+        var ergebnis = a && b;
+        ergebnis = a || b;
+        ergebnis = !b;
+
+        ergebnis = !a && b || 5 > 4;
     }
 
     private static void VergleichsOperatoren()
