@@ -5,7 +5,32 @@
         // HelloWorld();
         // Variablen();
         // EinUndAusgabe();
-        TypUmwandlungen();
+        // TypUmwandlungen();
+        ArithmetischeOperatoren();
+    }
+
+    private static void ArithmetischeOperatoren()
+    {
+        // Addition
+        var ergebnis = 3 + 5;
+
+        // Subtraktion
+        ergebnis = 3 - 5;
+
+        // Multiplikation
+        ergebnis = 3 * 5;
+
+        // Division (ganzzahlig)
+        ergebnis = 6 / 4;
+
+        // liefert 1 (statt 1.5)
+        Console.WriteLine(ergebnis);
+
+        // Division (double)
+        var quotient = 6.0 / 4.0;
+        
+        // liefert "erwartungsgemäß" 1.5
+        Console.WriteLine(quotient);
     }
 
     private static void TypUmwandlungen()
