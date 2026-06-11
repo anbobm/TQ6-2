@@ -31,6 +31,22 @@
         
         // liefert "erwartungsgemäß" 1.5
         Console.WriteLine(quotient);
+
+        // Modulo-Operator (Rest bei Ganzzahl-Division)
+        var rest = 6 % 4;
+
+        // Inkrement-Operator (hochzählen um 1)
+        ergebnis++;
+
+        // Dekrement-Operator (runterzählen um 1)
+        ergebnis--;
+
+        // Zusammengesetzen Zuweisungsoperatoren (compound assignments)
+        ergebnis += 5; // ergebnis = ergebnis + 5;
+        ergebnis -= 5; // ergebnis = ergebnis - 5;
+        ergebnis *= 5; // ergebnis = ergebnis * 5;
+        ergebnis /= 5; // ergebnis = ergebnis / 5;
+        ergebnis %= 5; // ergebnis = ergebnis % 5;
     }
 
     private static void TypUmwandlungen()
