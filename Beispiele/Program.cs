@@ -1,4 +1,4 @@
-﻿internal class Program
+﻿internal partial class Program
 {
     private static void Main(string[] args)
     {
@@ -9,7 +9,28 @@
         // ArithmetischeOperatoren();
         // VergleichsOperatoren();
         // LogischeOperatoren();
-        ErsteAufgabe();
+        // ErsteAufgabe();
+        Verzweigungen();
+    }
+
+    private static void Verzweigungen()
+    {
+        int x = 3;
+        int y = 10;
+
+        if (x > y)
+        {
+            Console.WriteLine("x ist größer als y");
+        }
+        else if(x == y)
+        {
+            Console.WriteLine("x ist gleich y");
+        }
+        else
+        {
+            Console.WriteLine("x ist kleiner als y");
+        }
+
     }
 
     // Aufgabe 1 vom 11.06.
