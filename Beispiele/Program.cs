@@ -13,7 +13,7 @@ internal partial class Program
         // LogischeOperatoren();
         // ErsteAufgabe();
         // Verzweigungen();
-        Schleifen();
+        // Schleifen();
         Aufgabe15();
     }
     private static void Aufgabe15()
@@ -42,7 +42,7 @@ while (j <= n)
 }
 
 Console.WriteLine("WHILE: " + (sum2 * 2));
-}
+
 
  
 
