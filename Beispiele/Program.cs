@@ -1,4 +1,6 @@
-﻿internal partial class Program
+﻿using System;
+
+internal partial class Program
 {
     private static void Main(string[] args)
     {
@@ -12,7 +14,37 @@
         // ErsteAufgabe();
         // Verzweigungen();
         Schleifen();
+        Aufgabe15();
     }
+    private static void Aufgabe15()
+
+    {
+        Console.Write("Geben Sie eine Zahl ein: ");
+int n = int.Parse(Console.ReadLine()!);
+
+// FOR
+int sum = 0;
+for (int i = 1; i <= n; i++)
+{
+    sum += i;
+}
+
+Console.WriteLine("FOR: " + (sum * 2));
+
+// WHILE
+int sum2 = 0;
+int j = 1;
+
+while (j <= n)
+{
+    sum2 += j;
+    j++;
+}
+
+Console.WriteLine("WHILE: " + (sum2 * 2));
+}
+
+ 
 
     private static void Schleifen()
     {
@@ -221,3 +253,4 @@ class Foo
 {
     public void Bar() {}
 }
+
