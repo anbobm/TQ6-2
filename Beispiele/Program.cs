@@ -10,7 +10,27 @@
         // VergleichsOperatoren();
         // LogischeOperatoren();
         // ErsteAufgabe();
-        Verzweigungen();
+        // Verzweigungen();
+        Schleifen();
+    }
+
+    private static void Schleifen()
+    {
+        // Variable von 0 bis 4 inklusive hochzählen und ausgeben
+        for (int i = 0; i < 5; i++)
+        {
+            Console.WriteLine(i);
+        }
+
+        // dasselbe mit while:
+
+        int n = 0;
+        while (n < 5)
+        {
+            Console.WriteLine(n);
+
+            n++;
+        }
     }
 
     private static void Verzweigungen()
