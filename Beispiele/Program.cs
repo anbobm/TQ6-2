@@ -11,8 +11,83 @@
         // LogischeOperatoren();
         // ErsteAufgabe();
         // Verzweigungen();
-        Schleifen();
+        // Schleifen();
+        // SchleifenAufgabe1();
+        SchleifenAufgabe2();
     }
+
+    private static void SchleifenAufgabe2()
+    {
+        Console.Write("Positive Zahl: ");
+
+        int ziel = Convert.ToInt32(Console.ReadLine());
+
+        Console.Write("(1");
+
+        int summe = 1;
+        for (int i = 2; i <= ziel; i++)
+        {
+            Console.Write($" + {i}");
+            summe += i;
+        }
+
+        Console.Write($") * 2 = {summe * 2}");
+    }
+
+    private static void SchleifenAufgabe2b()
+    {
+        // Mit while statt for
+        
+        Console.Write("Positive Zahl: ");
+
+        int ziel = Convert.ToInt32(Console.ReadLine());
+
+        Console.Write("(1");
+
+        int summe = 1;
+        int i = 2;
+        while (i <= ziel)
+        {
+            Console.Write($" + {i}");
+            summe += i;
+            i++;
+        }
+
+        Console.Write($") * 2 = {summe * 2}");
+    }
+
+    private static void SchleifenAufgabe1()
+    {
+        Console.Write("Positive Zahl: ");
+
+        int ziel = Convert.ToInt32(Console.ReadLine());
+
+        int summe = 0;
+
+        for (int i = 1; i <= ziel; i++)
+        {
+            summe += i;
+        }
+
+        Console.WriteLine($"Die Summe ist {summe}");
+
+        // Alternative mit While
+
+        Console.Write("Positive Zahl: ");
+
+        ziel = Convert.ToInt32(Console.ReadLine());
+
+        summe = 0;
+        int n = 1;
+        while ( n <= ziel)
+        {
+            summe += n;
+            n++;
+        }
+
+        Console.WriteLine($"Die Summe ist {summe}");
+    }
+
 
     private static void Schleifen()
     {
