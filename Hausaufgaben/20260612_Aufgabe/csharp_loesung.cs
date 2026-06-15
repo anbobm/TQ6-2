@@ -38,7 +38,7 @@ internal class Program
             case >= 92 and <= 100:
                 Console.WriteLine("sehr gut");
                 break;
-
+            
             default:
                 Console.WriteLine("Ungültige Punktzahl");
                 break;
