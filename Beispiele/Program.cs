@@ -13,7 +13,32 @@
         // Verzweigungen();
         // Schleifen();
         // SchleifenAufgabe1();
-        SchleifenAufgabe2();
+        // SchleifenAufgabe2();
+    }
+
+    private static void Listen()
+    {
+        var lieblingsgetränk = new List<string>();
+
+        // leere Liste []
+
+        lieblingsgetränk.Add("Kaffee");
+        lieblingsgetränk.Add("Kaffee");
+        lieblingsgetränk.Add("Kaffee");
+        lieblingsgetränk.Add("Wasser");
+        // ["Kaffee", "Kaffee", "Kaffee", "Wasser"]
+
+        lieblingsgetränk.Remove("Kaffee");
+        // ["Kaffee", "Kaffee", "Wasser"]
+
+        var erstes = lieblingsgetränk[0];
+        // erstes == "Kaffee"
+
+        lieblingsgetränk[0] = "Apfelschorle";
+        // ["Apfelschorle", "Kaffee", "Wasser"]
+
+        var längeVonListe = lieblingsgetränk.Count;
+        // 3
     }
 
     private static void SchleifenAufgabe2()
