@@ -14,7 +14,27 @@
         // Schleifen();
         // SchleifenAufgabe1();
         // SchleifenAufgabe2();
-        Listen();
+        // Listen();
+        ListenAufgabe1();
+    }
+
+    private static void ListenAufgabe1()
+    {
+        List<int> array = [4, 12, -100, 17, 1, 2, 3];
+
+        // Alle Elemente ausgeben mit for
+        for (int i = 0; i < array.Count; i++)
+        {
+            var element = array[i];
+
+            Console.WriteLine(element);
+        }
+
+        // Alle Elemente ausgeben mit foreach
+        foreach (var element in array)
+        {
+            Console.WriteLine(element);
+        }
     }
 
     private static void Listen()
