@@ -1,4 +1,6 @@
-﻿internal partial class Program
+﻿using System.Reflection.Metadata;
+
+internal partial class Program
 {
     private static void Main(string[] args)
     {
@@ -15,7 +17,30 @@
         // SchleifenAufgabe1();
         // SchleifenAufgabe2();
         // Listen();
-        ListenAufgabe1();
+        // ListenAufgabe1();
+        ListenAufgabe2();
+    }
+
+    private static void ListenAufgabe2()
+    {
+        int[] zufallszahlen = new int[30];
+        Random random = new Random();
+
+        for (int i = 0; i < zufallszahlen.Length; i++)
+        {
+            var zufallszahl = random.Next(1, 101);
+            zufallszahlen[i] = zufallszahl;
+        }
+
+        ArrayAusgeben(zufallszahlen);
+    }
+
+    private static void ArrayAusgeben(Array array)
+    {
+        foreach(var element in array)
+        {
+            Console.Write($"{element}, ");
+        }
     }
 
     private static void ListenAufgabe1()
