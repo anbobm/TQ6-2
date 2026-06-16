@@ -14,6 +14,7 @@
         // Schleifen();
         // SchleifenAufgabe1();
         // SchleifenAufgabe2();
+        Listen();
     }
 
     private static void Listen()
@@ -28,8 +29,20 @@
         lieblingsgetränk.Add("Wasser");
         // ["Kaffee", "Kaffee", "Kaffee", "Wasser"]
 
+        // Liste ausgeben mit foreach-Schleife
+        foreach (var getränk in lieblingsgetränk)
+        {
+            Console.WriteLine(getränk);
+        }
+
         lieblingsgetränk.Remove("Kaffee");
         // ["Kaffee", "Kaffee", "Wasser"]
+
+        // Liste ausgeben mit for-Schleife
+        for (int i = 0; i < lieblingsgetränk.Count; i++)
+        {
+            Console.WriteLine(lieblingsgetränk[i]);
+        }
 
         var erstes = lieblingsgetränk[0];
         // erstes == "Kaffee"
