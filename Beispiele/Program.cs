@@ -19,12 +19,26 @@ internal partial class Program
         // Listen();
         // ListenAufgabe1();
         // ListenAufgabe2();
-        Linq();
+        // Linq();
+        LinqSort();
+    }
+
+    private static void LinqSort()
+    {
+        int[] punkte = {78, 92, 97, 37, 81};
+
+        foreach(var number in punkte.Order())
+        {
+            Console.Write(number + " ");
+        }
+        
+        // Die Array-Klasse hat auch eine statische Methode für
+        // in place Sortierung
+        Array.Sort(punkte);
     }
 
     private static void Linq()
     {
-
         int[] punkte = {78, 92, 97, 37, 81};
         var min = punkte.Min();
         var max = punkte.Max();
