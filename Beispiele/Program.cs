@@ -21,7 +21,20 @@ internal partial class Program
         // ListenAufgabe2();
         // Linq();
         // LinqSort();
-        Dictionaries();
+        // Dictionaries();
+        Tupel();
+    }
+
+    private static void Tupel()
+    {
+        var person = GetPerson();
+
+        Console.WriteLine($"Person, Name: {person.Name}, Alter: {person.Alter}");
+    }
+
+    private static (string Name, int Alter) GetPerson()
+    {
+        return ("Bob", 25);
     }
 
     private static void Dictionaries()
