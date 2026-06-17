@@ -1,4 +1,6 @@
-﻿internal partial class Program
+﻿using System.Reflection.Metadata;
+
+internal partial class Program
 {
     private static void Main(string[] args)
     {
@@ -15,7 +17,64 @@
         // SchleifenAufgabe1();
         // SchleifenAufgabe2();
         // Listen();
-        ListenAufgabe1();
+        // ListenAufgabe1();
+        // ListenAufgabe2();
+        // Linq();
+        LinqSort();
+    }
+
+    private static void LinqSort()
+    {
+        int[] punkte = {78, 92, 97, 37, 81};
+
+        foreach(var number in punkte.Order())
+        {
+            Console.Write(number + " ");
+        }
+        
+        // Die Array-Klasse hat auch eine statische Methode für
+        // in place Sortierung
+        Array.Sort(punkte);
+    }
+
+    private static void Linq()
+    {
+        int[] punkte = {78, 92, 97, 37, 81};
+        var min = punkte.Min();
+        var max = punkte.Max();
+        var sum = punkte.Sum();
+        var count = punkte.Count();
+
+        Console.WriteLine($"Die schlechteste Punktzahl ist {min}, die beste ist {max} und die Durchschnittspunktzahl ist {sum/count}");
+
+        // Diese Funktionen gibt es auch bei anderen Datentypen, z.B. Listen:
+        var punkteListe = new List<int> {78, 92, 97, 37, 81};
+        min = punkteListe.Min();
+        max = punkteListe.Max();
+        sum = punkteListe.Sum();
+        count = punkteListe.Count();
+    }
+
+    private static void ListenAufgabe2()
+    {
+        int[] zufallszahlen = new int[30];
+        Random random = new Random();
+
+        for (int i = 0; i < zufallszahlen.Length; i++)
+        {
+            var zufallszahl = random.Next(1, 101);
+            zufallszahlen[i] = zufallszahl;
+        }
+
+        ArrayAusgeben(zufallszahlen);
+    }
+
+    private static void ArrayAusgeben(Array array)
+    {
+        foreach(var element in array)
+        {
+            Console.Write($"{element}, ");
+        }
     }
 
     private static void ListenAufgabe1()
