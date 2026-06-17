@@ -1,234 +1,387 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 
 class Program
 {
     static void Main()
     {
-        // Addition
+        AdditionUndStrings();
+        Grundrechenarten();
+        Dezimaldivision();
+        Casting();
+        Modulo();
+        Reihenfolge();
+        InkrementDekrement();
+        PrefixPostfix();
+        FahrenheitZuCelsius();
+        Aufgabe1_Beispiel();
+        Aufgabe2_Pythagoras();
+        Wuerfelspiel();
+        AboErinnerung();
+        Noten();
+        Aufgabe1_For_While();
+        Aufgabe2_Multiplikation();
+        FarbenAufgabe();
+        Aufgabe2_Array30();
+        BattleGame();
+
+        // Codeprojekte
+        Codeprojekt1_IntegerValidation();
+        Codeprojekt2_StringValidation();
+        Codeprojekt3_StringArrayProcessing();
+    }
+
+    // --- Aufgaben ---
+
+    static void AdditionUndStrings()
+    {
         int firstNumber = 12;
         int secondNumber = 7;
         Console.WriteLine(firstNumber + secondNumber);
 
-        // String + int
         string firstName = "Bob";
         int widgetsSold = 7;
+
         Console.WriteLine(firstName + " sold " + widgetsSold + " widgets.");
-
-        // String + int + int (Achtung: wird von links verkettet!)
         Console.WriteLine(firstName + " sold " + widgetsSold + 7 + " widgets.");
-
-        // Klammern für richtige Addition
         Console.WriteLine(firstName + " sold " + (widgetsSold + 7) + " widgets.");
+    }
 
-        // Grundrechenarten
-        int sum = 7 + 5;
-        int difference = 7 - 5;
-        int product = 7 * 5;
-        int quotient = 7 / 5; // =1 wegen Integer-Division
-        Console.WriteLine("Sum: " + sum);
-        Console.WriteLine("Difference: " + difference);
-        Console.WriteLine("Product: " + product);
-        Console.WriteLine("Quotient: " + quotient);
+    static void Grundrechenarten()
+    {
+        Console.WriteLine("Sum: " + (7 + 5));
+        Console.WriteLine("Difference: " + (7 - 5));
+        Console.WriteLine("Product: " + (7 * 5));
+        Console.WriteLine("Quotient: " + (7 / 5));
+    }
 
-        // Dezimaldivision
-        decimal decimalQuotient1 = 7.0m / 5;
-        Console.WriteLine(decimalQuotient1);
-        decimal decimalQuotient2 = 7 / 5.0m;
-        Console.WriteLine(decimalQuotient2);
-        decimal decimalQuotient3 = 7.0m / 5.0m;
-        Console.WriteLine(decimalQuotient3);
+    static void Dezimaldivision()
+    {
+        Console.WriteLine(7.0m / 5);
+        Console.WriteLine(7 / 5.0m);
+        Console.WriteLine(7.0m / 5.0m);
+    }
 
-        // Casting
-        int first = 7;
-        int second = 5;
-        decimal castQuotient = (decimal)first / (decimal)second;
-        Console.WriteLine(castQuotient);
+    static void Casting()
+    {
+        Console.WriteLine((decimal)7 / (decimal)5);
+    }
 
-        // Modulo
+    static void Modulo()
+    {
         Console.WriteLine(200 % 5);
         Console.WriteLine(7 % 5);
+    }
 
-        // Reihenfolge der Operationen
-        int value1 = 3 + 4 * 5;
-        int value2 = (3 + 4) * 5;
-        Console.WriteLine(value1);
-        Console.WriteLine(value2);
+    static void Reihenfolge()
+    {
+        Console.WriteLine(3 + 4 * 5);
+        Console.WriteLine((3 + 4) * 5);
+    }
 
-        // Inkrement / Dekrement
+    static void InkrementDekrement()
+    {
         int value = 1;
+
         value = value + 1; Console.WriteLine(value);
         value += 1; Console.WriteLine(value);
         value++; Console.WriteLine(value);
+
         value = value - 1; Console.WriteLine(value);
         value -= 1; Console.WriteLine(value);
         value--; Console.WriteLine(value);
+    }
 
-        // Prefix/Postfix
+    static void PrefixPostfix()
+    {
         int v = 1;
-        v++; Console.WriteLine(v);
-        Console.WriteLine(v++); // gibt 2 aus, dann 3
-        Console.WriteLine(v);
-        Console.WriteLine(++v); // gibt 4 aus
 
-        // Fahrenheit → Celsius
+        v++; Console.WriteLine(v);
+        Console.WriteLine(v++);
+        Console.WriteLine(v);
+        Console.WriteLine(++v);
+    }
+
+    static void FahrenheitZuCelsius()
+    {
         int fahrenheit = 94;
         decimal celsius = (fahrenheit - 32m) * (5m / 9m);
+
         Console.WriteLine("The temperature is " + celsius + " Celsius.");
+    }
 
-        // Aufgabe 1 (Beispiel)
-        int x = 7;
-        int y = 3;
-        Console.WriteLine("Addition: " + x + " + " + y + " = " + (x + y));
+    static void Aufgabe1_Beispiel()
+    {
+        Console.WriteLine("Addition: 7 + 3 = " + (7 + 3));
+    }
 
-        // Aufgabe 2 (Pythagoras)
+    static void Aufgabe2_Pythagoras()
+    {
         int a = 18;
         int b = 8;
-        int c = a * a + b * b;
-        Console.WriteLine(Math.Sqrt(c));
 
-        // Würfelspiel
+        Console.WriteLine(Math.Sqrt(a * a + b * b));
+    }
+
+    static void Wuerfelspiel()
+    {
         Random dice = new Random();
-        int roll1 = dice.Next(1, 7);
-        int roll2 = dice.Next(1, 7);
-        int roll3 = dice.Next(1, 7);
-        int total = roll1 + roll2 + roll3;
-        Console.WriteLine($"Dice roll: {roll1} + {roll2} + {roll3} = {total}");
 
-        if ((roll1 == roll2) || (roll2 == roll3) || (roll1 == roll3))
+        int r1 = dice.Next(1, 7);
+        int r2 = dice.Next(1, 7);
+        int r3 = dice.Next(1, 7);
+
+        int total = r1 + r2 + r3;
+
+        Console.WriteLine($"Dice roll: {r1} + {r2} + {r3} = {total}");
+
+        if (r1 == r2 || r2 == r3 || r1 == r3)
         {
-            if ((roll1 == roll2) && (roll2 == roll3))
+            if (r1 == r2 && r2 == r3)
             {
-                Console.WriteLine("You rolled triples!  +6 bonus to total!");
+                Console.WriteLine("You rolled triples! +6 bonus!");
                 total += 6;
             }
             else
             {
-                Console.WriteLine("You rolled doubles!  +2 bonus to total!");
+                Console.WriteLine("You rolled doubles! +2 bonus!");
                 total += 2;
             }
-            Console.WriteLine($"Your total including the bonus: {total}");
+
+            Console.WriteLine("Total: " + total);
         }
 
         if (total >= 16) Console.WriteLine("You win a new car!");
-        else if (total >= 10) Console.WriteLine("You win a new laptop!");
-        else if (total == 7) Console.WriteLine("You win a trip for two!");
+        else if (total >= 10) Console.WriteLine("You win a laptop!");
+        else if (total == 7) Console.WriteLine("You win a trip!");
         else Console.WriteLine("You win a kitten!");
+    }
 
-        // Abo-Erinnerung
+    static void AboErinnerung()
+    {
         Random random = new Random();
-        int daysUntilExpiration = random.Next(12);
-        int discountPercentage = 0;
+        int days = random.Next(12);
 
-        if (daysUntilExpiration == 0) Console.WriteLine("Your subscription has expired.");
-        else if (daysUntilExpiration == 1)
-        {
-            discountPercentage = 20;
-            Console.WriteLine("Your subscription expires within a day!");
-            Console.WriteLine($"Renew now and save {discountPercentage}%!");
-        }
-        else if (daysUntilExpiration <= 5)
-        {
-            discountPercentage = 10;
-            Console.WriteLine($"Your subscription expires in {daysUntilExpiration} days.");
-            Console.WriteLine($"Renew now and save {discountPercentage}%!");
-        }
-        else if (daysUntilExpiration <= 10)
-        {
-            Console.WriteLine("Your subscription will expire soon. Renew now!");
-        }
+        if (days == 0) Console.WriteLine("Your subscription has expired.");
+        else if (days == 1) Console.WriteLine("Expires within a day! Save 20%!");
+        else if (days <= 5) Console.WriteLine($"Expires in {days} days! Save 10%!");
+        else if (days <= 10) Console.WriteLine("Expires soon. Renew now!");
+    }
 
-        // Hausaufgabe Noten
+    static void Noten()
+    {
         Console.Write("Punktzahl (0–100): ");
-        int p = Convert.ToInt32(Console.ReadLine());
+        int p = int.Parse(Console.ReadLine());
+
         if (p >= 92) Console.WriteLine("sehr gut");
         else if (p >= 81) Console.WriteLine("gut");
         else if (p >= 67) Console.WriteLine("befriedigend");
         else if (p >= 50) Console.WriteLine("ausreichend");
         else Console.WriteLine("mangelhaft");
+    }
 
-        //# Aufgabe 1
-
-        //Schreibe ein Programm, das eine Zahl vom Benutzer einliest, und dann alle Zahlen von 1 bis zur eingelesenen Zahl aufsummiert 
-        //und die Summe ausgibt. Schreib es einmal mit `for` und einmal mit `while`.
-            
-        // Aufgabe 1
-        // Aufgabe 1 – for
+    static void Aufgabe1_For_While()
+    {
         Console.Write("Zahl eingeben: ");
         int n1 = int.Parse(Console.ReadLine());
 
-        int summe1 = 0;
+        int sum1 = 0;
+        for (int i = 1; i <= n1; i++) sum1 += i;
+        Console.WriteLine("Summe (for): " + sum1);
 
-        for (int i = 1; i <= n1; i++)
-        {
-            summe1 += i;
-        }
-
-        Console.WriteLine("Summe: " + summe1);
-
-
-        // Aufgabe 1 – while
         Console.Write("Zahl eingeben: ");
         int n2 = int.Parse(Console.ReadLine());
 
-        int summe2 = 0;
+        int sum2 = 0;
         int j = 1;
 
         while (j <= n2)
         {
-            summe2 += j;
+            sum2 += j;
             j++;
         }
 
-        Console.WriteLine("Summe: " + summe2);
+        Console.WriteLine("Summe (while): " + sum2);
+    }
 
-        //# Aufgabe 2
-        //Schreibe ein Programm, welches eine Zahl vom Benutzer einliest (z.B. 5) und dann folgende Ausgabe erzeugt:
-        //`(1 + 2 + 3 + 4 + 5) * 2 = 30`
-
-       // Aufgabe 2 – for
+    static void Aufgabe2_Multiplikation()
+    {
         Console.Write("Zahl eingeben: ");
-        int n2_for = int.Parse(Console.ReadLine());
+        int n = int.Parse(Console.ReadLine());
 
-        int sum2_for = 0;
-        string text2_for = "";
+        int sum = 0;
+        string text = "";
 
-        for (int i = 1; i <= n2_for; i++)
+        for (int i = 1; i <= n; i++)
         {
-            sum2_for += i;
-
-            if (i == 1)
-                text2_for = "1";
-            else
-                text2_for += " + " + i;
+            sum += i;
+            text += (i == 1) ? "1" : " + " + i;
         }
 
-        Console.WriteLine("(" + text2_for + ") * 2 = " + (sum2_for * 2));
+        Console.WriteLine("(" + text + ") * 2 = " + (sum * 2));
+    }
 
-        // Aufgabe 2 – while
-        Console.Write("Zahl eingeben: ");
-        int n2_while = int.Parse(Console.ReadLine());
+    static void FarbenAufgabe()
+    {
+        string[] farben = { "Rot", "Blau", "Grün", "Gelb", "Lila", "Orange", "Schwarz" };
 
-        int sum2_while = 0;
-        string text2_while = "";
-        int k = 1;
+        for (int i = 0; i < farben.Length; i++)
+            Console.WriteLine(farben[i]);
 
-        while (k <= n2_while)
+        foreach (string f in farben)
+            Console.WriteLine(f);
+    }
+
+    static void Aufgabe2_Array30()
+    {
+        Random random = new Random();
+        int[] zahlen = new int[30];
+
+        for (int i = 0; i < zahlen.Length; i++)
         {
-            sum2_while += k;
+            zahlen[i] = random.Next(1, 101);
+            Console.WriteLine(zahlen[i]);
+        }
+    }
 
-            if (k == 1)
-                text2_while = "1";
-            else
-                text2_while += " + " + k;
+    // --- Battle Game ---
 
-            k++;
+    static void BattleGame()
+    {
+        Random random = new Random();
+
+        int heroHealth = 10;
+        int monsterHealth = 10;
+
+        do
+        {
+            int heroAttack = random.Next(1, 11);
+            monsterHealth -= heroAttack;
+            Console.WriteLine($"Monster was damaged and lost {heroAttack} health and now has {monsterHealth} health.");
+
+            if (monsterHealth <= 0)
+            {
+                Console.WriteLine("Hero wins!");
+                break;
+            }
+
+            int monsterAttack = random.Next(1, 11);
+            heroHealth -= monsterAttack;
+            Console.WriteLine($"Hero was damaged and lost {monsterAttack} health and now has {heroHealth} health.");
+
+            if (heroHealth <= 0)
+            {
+                Console.WriteLine("Monster wins!");
+                break;
+            }
+
+        } while (heroHealth > 0 && monsterHealth > 0);
+    }
+
+    // --- Codeprojekt 1 ---
+
+    static void Codeprojekt1_IntegerValidation()
+{
+    string? readResult;
+    string valueEntered = "";
+    int numValue = 0;
+    bool validNumber = false;
+
+    Console.WriteLine("Enter an integer value between 5 and 10");
+
+    do
+    {
+        readResult = Console.ReadLine();
+        if (readResult != null)
+        {
+            valueEntered = readResult;
         }
 
-        Console.WriteLine("(" + text2_while + ") * 2 = " + (sum2_while * 2));
+        validNumber = int.TryParse(valueEntered, out numValue);
 
-
-
+        if (validNumber == true)
+        {
+            if (numValue <= 5 || numValue >= 10)
+            {
+                validNumber = false;
+                Console.WriteLine($"You entered {numValue}. Please enter a number between 5 and 10.");
+            }
         }
+        else
+        {
+            Console.WriteLine("Sorry, you entered an invalid number, please try again");
+        }
+    } while (validNumber == false);
+
+    Console.WriteLine($"Your input value ({numValue}) has been accepted.");
 }
+
+
+    // --- Codeprojekt 2 ---
+
+    static void Codeprojekt2_StringValidation()
+{
+    string? readResult;
+    string roleName = "";
+    bool validEntry = false;
+
+    do
+    {
+        Console.WriteLine("Enter your role name (Administrator, Manager, or User)");
+        readResult = Console.ReadLine();
+        if (readResult != null)
+        {
+            roleName = readResult.Trim();
+        }
+
+        if (roleName.ToLower() == "administrator" || roleName.ToLower() == "manager" || roleName.ToLower() == "user")
+        {
+            validEntry = true;
+        }
+        else
+        {
+            Console.Write($"The role name that you entered, \"{roleName}\" is not valid. ");
+        }
+
+    } while (validEntry == false);
+
+    Console.WriteLine($"Your input value ({roleName}) has been accepted.");
+}
+
+    // --- Codeprojekt 3 ---
+
+    static void Codeprojekt3_StringArrayProcessing()
+{
+    string[] myStrings = new string[2]
+    {
+        "I like pizza. I like roast chicken. I like salad",
+        "I like all three of the menu choices"
+    };
+    int stringsCount = myStrings.Length;
+
+    string myString = "";
+    int periodLocation = 0;
+
+    for (int i = 0; i < stringsCount; i++)
+    {
+        myString = myStrings[i];
+        periodLocation = myString.IndexOf(".");
+
+        string mySentence;
+
+        while (periodLocation != -1)
+        {
+            mySentence = myString.Remove(periodLocation);
+            myString = myString.Substring(periodLocation + 1);
+            myString = myString.TrimStart();
+            periodLocation = myString.IndexOf(".");
+
+            Console.WriteLine(mySentence);
+        }
+
+        mySentence = myString.Trim();
+        Console.WriteLine(mySentence);
+    }
+}
+
+    }
+
