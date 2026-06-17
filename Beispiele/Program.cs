@@ -18,7 +18,27 @@ internal partial class Program
         // SchleifenAufgabe2();
         // Listen();
         // ListenAufgabe1();
-        ListenAufgabe2();
+        // ListenAufgabe2();
+        Linq();
+    }
+
+    private static void Linq()
+    {
+
+        int[] punkte = {78, 92, 97, 37, 81};
+        var min = punkte.Min();
+        var max = punkte.Max();
+        var sum = punkte.Sum();
+        var count = punkte.Count();
+
+        Console.WriteLine($"Die schlechteste Punktzahl ist {min}, die beste ist {max} und die Durchschnittspunktzahl ist {sum/count}");
+
+        // Diese Funktionen gibt es auch bei anderen Datentypen, z.B. Listen:
+        var punkteListe = new List<int> {78, 92, 97, 37, 81};
+        min = punkteListe.Min();
+        max = punkteListe.Max();
+        sum = punkteListe.Sum();
+        count = punkteListe.Count();
     }
 
     private static void ListenAufgabe2()
