@@ -70,3 +70,20 @@ else
     Console.WriteLine("Ungenügend!");
 }
 
+
+
+int aufgabe = 0;
+
+
+
+int[] zahlen = new int[7]{1, 2, 3, 4, 5, 6, 7};
+for (int i = 0; i < zahlen.Length; i++)
+{
+    Console.WriteLine(zahlen[i]);
+}
+
+foreach (int zahl in zahlen)
+{
+    Console.WriteLine(zahl);
+}
+
