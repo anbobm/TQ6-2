@@ -1,4 +1,6 @@
 ﻿using System.Reflection.Metadata;
+using System.Runtime.CompilerServices;
+using System.Transactions;
 
 internal partial class Program
 {
@@ -26,7 +28,21 @@ internal partial class Program
         // ArrayAufgabe1();
         // ArrayAufgabe2();
         // DictionaryAufgabe1();
-        DictionaryAufgabe2();
+        // DictionaryAufgabe2();
+        DictionaryAufgabe2Zusatz();
+    }
+
+    private static void DictionaryAufgabe2Zusatz()
+    {
+        
+        List<string> woerter = ["Apfel", "Banane", "Apfel", "Orange", "Banane", "Apfel"];
+
+        var ergebnis = ZaehleWorteZusatz(woerter);
+
+        foreach (var tuple in ergebnis)
+        {
+            System.Console.WriteLine(tuple);
+        }
     }
 
     private static void DictionaryAufgabe2()
@@ -63,6 +79,36 @@ internal partial class Program
             // // Alternative:
             // result[wort] = result.GetValueOrDefault(wort, 0) + 1;
         }
+
+        return result;
+    }
+
+    private static List<(string, int)> ZaehleWorteZusatz(List<string> woerter)
+    {
+        // ["Apfel", "Banane", "Apfel", "Orange", "Banane", "Apfel"]
+        // sortieren, dann Gruppen durchzählen
+        // ["Apfel", "Apfel", "Apfel", "Banane", "Banane", "Orange"]
+
+        woerter.Sort();
+
+        var result = new List<(string, int)>();
+        string aktuell = woerter[0];
+        int count = 1;
+
+        for (int i = 1; i < woerter.Count; i++)
+        {
+            if (woerter[i] == aktuell)
+            {
+                count++;
+            }
+            else
+            {
+                result.Add((aktuell, count));
+                aktuell = woerter[i];
+                count = 1;
+            }
+        }
+        result.Add((aktuell, count));
 
         return result;
     }
