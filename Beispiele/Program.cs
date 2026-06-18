@@ -20,7 +20,55 @@ internal partial class Program
         // ListenAufgabe1();
         // ListenAufgabe2();
         // Linq();
-        LinqSort();
+        // LinqSort();
+        // Dictionaries();
+        Tupel();
+    }
+
+    private static void Tupel()
+    {
+        var person = GetPerson();
+
+        Console.WriteLine($"Person, Name: {person.Name}, Alter: {person.Alter}");
+    }
+
+    private static (string Name, int Alter) GetPerson()
+    {
+        return ("Bob", 25);
+    }
+
+    private static void Dictionaries()
+    {
+        var grades = new Dictionary<string, int>
+        {
+            { "Alice", 95 },
+            { "Bob", 85 },
+            { "Charlie", 92 }
+        };
+
+        foreach (var grade in grades)
+        {
+            Console.WriteLine($"Student: {grade.Key}, Note: {grade.Value}");
+        }
+
+        // Lesend auf Dictionary zugreifen (könnte schief gehen wenn Key nicht vorhanden)
+        Console.WriteLine(grades["David"]);
+
+        // vorher Testen ob Key vorhanden
+        if (grades.ContainsKey("David"))
+        {
+            Console.WriteLine(grades["David"]);
+        }
+        else
+        {
+            Console.WriteLine("Key Foo nicht gefunden");
+        }
+
+        // schlägt nicht fehl bei fehlendem Key
+        grades.TryGetValue("David", out int gradeDavid);
+
+        // Key-Value-Pair zu gegebenem Key entfernen
+        grades.Remove("Alice");
     }
 
     private static void LinqSort()
@@ -31,7 +79,7 @@ internal partial class Program
         {
             Console.Write(number + " ");
         }
-        
+
         // Die Array-Klasse hat auch eine statische Methode für
         // in place Sortierung
         Array.Sort(punkte);
