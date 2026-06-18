@@ -10,10 +10,10 @@ static int IndexVon(int[] array, int value)
 
 private static void Main(string[] args)
 {
-    var index = IndexVon([2, 5, -17, 28], -17);
+    var index = IndexVon([2, 5, -17, 28, -17], -17);
     Console.WriteLine(index); // Ausgabe: 2
 
-    index = IndexVon([2, 5, -17, 28], 3);
+    index = IndexVon([2, 5, -17, 28, -17], 3);
     Console.WriteLine(index); // Ausgabe: -1
 }
 ```
