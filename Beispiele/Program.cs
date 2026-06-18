@@ -22,7 +22,69 @@ internal partial class Program
         // Linq();
         // LinqSort();
         // Dictionaries();
-        Tupel();
+        // Tupel();
+        // ArrayAufgabe1();
+        ArrayAufgabe2();
+    }
+
+    private static void ArrayAufgabe2()
+    {
+        var index = IndexVon_Tupel([2, 5, -17, 28], -17);
+        Console.WriteLine(index); // Ausgabe: (2, -17)
+
+        index = IndexVon_Tupel([2, 5, -17, 28], 3);
+        Console.WriteLine(index); // Ausgabe: (-1, 3)
+    }
+
+    private static (int, int) IndexVon_Tupel(int[] array, int value)
+    {
+        for (int i = 0; i < array.Length; i++)
+        {
+            var element = array[i];
+
+            if (element == value)
+            {
+                return (i, value);
+            }
+        }
+
+        return (-1, value);
+    }
+
+    private static void ArrayAufgabe1()
+    {
+        var index = IndexVon([2, 5, -17, 28, -17], -17);
+        Console.WriteLine(index); // Ausgabe: 2
+
+        index = IndexVon([2, 5, -17, 28, -17], 3);
+        Console.WriteLine(index); // Ausgabe: -1
+    }
+
+    private static int IndexVon(int[] array, int value)
+    {
+        for (int i = 0; i < array.Length; i++)
+        {
+            var element = array[i];
+
+            if (element == value)
+            {
+                return i;
+            }
+        }
+
+        return -1;
+
+        // // Alternative mit Index()-Methode (die Tupel aus Index und Wert zurückgibt)
+        // // [2, 5, -17, 28, -17]
+        // // [(0, 2), (1, 5), (2, -17), (3, 28), (4, -17)]
+
+        // foreach (var tuple in array.Index())
+        // {
+        //     if (tuple.Item == value)
+        //     {
+        //         return tuple.Index;
+        //     }
+        // }
     }
 
     private static void Tupel()
