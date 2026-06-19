@@ -1,32 +1,126 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 class Program
 {
-    // Aufgabe 1 
-    static int IndexVon(int[] array, int value)
+    
+    // Aufgabe 1
+    public static string SucheTelefonnummer(Dictionary<string, string> telefonbuch, string name)
     {
-        for (int i = 0; i < array.Length; i++)
-            if (array[i] == value)
-                return i;
+        if (telefonbuch.ContainsKey(name))
+            return telefonbuch[name];
 
-        return -1;
+        return "Nicht gefunden!";
     }
 
-    // Aufgabe 2 
-    static (int Index, int Value) IndexVon_Tupel(int[] array, int value)
+    public static void Aufgabe1()
     {
-        int index = IndexVon(array, value);
-        return (index, value);
+        Console.WriteLine("Aufgabe 1:");
+
+        var telefonbuch = new Dictionary<string, string>
+        {
+            { "Alice", "555-598123" },
+            { "Bob",   "555-934242" }
+        };
+
+        Console.WriteLine("Bob: " + SucheTelefonnummer(telefonbuch, "Bob"));
+        Console.WriteLine(SucheTelefonnummer(telefonbuch, "Malory"));
     }
 
-    private static void Main(string[] args)
+   
+    // Aufgabe 2 (Dictionary)
+    public static Dictionary<string, int> ZaehleWorte(List<string> woerter)
     {
-        Console.WriteLine("Aufgabe 1");
-        Console.WriteLine(IndexVon(new int[] { 2, 5, -17, 28 }, -17)); 
-        Console.WriteLine(IndexVon(new int[] { 2, 5, -17, 28 }, 3));   
-        Console.WriteLine();
+        Dictionary<string, int> ergebnis = new Dictionary<string, int>();
 
-        Console.WriteLine("Aufgabe 2");
-        Console.WriteLine(IndexVon_Tupel(new int[] { 2, 5, -17, 28 }, -17)); 
+        for (int i = 0; i < woerter.Count; i++)
+        {
+            string wort = woerter[i];
+
+            if (ergebnis.ContainsKey(wort))
+                ergebnis[wort]++;
+            else
+                ergebnis[wort] = 1;
+        }
+
+        return ergebnis;
+    }
+
+    public static void Aufgabe2()
+    {
+        Console.WriteLine("\nAufgabe 2:");
+
+        List<string> woerter = new List<string>
+        {
+            "Apfel", "Banane", "Apfel", "Orange", "Banane", "Apfel"
+        };
+
+        var ergebnis = ZaehleWorte(woerter);
+
+        for (int i = 0; i < ergebnis.Count; i++)
+        {
+            var element = ergebnis.ElementAt(i);
+            Console.WriteLine($"{element.Key}: {element.Value}");
+        }
+    }
+
+
+    // Aufgabe 2 Zusatz 
+    public static List<(string Wort, int Anzahl)> ZaehleWorteOhneDictionary(List<string> woerter)
+    {
+        List<(string Wort, int Anzahl)> ergebnis = new List<(string Wort, int Anzahl)>();
+
+        for (int i = 0; i < woerter.Count; i++)
+        {
+            string wort = woerter[i];
+            bool gefunden = false;
+
+            for (int j = 0; j < ergebnis.Count; j++)
+            {
+                if (ergebnis[j].Wort == wort)
+                {
+                    ergebnis[j] = (wort, ergebnis[j].Anzahl + 1);
+                    gefunden = true;
+                    break;
+                }
+            }
+
+            if (!gefunden)
+                ergebnis.Add((wort, 1));
+        }
+
+        return ergebnis;
+    }
+
+    public static void Aufgabe2Zusatz()
+    {
+        Console.WriteLine("\nZusatz:");
+
+        List<string> woerter = new List<string>
+        {
+            "Apfel", "Banane", "Apfel", "Orange", "Banane", "Apfel"
+        };
+
+        var ergebnis = ZaehleWorteOhneDictionary(woerter);
+
+        string ausgabe = "";
+
+        for (int i = 0; i < ergebnis.Count; i++)
+        {
+            ausgabe += $"{ergebnis[i].Wort}: {ergebnis[i].Anzahl}";
+
+            if (i < ergebnis.Count - 1)
+                ausgabe += " | ";
+        }
+
+        Console.WriteLine(ausgabe);
+    }
+
+      private static void Main(string[] args)
+    {
+        Aufgabe1();
+        Aufgabe2();
+        Aufgabe2Zusatz();
     }
 }
