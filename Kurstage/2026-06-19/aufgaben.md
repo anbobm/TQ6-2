@@ -5,8 +5,8 @@ Schreibe eine Methode `DurchschnittsnotenAusgeben()`, welche ein Dictionary beko
 ```csharp
 var noten = new Dictionary<string, List<int>>
 {
-    { "Alice", new List<int> { 95, 88, 92 } },
-    { "Bob", new List<int> { 75, 80, 78 } },
+    { "Alice", new List<int> { 96, 88, 92 } },
+    { "Bob", new List<int> { 76, 80, 78 } },
     { "Charlie", new List<int> { 91, 93, 89 } }
 };
 
