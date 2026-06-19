@@ -1,5 +1,6 @@
 ﻿using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Transactions;
 
 internal partial class Program
@@ -29,7 +30,143 @@ internal partial class Program
         // ArrayAufgabe2();
         // DictionaryAufgabe1();
         // DictionaryAufgabe2();
-        DictionaryAufgabe2Zusatz();
+        // DictionaryAufgabe2Zusatz();
+        // DictionaryAufgabe2_1();
+        // DictionaryAufgabe2_2();
+        DictionaryAufgabe2_3();
+    }
+
+    private static void DictionaryAufgabe2_3()
+    {
+        var noten = new Dictionary<string, List<int>>
+        {
+            { "Alice", new List<int> { 96, 88, 92 } },
+            { "Bob", new List<int> { 76, 80, 78 } },
+            { "Charlie", new List<int> { 91, 93, 89 } }
+        };
+        
+        var durchschnittsnoten = DurchschnittsnotenTupel(noten);
+
+        foreach (var eintrag in durchschnittsnoten)
+        {
+            Console.WriteLine($"{eintrag.Name}: {eintrag.Note}");
+        }
+    }
+
+    private static List<(string Name, double Note)> DurchschnittsnotenTupel(Dictionary<string, List<int>> noten)
+    {
+        var result = new List<(string, double)>();
+
+        foreach (var eintrag in noten)
+        {
+            var name = eintrag.Key;
+            var notenliste = eintrag.Value;
+            var summe = 0;
+            foreach (var note in notenliste)
+            {
+                summe += note;
+            }
+
+            // Cast nach double nicht vergessen, sonst wird ganzzahlige Division verwendet
+            var durchschnittsnote = (double) summe / notenliste.Count;
+
+            // Alternative mit Average
+            durchschnittsnote = notenliste.Average();
+
+            // Alternative mit Sum
+            durchschnittsnote = (double) notenliste.Sum() / notenliste.Count;
+
+            result.Add((name, durchschnittsnote));
+        }
+
+        return result;
+    }
+
+    private static void DictionaryAufgabe2_2()
+    {
+        var noten = new Dictionary<string, List<int>>
+        {
+            { "Alice", new List<int> { 96, 88, 92 } },
+            { "Bob", new List<int> { 76, 80, 78 } },
+            { "Charlie", new List<int> { 91, 93, 89 } }
+        };
+        
+        var durchschnittsnoten = DurchschnittsnotenDictionary(noten);
+
+        foreach (var eintrag in durchschnittsnoten)
+        {
+            Console.WriteLine($"{eintrag.Key}: {eintrag.Value}");
+        }
+    }
+
+    private static Dictionary<string, double> DurchschnittsnotenDictionary(Dictionary<string, List<int>> noten)
+    {
+        var result = new Dictionary<string, double>();
+
+        foreach (var eintrag in noten)
+        {
+            var name = eintrag.Key;
+            var notenliste = eintrag.Value;
+            var summe = 0;
+            foreach (var note in notenliste)
+            {
+                summe += note;
+            }
+
+            // Cast nach double nicht vergessen, sonst wird ganzzahlige Division verwendet
+            var durchschnittsnote = (double) summe / notenliste.Count;
+
+            // Alternative mit Average
+            durchschnittsnote = notenliste.Average();
+
+            // Alternative mit Sum
+            durchschnittsnote = (double) notenliste.Sum() / notenliste.Count;
+
+            result.Add(name, durchschnittsnote);
+        }
+
+        return result;
+    }
+
+    private static void DictionaryAufgabe2_1()
+    {
+        var noten = new Dictionary<string, List<int>>
+        {
+            { "Alice", new List<int> { 96, 88, 92 } },
+            { "Bob", new List<int> { 76, 80, 78 } },
+            { "Charlie", new List<int> { 91, 93, 89 } }
+        };
+        
+        DurchschnittsnotenAusgeben(noten);
+        // Ausgabe:
+        // Alice: 92
+        // Bob: 78
+        // Charlie: 91
+    }
+
+    private static void DurchschnittsnotenAusgeben(Dictionary<string, List<int>> noten)
+    {
+        foreach (var eintrag in noten)
+        {
+            var name = eintrag.Key;
+            var notenliste = eintrag.Value;
+            var summe = 0;
+            foreach (var note in notenliste)
+            {
+                summe += note;
+            }
+
+            // Cast nach double nicht vergessen, sonst wird ganzzahlige Division verwendet
+            var durchschnittsnote = (double) summe / notenliste.Count;
+
+            // Alternative mit Average
+            durchschnittsnote = notenliste.Average();
+
+            // Alternative mit Sum
+            durchschnittsnote = (double) notenliste.Sum() / notenliste.Count;
+
+            Console.WriteLine($"{name}: {durchschnittsnote}");
+        }
     }
 
     private static void DictionaryAufgabe2Zusatz()
