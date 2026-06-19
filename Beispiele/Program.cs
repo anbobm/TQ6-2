@@ -31,9 +31,43 @@ internal partial class Program
         // DictionaryAufgabe1();
         // DictionaryAufgabe2();
         // DictionaryAufgabe2Zusatz();
+        DictionaryAufgabe2Zusatzb();
         // DictionaryAufgabe2_1();
         // DictionaryAufgabe2_2();
-        DictionaryAufgabe2_3();
+        // DictionaryAufgabe2_3();
+    }
+
+    private static void DictionaryAufgabe2Zusatzb()
+    {
+        List<string> woerter = ["Apfel", "Banane", "Apfel", "Orange", "Banane", "Apfel"];
+
+        for (int i = 0; i < woerter.Count; i++)
+        {
+            int count = 1;
+            bool schonGesehen = false;
+
+            for (int j = 0; j < i; j++)
+            {
+                if (woerter[i] == woerter[j])
+                {
+                    schonGesehen = true;
+                    break;
+                }
+            }
+
+            if (!schonGesehen)
+            {
+                for (int j = i + 1; j < woerter.Count; j++)
+                {
+                    if (woerter[i] == woerter[j])
+                    {
+                        count++;
+                    }
+                }
+
+                Console.WriteLine($"{woerter[i]}: {count} mal");
+            }
+        }
     }
 
     private static void DictionaryAufgabe2_3()
@@ -95,7 +129,7 @@ internal partial class Program
             var name = eintrag.Key;
             var notenliste = eintrag.Value;
             var durchschnittsnote = notenliste.Average();
-            
+
             result.Add(name, durchschnittsnote);
         }
 
