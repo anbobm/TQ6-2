@@ -61,20 +61,7 @@ internal partial class Program
         {
             var name = eintrag.Key;
             var notenliste = eintrag.Value;
-            var summe = 0;
-            foreach (var note in notenliste)
-            {
-                summe += note;
-            }
-
-            // Cast nach double nicht vergessen, sonst wird ganzzahlige Division verwendet
-            var durchschnittsnote = (double) summe / notenliste.Count;
-
-            // Alternative mit Average
-            durchschnittsnote = notenliste.Average();
-
-            // Alternative mit Sum
-            durchschnittsnote = (double) notenliste.Sum() / notenliste.Count;
+            var durchschnittsnote = notenliste.Average();
 
             result.Add((name, durchschnittsnote));
         }
@@ -107,21 +94,8 @@ internal partial class Program
         {
             var name = eintrag.Key;
             var notenliste = eintrag.Value;
-            var summe = 0;
-            foreach (var note in notenliste)
-            {
-                summe += note;
-            }
-
-            // Cast nach double nicht vergessen, sonst wird ganzzahlige Division verwendet
-            var durchschnittsnote = (double) summe / notenliste.Count;
-
-            // Alternative mit Average
-            durchschnittsnote = notenliste.Average();
-
-            // Alternative mit Sum
-            durchschnittsnote = (double) notenliste.Sum() / notenliste.Count;
-
+            var durchschnittsnote = notenliste.Average();
+            
             result.Add(name, durchschnittsnote);
         }
 
