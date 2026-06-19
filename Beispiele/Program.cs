@@ -1,4 +1,6 @@
 ﻿using System.Reflection.Metadata;
+using System.Runtime.CompilerServices;
+using System.Transactions;
 
 internal partial class Program
 {
@@ -24,7 +26,119 @@ internal partial class Program
         // Dictionaries();
         // Tupel();
         // ArrayAufgabe1();
-        ArrayAufgabe2();
+        // ArrayAufgabe2();
+        // DictionaryAufgabe1();
+        // DictionaryAufgabe2();
+        DictionaryAufgabe2Zusatz();
+    }
+
+    private static void DictionaryAufgabe2Zusatz()
+    {
+        
+        List<string> woerter = ["Apfel", "Banane", "Apfel", "Orange", "Banane", "Apfel"];
+
+        var ergebnis = ZaehleWorteZusatz(woerter);
+
+        foreach (var tuple in ergebnis)
+        {
+            System.Console.WriteLine(tuple);
+        }
+    }
+
+    private static void DictionaryAufgabe2()
+    {
+        List<string> woerter = ["Apfel", "Banane", "Apfel", "Orange", "Banane", "Apfel"];
+
+        Dictionary<string, int> ergebnis = ZaehleWorte(woerter);
+
+        foreach (var eintrag in ergebnis)
+        {
+            Console.WriteLine($"{eintrag.Key}: {eintrag.Value}");
+        }
+        // Ausgabe:
+        // Apfel: 3
+        // Banane: 2
+        // Orange: 1
+    }
+
+    private static Dictionary<string, int> ZaehleWorte(List<string> woerter)
+    {
+        var result = new Dictionary<string, int>();
+
+        foreach (var wort in woerter)
+        {
+            if (result.ContainsKey(wort))
+            {
+                result[wort] = result[wort] + 1;
+            }
+            else
+            {
+                result[wort] = 1;
+            }
+
+            // // Alternative:
+            // result[wort] = result.GetValueOrDefault(wort, 0) + 1;
+        }
+
+        return result;
+    }
+
+    private static List<(string, int)> ZaehleWorteZusatz(List<string> woerter)
+    {
+        // ["Apfel", "Banane", "Apfel", "Orange", "Banane", "Apfel"]
+        // sortieren, dann Gruppen durchzählen
+        // ["Apfel", "Apfel", "Apfel", "Banane", "Banane", "Orange"]
+
+        woerter.Sort();
+
+        var result = new List<(string, int)>();
+        string aktuell = woerter[0];
+        int count = 1;
+
+        for (int i = 1; i < woerter.Count; i++)
+        {
+            if (woerter[i] == aktuell)
+            {
+                count++;
+            }
+            else
+            {
+                result.Add((aktuell, count));
+                aktuell = woerter[i];
+                count = 1;
+            }
+        }
+        result.Add((aktuell, count));
+
+        return result;
+    }
+
+    private static void DictionaryAufgabe1()
+    {
+            var telefonbuch = new Dictionary<string, string>
+        {
+            { "Alice", "555-598123"},
+            { "Bob",   "555-934242"}
+        };
+        
+        Console.WriteLine(SucheTelefonnummer(telefonbuch, "Bob"));
+        //Ausgabe: 555-934242
+
+        Console.WriteLine(SucheTelefonnummer(telefonbuch, "Malory"));
+        //Ausgabe: Nicht gefunden
+    }
+    public static string SucheTelefonnummer(Dictionary<string, string> telefonbuch,
+        string name)
+    {
+        if (telefonbuch.ContainsKey(name))
+        {
+            return telefonbuch[name];
+        }
+
+        return "Nicht gefunden";
+
+        // // Alternative
+        // return telefonbuch.GetValueOrDefault(name, "Nicht gefunden");
     }
 
     private static void ArrayAufgabe2()
