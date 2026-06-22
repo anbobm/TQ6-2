@@ -31,10 +31,53 @@ internal partial class Program
         // DictionaryAufgabe1();
         // DictionaryAufgabe2();
         // DictionaryAufgabe2Zusatz();
-        DictionaryAufgabe2Zusatzb();
+        // DictionaryAufgabe2Zusatzb();
         // DictionaryAufgabe2_1();
         // DictionaryAufgabe2_2();
         // DictionaryAufgabe2_3();
+        DictionaryAufgabe2_4();
+    }
+
+    private static void DictionaryAufgabe2_4()
+    {
+        var noten = new Dictionary<string, Dictionary<string, int>>
+        {
+            { "Alice", new Dictionary<string, int> { { "Mathematik", 95 }, { "Englisch", 88 }, { "Geschichte", 92 } } },
+            { "Bob", new Dictionary<string, int> { { "Mathematik", 75 }, { "Englisch", 82 }, { "Geschichte", 78 } } },
+            { "Charlie", new Dictionary<string, int> { { "Mathematik", 88 }, { "Englisch", 91 }, { "Geschichte", 85 } } },
+            { "Diana", new Dictionary<string, int> { { "Mathematik", 92 }, { "Englisch", 89 }, { "Geschichte", 94 } } }
+        };
+        
+        Console.WriteLine(BesterStudent(noten));
+    }
+
+    private static (string Name, double Durchschnitt) BesterStudent(Dictionary<string, Dictionary<string, int>> noten)
+    {
+        double besterDurchschnitt = -1;
+        string besterStudent = "";
+
+        foreach (var student in noten)
+        {
+            var studentName = student.Key;
+            var fächer = student.Value;
+
+            // var summe = 0;
+            // foreach (var fach in fächer)
+            // {
+            //     summe = summe + fach.Value;
+            // }
+            // var durchschnitt = (double) summe / fächer.Count;
+
+            var durchschnitt = fächer.Values.Average();
+
+            if (durchschnitt > besterDurchschnitt)
+            {
+                besterDurchschnitt = durchschnitt;
+                besterStudent = studentName;
+            }
+        }
+        
+        return (besterStudent, besterDurchschnitt);
     }
 
     private static void DictionaryAufgabe2Zusatzb()
