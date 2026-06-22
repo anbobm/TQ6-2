@@ -1,147 +1,176 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 class Program
 {
-   
-    // Aufgabe 1
-    
+    // Aufgabe 1 
     public static void Aufgabe1()
     {
-        var noten = new Dictionary<string, List<int>>
-        {
-            { "Alice", new List<int> { 95, 88, 92 } },
-            { "Bob", new List<int> { 75, 80, 78 } },
-            { "Charlie", new List<int> { 91, 93, 89 } }
-        };
+        var noten = new Dictionary<string, List<int>>();
+        noten["Alice"] = new List<int> { 95, 88, 92 };
+        noten["Bob"] = new List<int> { 75, 80, 78 };
+        noten["Charlie"] = new List<int> { 91, 93, 89 };
 
         Console.WriteLine("Aufgabe 1:");
 
         foreach (var eintrag in noten)
         {
             int summe = 0;
-            for (int i = 0; i < eintrag.Value.Count; i++)
-                summe += eintrag.Value[i];
+
+            foreach (int note in eintrag.Value)
+            {
+                summe += note;
+            }
 
             int durchschnitt = summe / eintrag.Value.Count;
 
-            Console.WriteLine($"{eintrag.Key,-10} {durchschnitt}");
+            Console.WriteLine(eintrag.Key + " " + durchschnitt);
         }
 
-        Console.WriteLine(); 
+        Console.WriteLine();
     }
 
-    
-        public static void Aufgabe2()
+   
+    // Aufgabe 2 
+    public static void Aufgabe2()
     {
-        var noten = new Dictionary<string, List<int>>
-        {
-            { "Alice", new List<int> { 95, 88, 92 } },
-            { "Bob", new List<int> { 75, 80, 78 } },
-            { "Charlie", new List<int> { 91, 93, 89 } }
-        };
+        var noten = new Dictionary<string, List<int>>();
+        noten["Alice"] = new List<int> { 95, 88, 92 };
+        noten["Bob"] = new List<int> { 75, 80, 78 };
+        noten["Charlie"] = new List<int> { 91, 93, 89 };
 
         var ergebnis = new Dictionary<string, int>();
 
         foreach (var eintrag in noten)
         {
             int summe = 0;
-            for (int i = 0; i < eintrag.Value.Count; i++)
-                summe += eintrag.Value[i];
+
+            foreach (int note in eintrag.Value)
+            {
+                summe += note;
+            }
 
             int durchschnitt = summe / eintrag.Value.Count;
+
             ergebnis[eintrag.Key] = durchschnitt;
         }
 
         Console.WriteLine("Aufgabe 2:");
 
-        foreach (var eintrag in ergebnis)
+        foreach (var e in ergebnis)
         {
-            Console.WriteLine($"{eintrag.Key,-10} {eintrag.Value}");
+            Console.WriteLine(e.Key + " " + e.Value);
         }
 
-        Console.WriteLine(); 
+        Console.WriteLine();
     }
 
     
-    // Aufgabe 3
-   
-    public static void Aufgabe3()
+    // Aufgabe 3 
+       public static void Aufgabe3()
     {
-        var noten = new Dictionary<string, List<int>>
-        {
-            { "Alice", new List<int> { 95, 88, 92 } },
-            { "Bob", new List<int> { 75, 80, 78 } },
-            { "Charlie", new List<int> { 91, 93, 89 } }
-        };
+        var noten = new Dictionary<string, List<int>>();
+        noten["Alice"] = new List<int> { 95, 88, 92 };
+        noten["Bob"] = new List<int> { 75, 80, 78 };
+        noten["Charlie"] = new List<int> { 91, 93, 89 };
 
-        var liste = new List<(string Name, int Durchschnitt)>();
+        var liste = new List<string>();
 
         foreach (var eintrag in noten)
         {
             int summe = 0;
-            for (int i = 0; i < eintrag.Value.Count; i++)
-                summe += eintrag.Value[i];
+
+            foreach (int note in eintrag.Value)
+            {
+                summe += note;
+            }
 
             int durchschnitt = summe / eintrag.Value.Count;
-            liste.Add((eintrag.Key, durchschnitt));
+
+            liste.Add(eintrag.Key + ": " + durchschnitt);
         }
 
         Console.WriteLine("Aufgabe 3:");
 
-        for (int i = 0; i < liste.Count; i++)
+        foreach (var eintrag in liste)
         {
-            Console.WriteLine($"{liste[i].Name,-10} {liste[i].Durchschnitt}");
+            Console.WriteLine(eintrag);
         }
 
         Console.WriteLine();
     }
 
-    // Aufgabe 4 – Bester Student
-   
-    public static (string Name, double Durchschnitt) BesterStudent(
-        Dictionary<string, Dictionary<string, int>> noten)
+    
+    // Aufgabe 4 
+    
+   public static List<string> BesterStudent(Dictionary<string, Dictionary<string, int>> noten)
+{
+    double bester = -1;
+    var beste = new List<string>();
+
+    // Ersten Durchlauf: besten Durchschnitt finden
+    foreach (var student in noten)
     {
-        string besterName = "";
-        double besterDurchschnitt = double.MinValue;
+        double summe = 0;
 
-        foreach (var student in noten)
+        foreach (var fach in student.Value)
         {
-            string name = student.Key;
-            var faecher = student.Value;
-
-            double durchschnitt = faecher.Values.Average();
-
-            if (durchschnitt > besterDurchschnitt)
-            {
-                besterDurchschnitt = durchschnitt;
-                besterName = name;
-            }
+            summe += fach.Value;
         }
 
-        return (besterName, besterDurchschnitt);
-    }
+        double durchschnitt = summe / student.Value.Count;
 
-    static void Main(string[] args)
-    {
-        Aufgabe1();
-        Aufgabe2();
-        Aufgabe3();
-
-        // Aufgabe 4 – Beispiel-Daten
-        var notenAufgabe4 = new Dictionary<string, Dictionary<string, int>>
+        if (durchschnitt > bester)
         {
-            { "Alice", new Dictionary<string, int> { { "Mathematik", 95 }, { "Englisch", 88 }, { "Geschichte", 92 } } },
-            { "Bob", new Dictionary<string, int> { { "Mathematik", 75 }, { "Englisch", 82 }, { "Geschichte", 78 } } },
-            { "Charlie", new Dictionary<string, int> { { "Mathematik", 88 }, { "Englisch", 91 }, { "Geschichte", 85 } } },
-            { "Diana", new Dictionary<string, int> { { "Mathematik", 92 }, { "Englisch", 89 }, { "Geschichte", 94 } } }
-        };
-
-        var bester = BesterStudent(notenAufgabe4);
-
-        Console.WriteLine("Aufgabe 4: Bester Student:");
-        Console.WriteLine($"{bester.Name,-10} {bester.Durchschnitt}");
-        Console.WriteLine();
+            bester = durchschnitt;
+        }
     }
+
+    // Zweiter Durchlauf: alle mit dem besten Durchschnitt sammeln
+    foreach (var student in noten)
+    {
+        double summe = 0;
+
+        foreach (var fach in student.Value)
+        {
+            summe += fach.Value;
+        }
+
+        double durchschnitt = summe / student.Value.Count;
+
+        if (durchschnitt == bester)
+        {
+            beste.Add(student.Key + " " + durchschnitt);
+        }
+    }
+
+    return beste;
 }
+
+
+static void Main(string[] args)
+{
+    Aufgabe1();
+    Aufgabe2();
+    Aufgabe3();
+
+    // Aufgabe 4 – Beispiel-Daten
+    var notenAufgabe4 = new Dictionary<string, Dictionary<string, int>>();
+    notenAufgabe4["Alice"] = new Dictionary<string, int> { { "Mathematik", 95 }, { "Englisch", 88 }, { "Geschichte", 92 } };
+    notenAufgabe4["Bob"] = new Dictionary<string, int> { { "Mathematik", 75 }, { "Englisch", 82 }, { "Geschichte", 78 } };
+    notenAufgabe4["Charlie"] = new Dictionary<string, int> { { "Mathematik", 88 }, { "Englisch", 91 }, { "Geschichte", 85 } };
+    notenAufgabe4["Diana"] = new Dictionary<string, int> { { "Mathematik", 92 }, { "Englisch", 89 }, { "Geschichte", 94 } };
+
+    var beste = BesterStudent(notenAufgabe4);
+
+    Console.WriteLine("Aufgabe 4: Bester Student:");
+
+    foreach (var s in beste)
+    {
+        Console.WriteLine(s);
+    }
+
+    Console.WriteLine();
+}
+
+    }
