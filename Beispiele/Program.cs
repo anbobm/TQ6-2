@@ -35,7 +35,26 @@ internal partial class Program
         // DictionaryAufgabe2_1();
         // DictionaryAufgabe2_2();
         // DictionaryAufgabe2_3();
-        DictionaryAufgabe2_4();
+        // DictionaryAufgabe2_4();
+        Exceptions();
+    }
+
+    private static void Exceptions()
+    {
+        var eingabe = Console.ReadLine();
+
+        try
+        {
+            Convert.ToInt32(eingabe);
+        }
+        catch(FormatException)
+        {
+            Console.WriteLine("Die eingegebene Zahl war nicht in einem gültigen Format.");
+        }
+        catch(OverflowException)
+        {
+            Console.WriteLine("Der Wert passt nicht in ein int.");
+        }
     }
 
     private static void DictionaryAufgabe2_4()
