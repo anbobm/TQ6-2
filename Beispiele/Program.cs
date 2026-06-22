@@ -36,7 +36,39 @@ internal partial class Program
         // DictionaryAufgabe2_2();
         // DictionaryAufgabe2_3();
         // DictionaryAufgabe2_4();
-        Exceptions();
+        // Exceptions();
+        ExceptionsAufgabe();
+    }
+
+    private static void ExceptionsAufgabe()
+    {
+        try
+        {
+            Console.WriteLine(Durchschnitt([]));
+        }
+        catch(ArgumentException)
+        {
+            Console.WriteLine("Durchschnitt konnte nicht berechnet werden, da Liste leer.");
+        }
+    }
+
+    private static double Durchschnitt(List<int> liste)
+    {
+        if (liste.Count == 0)
+        {
+            throw new ArgumentException();
+        }
+
+        int summe = 0;
+        foreach (var element in liste)
+        {
+            summe += element;
+        }
+
+        return summe / liste.Count;
+
+        // Alternative mit InvalidOperationException
+        // return liste.Average();
     }
 
     private static void Exceptions()
