@@ -45,3 +45,7 @@ foreach (var fach in studenten[eingabe])
 An welcher Stelle kann eine Exception auftreten?
 Schreibe den Code so, dass die Exception aufgefangen und mit einer Fehlermeldung behandelt wird.
 Zeige auch wie man verhindert dass die Exception überhaupt auftritt.
+
+# Aufgabe 4
+
+In Aufgabe 1 gibt es abgesehen von den leeren Listen noch einen weiteren Fall, der zu einer Exception führen würde. Welcher ist das? Passe die aufrufende Methode und die `Durchschnitt(..)`-Methode entsprechend an.
