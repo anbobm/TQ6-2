@@ -93,10 +93,10 @@ internal partial class Program
     {
         var noten = new Dictionary<string, Dictionary<string, int>>
         {
-            { "Alice", new Dictionary<string, int> { { "Mathematik", 95 }, { "Englisch", 88 }, { "Geschichte", 92 } } },
-            { "Bob", new Dictionary<string, int> { { "Mathematik", 75 }, { "Englisch", 82 }, { "Geschichte", 78 } } },
+            { "Alice", new Dictionary<string, int> { { "Mathematik", 95 }, { "Englisch", 88 }, { "Geschichte", 90 } } },
+            { "Bob", new Dictionary<string, int> { { "Mathematik", 75 }, { "Englisch", 81 }, { "Geschichte", 78 } } },
             { "Charlie", new Dictionary<string, int> { { "Mathematik", 88 }, { "Englisch", 91 }, { "Geschichte", 85 } } },
-            { "Diana", new Dictionary<string, int> { { "Mathematik", 92 }, { "Englisch", 89 }, { "Geschichte", 94 } } }
+            { "Diana", new Dictionary<string, int> { { "Mathematik", 93 }, { "Englisch", 89 }, { "Geschichte", 94 } } }
         };
         
         Console.WriteLine(BesterStudent(noten));
