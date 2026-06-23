@@ -38,7 +38,53 @@ internal partial class Program
         // DictionaryAufgabe2_4();
         // Exceptions();
         // ExceptionsAufgabe1();
-        ExceptionsAufgabe2();
+        // ExceptionsAufgabe2();
+        ExceptionsAufgabe3();
+    }
+
+    private static void ExceptionsAufgabe3()
+    {
+        var studenten = new Dictionary<string, Dictionary<string, int>>
+        {
+            { "Alice", new Dictionary<string, int> { { "Mathematik", 95 }, { "Englisch", 88 }, { "Geschichte", 90 } } },
+            { "Bob", new Dictionary<string, int> { { "Mathematik", 75 }, { "Englisch", 81 }, { "Geschichte", 78 } } },
+            { "Charlie", new Dictionary<string, int> { { "Mathematik", 88 }, { "Englisch", 91 }, { "Geschichte", 85 } } },
+            { "Diana", new Dictionary<string, int> { { "Mathematik", 93 }, { "Englisch", 89 }, { "Geschichte", 94 } } }
+        };
+
+        Console.WriteLine("Folgende Studenten sind gespeichert:");
+        foreach (var student in studenten)
+        {
+            Console.WriteLine(student.Key);
+        }
+
+        Console.Write("\nGib einen Namen ein für eine Detailansicht: ");
+        var eingabe = Console.ReadLine()!;
+
+        try
+        {
+            foreach (var fach in studenten[eingabe])
+            {
+                Console.WriteLine($"{fach.Key}: {fach.Value}");
+            }
+        }
+        catch (KeyNotFoundException)
+        {
+            Console.WriteLine("Diesen Studenten gibt es nicht");
+        }
+
+        // // Ohne Exceptions:
+        // if(studenten.ContainsKey(eingabe))
+        // {
+        //     foreach (var fach in studenten[eingabe])
+        //     {
+        //         Console.WriteLine($"{fach.Key}: {fach.Value}");
+        //     }
+        // }
+        // else
+        // {
+        //     Console.WriteLine("Diesen Studenten gibt es nicht");
+        // }
     }
 
     private static void ExceptionsAufgabe2()
