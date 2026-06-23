@@ -37,10 +37,37 @@ internal partial class Program
         // DictionaryAufgabe2_3();
         // DictionaryAufgabe2_4();
         // Exceptions();
-        ExceptionsAufgabe();
+        // ExceptionsAufgabe1();
+        ExceptionsAufgabe2();
     }
 
-    private static void ExceptionsAufgabe()
+    private static void ExceptionsAufgabe2()
+    {
+        try
+        {
+            Console.Write("Gib Zahl! ");
+            var zahl1 = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Gib noch eine Zahl! ");
+            var zahl2 = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine($"{zahl1} / {zahl2} = {zahl1 / zahl2} mit Rest {zahl1 % zahl2}");
+        }
+        catch (OverflowException)
+        {
+            Console.WriteLine("Die eingegebene Zahl ist zu groß/klein.");
+        }
+        catch (FormatException)
+        {
+            Console.WriteLine("Eingabe war keine Zahl");
+        }
+        catch (DivideByZeroException)
+        {
+            Console.WriteLine("Fehler: Division durch 0");
+        }
+    }
+
+    private static void ExceptionsAufgabe1()
     {
         try
         {
