@@ -39,7 +39,49 @@ internal partial class Program
         // Exceptions();
         // ExceptionsAufgabe1();
         // ExceptionsAufgabe2();
-        ExceptionsAufgabe3();
+        // ExceptionsAufgabe3();
+        ExceptionsAufgabe4();
+    }
+
+    private static void ExceptionsAufgabe4()
+    {
+        
+        try
+        {
+            Console.WriteLine(Durchschnitt4(null));
+        }
+        catch(ArgumentNullException)
+        {
+            Console.WriteLine("Die Liste existiert nicht.");
+        }
+        catch(ArgumentException)
+        {
+            Console.WriteLine("Durchschnitt konnte nicht berechnet werden, da Liste leer.");
+        }
+    }
+
+    private static double Durchschnitt4(List<int> liste)
+    {
+        if (liste == null)
+        {
+            throw new ArgumentNullException();
+        }
+
+        if (liste.Count == 0)
+        {
+            throw new ArgumentException();
+        }
+
+        int summe = 0;
+        foreach (var element in liste)
+        {
+            summe += element;
+        }
+
+        return summe / liste.Count;
+
+        // Alternative mit InvalidOperationException
+        // return liste.Average();
     }
 
     private static void ExceptionsAufgabe3()
