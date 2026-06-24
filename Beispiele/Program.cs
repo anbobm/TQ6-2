@@ -48,20 +48,26 @@ internal partial class Program
     {
         var zimmer1 = new Hotelzimmer("001");
         // Setzen der Attribute direkt, weil public
-        zimmer1.MaxGaeste = 4;
-        zimmer1.AnzahlGaeste = 3;
-        zimmer1.Belegt = true;
-        zimmer1.GastName = "Tunahan";
+        zimmer1.SetMaxGaeste(4);
+        zimmer1.SetAnzahlGaeste(3);
+        zimmer1.SetGastName("Tunahan");
+        Console.WriteLine(zimmer1.GetBelegt() ? "belegt" : "nicht belegt");
 
         // Setzen der Attribute auf unsinnige Werte
         // Außerdem object initializer syntax
-        var zimmer2 = new Hotelzimmer("002")
+        var zimmer2 = new Hotelzimmer("002");
+
+        if(!zimmer2.SetMaxGaeste(-10))
         {
-            MaxGaeste = -10,
-            AnzahlGaeste = 0,
-            Belegt = true,
-            GastName = "Max Foobar"
-        };
+            Console.WriteLine("Maximale Gästezahl kann nicht negativ sein!");
+        }
+
+        if(zimmer2.SetAnzahlGaeste(0))
+        {
+            Console.WriteLine("Fehler: Belegung negativ oder größer Maximum");
+        }
+        Console.WriteLine(zimmer2.GetBelegt() ? "belegt" : "nicht belegt");
+        zimmer2.SetGastName("");
     }
 
     private static void ExceptionsAufgabe4()
