@@ -41,7 +41,8 @@ internal partial class Program
         // ExceptionsAufgabe2();
         // ExceptionsAufgabe3();
         // ExceptionsAufgabe4();
-        Aufgabe1_20260624();
+         Aufgabe1_20260624();
+        // Aufgabe2_20260624();
 
     }
 
@@ -54,18 +55,18 @@ private static void Aufgabe1_20260624()
     var zimmer2 = new Hotelzimmer("102");
 
     // Werte setzen
-    zimmer1.AnzahlGaeste = 2;
-    zimmer1.MaxGaeste = 3;
-    zimmer1.Belegt = true;
-    zimmer1.GastName = "Müller";
+    zimmer1.SetMaxGaeste(3);
+    zimmer1.SetAnzahlGaeste(2);
+    zimmer1.SetBelegt(true);
+    zimmer1.SetGastName("Müller");
 
-    zimmer2.AnzahlGaeste = 5;   // ❗️ специально "ошибка" из задания
-    zimmer2.MaxGaeste = 3;
-    zimmer2.Belegt = false;
+    zimmer2.SetMaxGaeste(3);   
+    zimmer2.SetAnzahlGaeste(5);
+    zimmer2.SetBelegt(false);
 
     // Ausgabe
-    Console.WriteLine($"Zimmer: {zimmer1.Zimmernummer}, Gäste: {zimmer1.AnzahlGaeste}");
-    Console.WriteLine($"Zimmer: {zimmer2.Zimmernummer}, Gäste: {zimmer2.AnzahlGaeste}");
+    Console.WriteLine($"Zimmer: {zimmer1.GetZimmernummer()}");
+    Console.WriteLine($"Zimmer: {zimmer2.GetZimmernummer()}");
 }
 
 
@@ -1026,14 +1027,41 @@ class Foo
 
 class Hotelzimmer
 {
-    public string Zimmernummer;
-    public int AnzahlGaeste;
-    public int MaxGaeste;
-    public bool Belegt;
-    public string GastName;
+   private string Zimmernummer;
+private int AnzahlGaeste;
+private int MaxGaeste;
+private bool Belegt;
+private string GastName;
+
 
     public Hotelzimmer(string zimmernummer)
     {
         Zimmernummer = zimmernummer;
     }
+
+    public void SetMaxGaeste(int max)
+{
+    MaxGaeste = max;
+}
+
+public void SetAnzahlGaeste(int anzahl)
+{
+    if (anzahl <= MaxGaeste)
+        AnzahlGaeste = anzahl;
+}
+
+public void SetBelegt(bool status)
+{
+    Belegt = status;
+}
+
+public void SetGastName(string name)
+{
+    GastName = name;
+}
+
+public string GetZimmernummer()
+{
+    return Zimmernummer;
+}
 }
