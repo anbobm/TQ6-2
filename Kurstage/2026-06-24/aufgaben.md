@@ -11,3 +11,7 @@ Wie du sehen kannst, ist es möglich durch den direkten Zugriff auf die Attribut
 # Aufgabe 2
 
 Das Problem in Aufgabe 1 lässt sich durch Kapselung beheben. Mache die Attribute privat, und schreibe (öffentliche) Methoden, die den Zustand des Objekts von außen in einer kontrollierten und inhaltlich konsistenten Weise verändern.
+
+# Aufgabe 3
+
+Kapselung via Methoden funktioniert, kann aber stattdessen oft auch mit Properties umgesetzt werden. Tue dies (sofern sinnvoll) für das Beispiel aus Aufgabe 2.
