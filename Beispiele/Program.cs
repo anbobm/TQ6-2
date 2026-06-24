@@ -40,8 +40,36 @@ internal partial class Program
         // ExceptionsAufgabe1();
         // ExceptionsAufgabe2();
         // ExceptionsAufgabe3();
-        ExceptionsAufgabe4();
+        // ExceptionsAufgabe4();
+        Aufgabe1_20260624();
+
     }
+
+
+
+private static void Aufgabe1_20260624()
+{
+    // Objekte erstellen
+    var zimmer1 = new Hotelzimmer("101");
+    var zimmer2 = new Hotelzimmer("102");
+
+    // Werte setzen
+    zimmer1.AnzahlGaeste = 2;
+    zimmer1.MaxGaeste = 3;
+    zimmer1.Belegt = true;
+    zimmer1.GastName = "Müller";
+
+    zimmer2.AnzahlGaeste = 5;   // ❗️ специально "ошибка" из задания
+    zimmer2.MaxGaeste = 3;
+    zimmer2.Belegt = false;
+
+    // Ausgabe
+    Console.WriteLine($"Zimmer: {zimmer1.Zimmernummer}, Gäste: {zimmer1.AnzahlGaeste}");
+    Console.WriteLine($"Zimmer: {zimmer2.Zimmernummer}, Gäste: {zimmer2.AnzahlGaeste}");
+}
+
+
+
 
     private static void ExceptionsAufgabe4()
     {
@@ -989,5 +1017,23 @@ internal partial class Program
 
 class Foo
 {
-    public void Bar() {}
+    public void Bar()
+    {
+        
+    }
+
+}
+
+class Hotelzimmer
+{
+    public string Zimmernummer;
+    public int AnzahlGaeste;
+    public int MaxGaeste;
+    public bool Belegt;
+    public string GastName;
+
+    public Hotelzimmer(string zimmernummer)
+    {
+        Zimmernummer = zimmernummer;
+    }
 }
