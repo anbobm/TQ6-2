@@ -1,5 +1,6 @@
 ﻿using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Transactions;
 
 internal partial class Program
@@ -29,90 +30,250 @@ internal partial class Program
         // ArrayAufgabe2();
         // DictionaryAufgabe1();
         // DictionaryAufgabe2();
-        //DictionaryAufgabe2Zusatz();
-        //DurchschnittsNoteAusgeben();
-        //DurchschnittsNoteAusgeben2();
-        //DurchschnittsNoteAusgeben3();
-        //DurchschnittsNoteAusgeben4();
-        //DurchschnittsDictionary();
-        //DurchschnittsnotenTupel();
-        BesterStudent();
+        // DictionaryAufgabe2Zusatz();
+        // DictionaryAufgabe2Zusatzb();
+        // DictionaryAufgabe2_1();
+        // DictionaryAufgabe2_2();
+        // DictionaryAufgabe2_3();
+        // DictionaryAufgabe2_4();
+        // Exceptions();
+        // ExceptionsAufgabe1();
+        // ExceptionsAufgabe2();
+        // ExceptionsAufgabe3();
+        ExceptionsAufgabe4();
+
     }
-    static(string Name, double Durchschnitt) BesterStudent(Dictionary<string, Dictionary<string, int>> noten)
+    private static void ExceptionsAufgabe4()
     {
-        string besterName = "";
-        double besterDurchschnitt = double.MinValue;
+       try
+        {
+            Console.WriteLine(Durchschnitt([]));
+        }
+        catch(ArgumentNullException)
+        {
+            Console.WriteLine("Durchschnitt konnte nicht berechnet werden, da Liste null ist.");
+        }
+        catch(ArgumentException)
+        {
+            Console.WriteLine("Durchschnitt konnte nicht berechnet werden, da Liste leer ist.");
+        }
+    }
+    private static double Durchschnitt(List<int> liste)
+    {
+        if (liste == null)
+        {
+            throw new ArgumentNullException();
+        }
+
+        if (liste.Count == 0)
+        {
+            throw new ArgumentException();
+        }
+
+        int summe = 0;
+        foreach (var element in liste)
+        {
+            summe += element;
+        }
+
+        return summe / liste.Count;
+    }
+    private static void ExceptionsAufgabe3()
+    {
+        var studenten = new Dictionary<string, Dictionary<string, int>>
+        {
+            { "Alice", new Dictionary<string, int> { { "Mathematik", 95 }, { "Englisch", 88 }, { "Geschichte", 90 } } },
+            { "Bob", new Dictionary<string, int> { { "Mathematik", 75 }, { "Englisch", 81 }, { "Geschichte", 78 } } },
+            { "Charlie", new Dictionary<string, int> { { "Mathematik", 88 }, { "Englisch", 91 }, { "Geschichte", 85 } } },
+            { "Diana", new Dictionary<string, int> { { "Mathematik", 93 }, { "Englisch", 89 }, { "Geschichte", 94 } } }
+        };
+
+        Console.WriteLine("Folgende Studenten sind gespeichert:");
+        foreach (var student in studenten)
+        {
+            Console.WriteLine(student.Key);
+        }
+
+        Console.Write("\nGib einen Namen ein für eine Detailansicht: ");
+        var eingabe = Console.ReadLine()!;
+
+        try
+        {
+            foreach (var fach in studenten[eingabe])
+            {
+                Console.WriteLine($"{fach.Key}: {fach.Value}");
+            }
+        }
+        catch (KeyNotFoundException)
+        {
+            Console.WriteLine("Diesen Studenten gibt es nicht");
+        }
+
+        // // Ohne Exceptions:
+        // if(studenten.ContainsKey(eingabe))
+        // {
+        //     foreach (var fach in studenten[eingabe])
+        //     {
+        //         Console.WriteLine($"{fach.Key}: {fach.Value}");
+        //     }
+        // }
+        // else
+        // {
+        //     Console.WriteLine("Diesen Studenten gibt es nicht");
+        // }
+    }
+
+    private static void ExceptionsAufgabe2()
+    {
+        try
+        {
+            Console.Write("Gib Zahl! ");
+            var zahl1 = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Gib noch eine Zahl! ");
+            var zahl2 = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine($"{zahl1} / {zahl2} = {zahl1 / zahl2} mit Rest {zahl1 % zahl2}");
+        }
+        catch (OverflowException)
+        {
+            Console.WriteLine("Die eingegebene Zahl ist zu groß/klein.");
+        }
+        catch (FormatException)
+        {
+            Console.WriteLine("Eingabe war keine Zahl");
+        }
+        catch (DivideByZeroException)
+        {
+            Console.WriteLine("Fehler: Division durch 0");
+        }
+    }
+
+    private static void ExceptionsAufgabe1()
+    {
+        try
+        {
+            Console.WriteLine(Durchschnitt1([]));
+        }
+        catch(ArgumentException)
+        {
+            Console.WriteLine("Durchschnitt konnte nicht berechnet werden, da Liste leer.");
+        }
+    }
+
+    private static double Durchschnitt1(List<int> liste)
+    {
+        if (liste.Count == 0)
+        {
+            throw new ArgumentException();
+        }
+
+        int summe = 0;
+        foreach (var element in liste)
+        {
+            summe += element;
+        }
+
+        return summe / liste.Count;
+
+        // Alternative mit InvalidOperationException
+        // return liste.Average();
+    }
+
+    private static void Exceptions()
+    {
+        var eingabe = Console.ReadLine();
+
+        try
+        {
+            Convert.ToInt32(eingabe);
+        }
+        catch(FormatException)
+        {
+            Console.WriteLine("Die eingegebene Zahl war nicht in einem gültigen Format.");
+        }
+        catch(OverflowException)
+        {
+            Console.WriteLine("Der Wert passt nicht in ein int.");
+        }
+    }
+
+    private static void DictionaryAufgabe2_4()
+    {
+        var noten = new Dictionary<string, Dictionary<string, int>>
+        {
+            { "Alice", new Dictionary<string, int> { { "Mathematik", 95 }, { "Englisch", 88 }, { "Geschichte", 90 } } },
+            { "Bob", new Dictionary<string, int> { { "Mathematik", 75 }, { "Englisch", 81 }, { "Geschichte", 78 } } },
+            { "Charlie", new Dictionary<string, int> { { "Mathematik", 88 }, { "Englisch", 91 }, { "Geschichte", 85 } } },
+            { "Diana", new Dictionary<string, int> { { "Mathematik", 93 }, { "Englisch", 89 }, { "Geschichte", 94 } } }
+        };
+        
+        Console.WriteLine(BesterStudent(noten));
+    }
+
+    private static (string Name, double Durchschnitt) BesterStudent(Dictionary<string, Dictionary<string, int>> noten)
+    {
+        double besterDurchschnitt = -1;
+        string besterStudent = "";
 
         foreach (var student in noten)
         {
-            double durchschnitt = student.Value.Values.Average();
+            var studentName = student.Key;
+            var fächer = student.Value;
+
+            // var summe = 0;
+            // foreach (var fach in fächer)
+            // {
+            //     summe = summe + fach.Value;
+            // }
+            // var durchschnitt = (double) summe / fächer.Count;
+
+            var durchschnitt = fächer.Values.Average();
 
             if (durchschnitt > besterDurchschnitt)
             {
                 besterDurchschnitt = durchschnitt;
-                besterName = student.Key;
-            }
-        }
-
-        return (besterName, besterDurchschnitt);
-    }
-    private static void BesterStudent()
-    {
-        var noten = new Dictionary<string, Dictionary<string, int>>
-        {
-            {"Alice", new Dictionary<string, int> { {"Mathematik", 95}, {"Englisch", 88}, {"Geschichte", 92} }},
-            {"Bob", new Dictionary<string, int> { {"Mathematik", 75}, {"Englisch", 82}, {"Geschichte", 78}}},
-            {"Charlie", new Dictionary<string, int> { {"Mathematik", 92}, {"Englisch", 91}, {"Geschichte", 85}}},
-            {"Diana", new Dictionary<string, int> { {"Mathematik", 92}, {"Englisch", 89}, {"Geschichte", 94}}}
-        };
-        var (name, durchschnitt) = BesterStudent(noten);
-        Console.WriteLine($"Bester Student: {name},  mit Durchschnitt: {durchschnitt:F0}");
-    }
-    private static List<(string Name, double Durchschnitt)> DurchschnittsnotenTupel(Dictionary<string, List<int>> noten)
-    {
-        var ergebnis = new List<(string, double)>();
-        foreach( var eintrag in noten)
-        {
-            ergebnis.Add((eintrag.Key, eintrag.Value.Average()));
-        }
-        return ergebnis;
-    }
-    private static void DurchschnittsnotenTupel()
-    {
-        var noten = new Dictionary<string, List<int>>
-        {
-            { "Alice", new List<int> { 96, 88, 92 } },
-            { "Bob", new List<int> { 76, 80, 78 } },
-            { "Charlie", new List<int> { 91, 93, 89 } }
-        };
-        var tupelliste = DurchschnittsnotenTupel(noten);
-        {
-            foreach (var (Name, Durchschnitt) in tupelliste)
-            {
-             Console.WriteLine($"{Name}: {Durchschnitt:F0}");
-            }
-        }
-    
-    }
-    private static void DurchschnittsDictionary()
-    {
-        var noten = new Dictionary<string, List<int>>
-        {
-            { "Alice", new List<int> { 96, 88, 92 } },
-            { "Bob", new List<int> { 76, 80, 78 } },
-            { "Charlie", new List<int> { 91, 93, 89 } }
-        };
-        var dictErgebnis = DurchschnittsnotenDictionary(noten);
-        {
-            foreach (var eintrag in dictErgebnis)
-            {
-             Console.WriteLine($"{eintrag.Key}: {eintrag.Value:F0}");
+                besterStudent = studentName;
             }
         }
         
-    }        
-    
-    private static void DurchschnittsNoteAusgeben4()
+        return (besterStudent, besterDurchschnitt);
+    }
+
+    private static void DictionaryAufgabe2Zusatzb()
+    {
+        List<string> woerter = ["Apfel", "Banane", "Apfel", "Orange", "Banane", "Apfel"];
+
+        for (int i = 0; i < woerter.Count; i++)
+        {
+            int count = 1;
+            bool schonGesehen = false;
+
+            for (int j = 0; j < i; j++)
+            {
+                if (woerter[i] == woerter[j])
+                {
+                    schonGesehen = true;
+                    break;
+                }
+            }
+
+            if (!schonGesehen)
+            {
+                for (int j = i + 1; j < woerter.Count; j++)
+                {
+                    if (woerter[i] == woerter[j])
+                    {
+                        count++;
+                    }
+                }
+
+                Console.WriteLine($"{woerter[i]}: {count} mal");
+            }
+        }
+    }
+
+    private static void DictionaryAufgabe2_3()
     {
         var noten = new Dictionary<string, List<int>>
         {
@@ -120,84 +281,105 @@ internal partial class Program
             { "Bob", new List<int> { 76, 80, 78 } },
             { "Charlie", new List<int> { 91, 93, 89 } }
         };
-        var ergebnis = noten.ToDictionary(eintrag => eintrag.Key, eintrag => eintrag.Value.Average());
-        {
-            foreach (var eintrag in ergebnis)
-            {
-             Console.WriteLine($"{eintrag.Key}: {eintrag.Value:F0}");
-            }
-        }
-    } 
+        
+        var durchschnittsnoten = DurchschnittsnotenTupel(noten);
 
-    private static void DurchschnittsNoteAusgeben3()
-    {
-        var noten = new Dictionary<string, List<int>>
+        foreach (var eintrag in durchschnittsnoten)
         {
-            { "Alice", new List<int> { 95, 88, 92 } },
-            { "Bob", new List<int> { 75, 80, 78 } },
-            { "Charlie", new List<int> { 91, 93, 89 } }
-        };
-        var tupelliste = DurchschnittsnotenTupel1(noten);
-        {
-            foreach (var (Name, Durchschnitt) in tupelliste)
-            {
-             Console.WriteLine($"{Name}: {Durchschnitt:F0}");
-            }
+            Console.WriteLine($"{eintrag.Name}: {eintrag.Note}");
         }
     }
-    private static List<(string Name, double Durchschnitt)> DurchschnittsnotenTupel1(Dictionary<string, List<int>> noten)
+
+    private static List<(string Name, double Note)> DurchschnittsnotenTupel(Dictionary<string, List<int>> noten)
     {
-        var ergebnis = new List<(string, double)>();
-        foreach( var eintrag in noten)
-        {
-            ergebnis.Add((eintrag.Key, eintrag.Value.Average()));
-        }
-        return ergebnis;
-    }
-    private static void DurchschnittsNoteAusgeben2()
-    {
-        var noten = new Dictionary<string, List<int>>
-        {
-            { "Alice", new List<int> { 95, 88, 92 } },
-            { "Bob", new List<int> { 75, 80, 78 } },
-            { "Charlie", new List<int> { 91, 93, 89 } }
-        }; 
-        var dictErgebnis = DurchschnittsnotenDictionary(noten);
-        {
-            foreach (var eintrag in dictErgebnis)
-            {
-             Console.WriteLine($"{eintrag.Key}: {eintrag.Value:F0}");
-            }
-        }
-    }
-    private static Dictionary<string, double> DurchschnittsnotenDictionary(Dictionary<string, List<int>> noten)
-    {
-        var ergebnis = new Dictionary<string, double>();
+        var result = new List<(string, double)>();
+
         foreach (var eintrag in noten)
         {
-            ergebnis[eintrag.Key] = eintrag.Value.Average();
+            var name = eintrag.Key;
+            var notenliste = eintrag.Value;
+            var durchschnittsnote = notenliste.Average();
+
+            result.Add((name, durchschnittsnote));
         }
-        return ergebnis;
+
+        return result;
     }
-    
-    private static void DurchschnittsNoteAusgeben()
+
+    private static void DictionaryAufgabe2_2()
     {
         var noten = new Dictionary<string, List<int>>
         {
-            { "Alice", new List<int> { 95, 88, 92 } },
-            { "Bob", new List<int> { 75, 80, 78 } },
+            { "Alice", new List<int> { 96, 88, 92 } },
+            { "Bob", new List<int> { 76, 80, 78 } },
             { "Charlie", new List<int> { 91, 93, 89 } }
         };
-        DurchschnittsnotenAusgeben(noten);
+        
+        var durchschnittsnoten = DurchschnittsnotenDictionary(noten);
+
+        foreach (var eintrag in durchschnittsnoten)
+        {
+            Console.WriteLine($"{eintrag.Key}: {eintrag.Value}");
+        }
     }
+
+    private static Dictionary<string, double> DurchschnittsnotenDictionary(Dictionary<string, List<int>> noten)
+    {
+        var result = new Dictionary<string, double>();
+
+        foreach (var eintrag in noten)
+        {
+            var name = eintrag.Key;
+            var notenliste = eintrag.Value;
+            var durchschnittsnote = notenliste.Average();
+
+            result.Add(name, durchschnittsnote);
+        }
+
+        return result;
+    }
+
+    private static void DictionaryAufgabe2_1()
+    {
+        var noten = new Dictionary<string, List<int>>
+        {
+            { "Alice", new List<int> { 96, 88, 92 } },
+            { "Bob", new List<int> { 76, 80, 78 } },
+            { "Charlie", new List<int> { 91, 93, 89 } }
+        };
+        
+        DurchschnittsnotenAusgeben(noten);
+        // Ausgabe:
+        // Alice: 92
+        // Bob: 78
+        // Charlie: 91
+    }
+
     private static void DurchschnittsnotenAusgeben(Dictionary<string, List<int>> noten)
     {
         foreach (var eintrag in noten)
         {
-            double durchschnitt = eintrag.Value.Average();
-            Console.WriteLine($"{eintrag.Key}: {durchschnitt:F0}");
+            var name = eintrag.Key;
+            var notenliste = eintrag.Value;
+            var summe = 0;
+            foreach (var note in notenliste)
+            {
+                summe += note;
+            }
+
+            // Cast nach double nicht vergessen, sonst wird ganzzahlige Division verwendet
+            var durchschnittsnote = (double) summe / notenliste.Count;
+
+            // Alternative mit Average
+            durchschnittsnote = notenliste.Average();
+
+            // Alternative mit Sum
+            durchschnittsnote = (double) notenliste.Sum() / notenliste.Count;
+
+            Console.WriteLine($"{name}: {durchschnittsnote}");
         }
     }
+
     private static void DictionaryAufgabe2Zusatz()
     {
         
