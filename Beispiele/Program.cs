@@ -40,7 +40,28 @@ internal partial class Program
         // ExceptionsAufgabe1();
         // ExceptionsAufgabe2();
         // ExceptionsAufgabe3();
-        ExceptionsAufgabe4();
+        // ExceptionsAufgabe4();
+        OOPAufgabe1();
+    }
+
+    private static void OOPAufgabe1()
+    {
+        var zimmer1 = new Hotelzimmer("001");
+        // Setzen der Attribute direkt, weil public
+        zimmer1.MaxGaeste = 4;
+        zimmer1.AnzahlGaeste = 3;
+        zimmer1.Belegt = true;
+        zimmer1.GastName = "Tunahan";
+
+        // Setzen der Attribute auf unsinnige Werte
+        // Außerdem object initializer syntax
+        var zimmer2 = new Hotelzimmer("002")
+        {
+            MaxGaeste = -10,
+            AnzahlGaeste = 0,
+            Belegt = true,
+            GastName = "Max Foobar"
+        };
     }
 
     private static void ExceptionsAufgabe4()
