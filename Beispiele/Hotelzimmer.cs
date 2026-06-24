@@ -10,6 +10,28 @@ public class Hotelzimmer
         this.zimmernummer = zimmernummer;
     }
 
+    public int AnzahlGaeste
+    {
+        get
+        {
+            return anzahlGaeste;
+        }
+        set
+        {
+            if (value < 0)
+            {
+                throw new ArgumentException("Gästezahl kann nicht negativ sein");
+            }
+
+            if (value > maxGaeste)
+            {
+                throw new ArgumentException("Gästezahl kann nicht größer als Maximalbelegung sein");
+            }
+
+            anzahlGaeste = value;
+        }
+    }    
+
     public int GetAnzahlGaeste()
     {
         return anzahlGaeste;
