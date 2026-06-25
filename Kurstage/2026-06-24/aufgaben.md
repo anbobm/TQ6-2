@@ -15,3 +15,9 @@ Das Problem in Aufgabe 1 lässt sich durch Kapselung beheben. Mache die Attribut
 # Aufgabe 3
 
 Kapselung via Methoden funktioniert, kann aber stattdessen oft auch mit Properties umgesetzt werden. Tue dies (sofern sinnvoll) für das Beispiel aus Aufgabe 2.
+
+# Aufgabe 4
+
+Schreibe eine Klasse `Bestellung` mit folgenden Attributen: Kunde (`string`), Anzahl der Artikel (`int`),  Artikel (mit Name und Stückpreis) (`List<(string, decimal)>`), Gesamtpreis (`decimal`).
+
+Setze Kapselung mit geeigneten Methoden/Attributen um. Man soll der Bestellung Artikel hinzufügen können.
