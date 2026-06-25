@@ -43,7 +43,15 @@ internal partial class Program
         // ExceptionsAufgabe4();
         // OOPAufgabe1();
         // OOPAufgabe4();
-        OOPAufgabe2_1();
+        // OOPAufgabe2_1();
+        OOPAufgabe2_2();
+    }
+
+    private static void OOPAufgabe2_2()
+    {
+        var hund = new Hund("Max", "Schäferhund");
+
+        hund.SagHallo();
     }
 
     private static void OOPAufgabe2_1()
