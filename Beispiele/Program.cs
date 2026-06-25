@@ -41,10 +41,12 @@ internal partial class Program
         // ExceptionsAufgabe2();
         // ExceptionsAufgabe3();
         // ExceptionsAufgabe4();
-         Aufgabe1_20260624();
+        // Aufgabe1_20260624();
         // Aufgabe2_20260624();
+        Aufgabe3_20260625();
 
     }
+
 
 
 
@@ -55,21 +57,44 @@ private static void Aufgabe1_20260624()
     var zimmer2 = new Hotelzimmer("102");
 
     // Werte setzen
-    zimmer1.SetMaxGaeste(3);
-    zimmer1.SetAnzahlGaeste(2);
-    zimmer1.SetBelegt(true);
-    zimmer1.SetGastName("Müller");
+    
+zimmer1.MaxGaeste = 3;
+zimmer1.AnzahlGaeste = 2;
+zimmer1.Belegt = true;
+zimmer1.GastName = "Müller";
 
-    zimmer2.SetMaxGaeste(3);   
-    zimmer2.SetAnzahlGaeste(5);
-    zimmer2.SetBelegt(false);
+zimmer2.MaxGaeste = 3;
+zimmer2.AnzahlGaeste = 3;
+zimmer2.Belegt = false; 
 
-    // Ausgabe
-    Console.WriteLine($"Zimmer: {zimmer1.GetZimmernummer()}");
-    Console.WriteLine($"Zimmer: {zimmer2.GetZimmernummer()}");
+// Ausgabe
+Console.WriteLine($"Zimmer: {zimmer1.Zimmernummer}");
+Console.WriteLine($"Zimmer: {zimmer2.Zimmernummer}"); 
+   
+
 }
 
+private static void Aufgabe3_20260625()
+{
+    // Objekte erstellen
+    var zimmer1 = new Hotelzimmer("101");
+    var zimmer2 = new Hotelzimmer("102");
 
+    // Werte setzen (Properties!)
+    zimmer1.MaxGaeste = 3;
+    zimmer1.AnzahlGaeste = 2;
+    zimmer1.Belegt = true;
+    zimmer1.GastName = "Müller";
+
+    zimmer2.MaxGaeste = 3;
+    zimmer2.AnzahlGaeste = 3;
+    zimmer2.Belegt = false;
+
+    // Ausgabe
+Console.WriteLine($"Zimmer: {zimmer1.Zimmernummer}");
+Console.WriteLine($"Zimmer: {zimmer2.Zimmernummer}");
+
+}
 
 
     private static void ExceptionsAufgabe4()
@@ -1025,43 +1050,50 @@ class Foo
 
 }
 
+
 class Hotelzimmer
 {
-   private string Zimmernummer;
-private int AnzahlGaeste;
-private int MaxGaeste;
-private bool Belegt;
-private string GastName;
-
+    private string zimmernummer;
+    private int anzahlGaeste;
+    private int maxGaeste;
+    private bool belegt;
+    private string gastName;
 
     public Hotelzimmer(string zimmernummer)
     {
-        Zimmernummer = zimmernummer;
+        this.zimmernummer = zimmernummer;
     }
 
-    public void SetMaxGaeste(int max)
-{
-    MaxGaeste = max;
-}
+    public string Zimmernummer
+    {
+        get { return zimmernummer; }
+    }
 
-public void SetAnzahlGaeste(int anzahl)
-{
-    if (anzahl <= MaxGaeste)
-        AnzahlGaeste = anzahl;
-}
+    public int MaxGaeste
+    {
+        get { return maxGaeste; }
+        set { maxGaeste = value; }
+    }
 
-public void SetBelegt(bool status)
-{
-    Belegt = status;
-}
+    public int AnzahlGaeste
+    {
+        get { return anzahlGaeste; }
+        set
+        {
+            if (value <= maxGaeste)
+                anzahlGaeste = value;
+        }
+    }
 
-public void SetGastName(string name)
-{
-    GastName = name;
-}
+    public bool Belegt
+    {
+        get { return belegt; }
+        set { belegt = value; }
+    }
 
-public string GetZimmernummer()
-{
-    return Zimmernummer;
-}
+    public string GastName
+    {
+        get { return gastName; }
+        set { gastName = value; }
+    }
 }
