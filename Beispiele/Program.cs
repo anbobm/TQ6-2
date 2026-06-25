@@ -56,7 +56,7 @@ internal partial class Program
 
         BestellungAusgeben(bestellung);
 
-        bestellung.ArtikelHinzufügen("gekühlten Apfel", 0.79m);
+        bestellung.ArtikelHinzufügen("gekühlter Apfel", 0.79m);
 
         BestellungAusgeben(bestellung);
 
