@@ -37,10 +37,220 @@ internal partial class Program
         // DictionaryAufgabe2_3();
         // DictionaryAufgabe2_4();
         // Exceptions();
-        ExceptionsAufgabe();
+        // ExceptionsAufgabe1();
+        // ExceptionsAufgabe2();
+        // ExceptionsAufgabe3();
+        // ExceptionsAufgabe4();
+        // OOPAufgabe1();
+        // OOPAufgabe4();
+        OOPAufgabe2_1();
     }
 
-    private static void ExceptionsAufgabe()
+    private static void OOPAufgabe2_1()
+    {
+        var buch1 = new Buch("Der Hobbit", "J.R.R. Tolkien");
+        var buch2 = new Buch("Der Hobbit");
+
+        Console.WriteLine($"{buch1.Autor} - {buch1.Titel}");
+        Console.WriteLine($"{buch2.Autor} - {buch2.Titel}");
+    }
+
+    private static void OOPAufgabe4()
+    {
+        var bestellung = new Bestellung("Tunahan");
+
+        BestellungAusgeben(bestellung);
+
+        bestellung.ArtikelHinzufügen("Klimaanlage", 1499.90m);
+        bestellung.ArtikelHinzufügen("Eismaschine", 49.99m);
+
+        BestellungAusgeben(bestellung);
+
+        bestellung.ArtikelHinzufügen("gekühlter Apfel", 0.79m);
+
+        BestellungAusgeben(bestellung);
+
+        // Artikel-Liste ist nur Kopie, ändern der Liste wirkt sich nicht
+        // auf Bestellung aus
+
+        bestellung.Artikel.Add(("Duschgel", 1.99m));
+
+        BestellungAusgeben(bestellung);
+    }
+
+    private static void BestellungAusgeben(Bestellung bestellung)
+    {
+        Console.WriteLine($"Bestellung für: {bestellung.Kunde}, Bestellungsnummer: {bestellung.BestellungsNummer}");
+        Console.WriteLine($"Anzahl Artikel: {bestellung.AnzahlArtikel}");
+        Console.WriteLine($"Gesamtpreis: {bestellung.Gesamtpreis} €");
+
+        if (bestellung.AnzahlArtikel > 0)
+        {
+            Console.WriteLine("Artikel:");
+
+            foreach (var artikel in bestellung.Artikel)
+            {
+                Console.WriteLine($"    {artikel.Name}: {artikel.Stückpreis} €");
+            }
+        }
+    }
+
+    private static void OOPAufgabe1()
+    {
+        var zimmer1 = new Hotelzimmer("001");
+        // Setzen der Attribute direkt, weil public
+        zimmer1.MaxGaeste = 4;
+        zimmer1.AnzahlGaeste = 3;
+        zimmer1.GastName = "Tunahan";
+        Console.WriteLine(zimmer1.Belegt ? "belegt" : "nicht belegt");
+
+        // Setzen der Attribute auf unsinnige Werte
+        // Außerdem object initializer syntax
+        var zimmer2 = new Hotelzimmer("002");
+
+        try
+        {
+            zimmer2.MaxGaeste = -10;
+        }
+        catch(ArgumentException e)
+        {
+            Console.WriteLine($"Fehler aufgetreten: {e.Message}");
+        }
+
+        try
+        {
+            zimmer2.AnzahlGaeste = -4;
+        }
+        catch(ArgumentException e)
+        {
+            Console.WriteLine($"Fehler aufgetreten: {e.Message}");
+        }
+
+        try
+        {
+            zimmer2.GastName = "";
+        }
+        catch(ArgumentException e)
+        {
+            Console.WriteLine($"Fehler aufgetreten: {e.Message}");
+        }
+
+        Console.WriteLine(zimmer2.Belegt ? "belegt" : "nicht belegt");
+    }
+
+    private static void ExceptionsAufgabe4()
+    {
+        
+        try
+        {
+            Console.WriteLine(Durchschnitt4(null));
+        }
+        catch(ArgumentNullException)
+        {
+            Console.WriteLine("Die Liste existiert nicht.");
+        }
+        catch(ArgumentException)
+        {
+            Console.WriteLine("Durchschnitt konnte nicht berechnet werden, da Liste leer.");
+        }
+    }
+
+    private static double Durchschnitt4(List<int> liste)
+    {
+        if (liste == null)
+        {
+            throw new ArgumentNullException();
+        }
+
+        if (liste.Count == 0)
+        {
+            throw new ArgumentException();
+        }
+
+        int summe = 0;
+        foreach (var element in liste)
+        {
+            summe += element;
+        }
+
+        return summe / liste.Count;
+
+        // Alternative mit InvalidOperationException
+        // return liste.Average();
+    }
+
+    private static void ExceptionsAufgabe3()
+    {
+        var studenten = new Dictionary<string, Dictionary<string, int>>
+        {
+            { "Alice", new Dictionary<string, int> { { "Mathematik", 95 }, { "Englisch", 88 }, { "Geschichte", 90 } } },
+            { "Bob", new Dictionary<string, int> { { "Mathematik", 75 }, { "Englisch", 81 }, { "Geschichte", 78 } } },
+            { "Charlie", new Dictionary<string, int> { { "Mathematik", 88 }, { "Englisch", 91 }, { "Geschichte", 85 } } },
+            { "Diana", new Dictionary<string, int> { { "Mathematik", 93 }, { "Englisch", 89 }, { "Geschichte", 94 } } }
+        };
+
+        Console.WriteLine("Folgende Studenten sind gespeichert:");
+        foreach (var student in studenten)
+        {
+            Console.WriteLine(student.Key);
+        }
+
+        Console.Write("\nGib einen Namen ein für eine Detailansicht: ");
+        var eingabe = Console.ReadLine()!;
+
+        try
+        {
+            foreach (var fach in studenten[eingabe])
+            {
+                Console.WriteLine($"{fach.Key}: {fach.Value}");
+            }
+        }
+        catch (KeyNotFoundException)
+        {
+            Console.WriteLine("Diesen Studenten gibt es nicht");
+        }
+
+        // // Ohne Exceptions:
+        // if(studenten.ContainsKey(eingabe))
+        // {
+        //     foreach (var fach in studenten[eingabe])
+        //     {
+        //         Console.WriteLine($"{fach.Key}: {fach.Value}");
+        //     }
+        // }
+        // else
+        // {
+        //     Console.WriteLine("Diesen Studenten gibt es nicht");
+        // }
+    }
+
+    private static void ExceptionsAufgabe2()
+    {
+        try
+        {
+            Console.Write("Gib Zahl! ");
+            var zahl1 = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Gib noch eine Zahl! ");
+            var zahl2 = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine($"{zahl1} / {zahl2} = {zahl1 / zahl2} mit Rest {zahl1 % zahl2}");
+        }
+        catch (OverflowException)
+        {
+            Console.WriteLine("Die eingegebene Zahl ist zu groß/klein.");
+        }
+        catch (FormatException)
+        {
+            Console.WriteLine("Eingabe war keine Zahl");
+        }
+        catch (DivideByZeroException)
+        {
+            Console.WriteLine("Fehler: Division durch 0");
+        }
+    }
+
+    private static void ExceptionsAufgabe1()
     {
         try
         {
