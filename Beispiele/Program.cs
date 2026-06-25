@@ -41,7 +41,48 @@ internal partial class Program
         // ExceptionsAufgabe2();
         // ExceptionsAufgabe3();
         // ExceptionsAufgabe4();
-        OOPAufgabe1();
+        // OOPAufgabe1();
+        OOPAufgabe4();
+    }
+
+    private static void OOPAufgabe4()
+    {
+        var bestellung = new Bestellung("Tunahan");
+
+        BestellungAusgeben(bestellung);
+
+        bestellung.ArtikelHinzufügen("Klimaanlage", 1499.90m);
+        bestellung.ArtikelHinzufügen("Eismaschine", 49.99m);
+
+        BestellungAusgeben(bestellung);
+
+        bestellung.ArtikelHinzufügen("gekühlten Apfel", 0.79m);
+
+        BestellungAusgeben(bestellung);
+
+        // Artikel-Liste ist nur Kopie, ändern der Liste wirkt sich nicht
+        // auf Bestellung aus
+
+        bestellung.Artikel.Add(("Duschgel", 1.99m));
+
+        BestellungAusgeben(bestellung);
+    }
+
+    private static void BestellungAusgeben(Bestellung bestellung)
+    {
+        Console.WriteLine($"Bestellung für: {bestellung.Kunde}");
+        Console.WriteLine($"Anzahl Artikel: {bestellung.AnzahlArtikel}");
+        Console.WriteLine($"Gesamtpreis: {bestellung.Gesamtpreis} €");
+
+        if (bestellung.AnzahlArtikel > 0)
+        {
+            Console.WriteLine("Artikel:");
+
+            foreach (var artikel in bestellung.Artikel)
+            {
+                Console.WriteLine($"    {artikel.Name}: {artikel.Stückpreis} €");
+            }
+        }
     }
 
     private static void OOPAufgabe1()
@@ -83,7 +124,7 @@ internal partial class Program
         {
             Console.WriteLine($"Fehler aufgetreten: {e.Message}");
         }
-        
+
         Console.WriteLine(zimmer2.Belegt ? "belegt" : "nicht belegt");
     }
 
