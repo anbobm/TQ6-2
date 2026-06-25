@@ -30,63 +30,41 @@ public class Hotelzimmer
 
             anzahlGaeste = value;
         }
-    }    
-
-    public int GetAnzahlGaeste()
-    {
-        return anzahlGaeste;
     }
 
-    public bool SetAnzahlGaeste(int anzahl)
+    public int MaxGaeste
     {
-        if (anzahl < 0)
+        get
         {
-            return false;
+            return maxGaeste;
         }
-
-        if (anzahl > maxGaeste)
+        set
         {
-            return false;
+            if (value < 0)
+            {
+                throw new ArgumentException("Negative Maximalbelegung nicht erlaubt");
+            }
+
+            maxGaeste = value;
         }
-
-        anzahlGaeste = anzahl;
-        return true;
     }
 
-    public int GetMaxGaeste()
-    {
-        return maxGaeste;
-    }
+    public bool Belegt => anzahlGaeste > 0;
 
-    public bool SetMaxGaeste(int max)
+    public string GastName
     {
-        if (max < 0)
+        get
         {
-            return false;
+            return gastName;
         }
-
-        maxGaeste = max;
-        return true;
-    }
-
-    public bool GetBelegt()
-    {
-        return anzahlGaeste > 0;
-    }
-
-    public string GetGastName()
-    {
-        return gastName;
-    }
-
-    public bool SetGastName(string gastName)
-    {
-        if (gastName == "")
+        set
         {
-            return false;
-        }
+            if (value == "")
+            {
+                throw new ArgumentException("Leerer String als Gastname ist nicht erlaubt");
+            }
 
-        this.gastName = gastName;
-        return true;
+            gastName = value;
+        }
     }
 }

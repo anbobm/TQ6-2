@@ -48,26 +48,43 @@ internal partial class Program
     {
         var zimmer1 = new Hotelzimmer("001");
         // Setzen der Attribute direkt, weil public
-        zimmer1.SetMaxGaeste(4);
-        zimmer1.SetAnzahlGaeste(3);
-        zimmer1.SetGastName("Tunahan");
-        Console.WriteLine(zimmer1.GetBelegt() ? "belegt" : "nicht belegt");
+        zimmer1.MaxGaeste = 4;
+        zimmer1.AnzahlGaeste = 3;
+        zimmer1.GastName = "Tunahan";
+        Console.WriteLine(zimmer1.Belegt ? "belegt" : "nicht belegt");
 
         // Setzen der Attribute auf unsinnige Werte
         // Außerdem object initializer syntax
         var zimmer2 = new Hotelzimmer("002");
 
-        if(!zimmer2.SetMaxGaeste(-10))
+        try
         {
-            Console.WriteLine("Maximale Gästezahl kann nicht negativ sein!");
+            zimmer2.MaxGaeste = -10;
+        }
+        catch(ArgumentException e)
+        {
+            Console.WriteLine($"Fehler aufgetreten: {e.Message}");
         }
 
-        if(zimmer2.SetAnzahlGaeste(0))
+        try
         {
-            Console.WriteLine("Fehler: Belegung negativ oder größer Maximum");
+            zimmer2.AnzahlGaeste = -4;
         }
-        Console.WriteLine(zimmer2.GetBelegt() ? "belegt" : "nicht belegt");
-        zimmer2.SetGastName("");
+        catch(ArgumentException e)
+        {
+            Console.WriteLine($"Fehler aufgetreten: {e.Message}");
+        }
+
+        try
+        {
+            zimmer2.GastName = "";
+        }
+        catch(ArgumentException e)
+        {
+            Console.WriteLine($"Fehler aufgetreten: {e.Message}");
+        }
+        
+        Console.WriteLine(zimmer2.Belegt ? "belegt" : "nicht belegt");
     }
 
     private static void ExceptionsAufgabe4()
