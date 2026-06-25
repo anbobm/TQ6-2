@@ -42,7 +42,17 @@ internal partial class Program
         // ExceptionsAufgabe3();
         // ExceptionsAufgabe4();
         // OOPAufgabe1();
-        OOPAufgabe4();
+        // OOPAufgabe4();
+        OOPAufgabe2_1();
+    }
+
+    private static void OOPAufgabe2_1()
+    {
+        var buch1 = new Buch("Der Hobbit", "J.R.R. Tolkien");
+        var buch2 = new Buch("Der Hobbit");
+
+        Console.WriteLine($"{buch1.Autor} - {buch1.Titel}");
+        Console.WriteLine($"{buch2.Autor} - {buch2.Titel}");
     }
 
     private static void OOPAufgabe4()
@@ -70,7 +80,7 @@ internal partial class Program
 
     private static void BestellungAusgeben(Bestellung bestellung)
     {
-        Console.WriteLine($"Bestellung für: {bestellung.Kunde}");
+        Console.WriteLine($"Bestellung für: {bestellung.Kunde}, Bestellungsnummer: {bestellung.BestellungsNummer}");
         Console.WriteLine($"Anzahl Artikel: {bestellung.AnzahlArtikel}");
         Console.WriteLine($"Gesamtpreis: {bestellung.Gesamtpreis} €");
 
