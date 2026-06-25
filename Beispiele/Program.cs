@@ -43,12 +43,25 @@ internal partial class Program
         // ExceptionsAufgabe4();
         // Aufgabe1_20260624();
         // Aufgabe2_20260624();
-        Aufgabe3_20260625();
+        // Aufgabe3_20260625();
+        Aufgabe4_20260625();
+
 
     }
 
 
+private static void Aufgabe4_20260625()
+{
+    var bestellung = new Bestellung();
 
+    bestellung.Customer = "Müller";
+
+    bestellung.AddItem(new Item("Brot", 2.5m));
+    bestellung.AddItem(new Item("Milch", 1.8m));
+    bestellung.AddItem(new Item("Käse", 4.2m));
+
+    bestellung.ShowOrder();
+}
 
 private static void Aufgabe1_20260624()
 {
@@ -1095,5 +1108,66 @@ class Hotelzimmer
     {
         get { return gastName; }
         set { gastName = value; }
+    }
+}
+
+
+class Item
+{
+    public string Name { get; set; }
+    public decimal Price { get; set; }
+
+    public Item(string name, decimal price)
+    {
+        Name = name;
+        Price = price;
+    }
+}
+
+class Bestellung
+{
+    private string customer;
+    private List<Item> items = new List<Item>();
+
+    public string Customer
+    {
+        get { return customer; }
+        set { customer = value; }
+    }
+
+    public int NumberOfItems
+    {
+        get { return items.Count; }
+    }
+
+    public decimal TotalPrice
+    {
+        get
+        {
+            decimal sum = 0;
+            foreach (var item in items)
+            {
+                sum += item.Price;
+            }
+            return sum;
+        }
+    }
+
+    public void AddItem(Item item)
+    {
+        items.Add(item);
+    }
+
+    public void ShowOrder()
+    {
+        Console.WriteLine($"Kunde: {customer}");
+        Console.WriteLine("Produkte:");
+
+        foreach (var item in items)
+        {
+            Console.WriteLine($"{item.Name} - {item.Price}€");
+        }
+
+        Console.WriteLine($"Gesamtpreis: {TotalPrice}€");
     }
 }
