@@ -44,10 +44,19 @@ internal partial class Program
         // Aufgabe1_20260624();
         // Aufgabe2_20260624();
         // Aufgabe3_20260625();
-        Aufgabe4_20260625();
-
+        // Aufgabe4_20260625();
+        Aufgabe1_20260625();
 
     }
+
+private static void Aufgabe1_20260625()
+{
+    var buch1 = new Buch("Harry Potter");
+    var buch2 = new Buch("1984", "George Orwell");
+
+    Console.WriteLine($"{buch1.Titel} - {buch1.Autor}");
+    Console.WriteLine($"{buch2.Titel} - {buch2.Autor}");
+}
 
 
 private static void Aufgabe4_20260625()
@@ -1171,3 +1180,24 @@ class Bestellung
         Console.WriteLine($"Gesamtpreis: {TotalPrice}€");
     }
 }
+
+
+class Buch
+{
+    public string Titel { get; set; }
+    public string Autor { get; set; }
+
+    public Buch(string titel)
+    {
+        Titel = titel;
+        Autor = "Unbekannt";
+    }
+
+    public Buch(string titel, string autor)
+    {
+        Titel = titel;
+        Autor = autor;
+    }
+}
+
+ 
