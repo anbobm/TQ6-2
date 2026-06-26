@@ -45,7 +45,25 @@ internal partial class Program
         // OOPAufgabe4();
         // OOPAufgabe2_1();
         // OOPAufgabe2_2();
-        StatischeAttribute();
+        // StatischeAttribute();
+        StatischeAttribute_Aufgabe2();
+    }
+
+    private static void StatischeAttribute_Aufgabe2()
+    {
+        var bestellung1 = new Bestellung("Tunahan");
+
+        bestellung1.ArtikelHinzufügen("Klimaanlage", 1499.90m);
+        bestellung1.ArtikelHinzufügen("Eismaschine", 49.99m);
+        bestellung1.ArtikelHinzufügen("gekühlter Apfel", 0.79m);
+
+        var bestellung2 = new Bestellung("Tunahan");
+
+        bestellung2.ArtikelHinzufügen("Klimaanlage", 1499.90m);
+        bestellung2.ArtikelHinzufügen("Klimaanlage", 1499.90m);
+
+        BestellungAusgeben(bestellung1);
+        BestellungAusgeben(bestellung2);
     }
 
     private static void StatischeAttribute()
@@ -118,7 +136,7 @@ internal partial class Program
 
     private static void BestellungAusgeben(Bestellung bestellung)
     {
-        Console.WriteLine($"Bestellung für: {bestellung.Kunde}");
+        Console.WriteLine($"Bestellung für: {bestellung.Kunde}, Bestellungsnummer: {bestellung.Bestellungsnummer}");
         Console.WriteLine($"Anzahl Artikel: {bestellung.AnzahlArtikel}");
         Console.WriteLine($"Gesamtpreis: {bestellung.Gesamtpreis} €");
 

@@ -1,5 +1,7 @@
 public class Bestellung
 {
+    private static int letzteBestellungsnummer;
+    public int Bestellungsnummer { get; }
     private List<(string Name, decimal Stückpreis)> artikel;
 
     public string Kunde { get; }
@@ -12,6 +14,7 @@ public class Bestellung
     {
         Kunde = kunde;
         artikel = new List<(string Name, decimal Stückpreis)>();
+        Bestellungsnummer = ++letzteBestellungsnummer;
     }
 
     public void ArtikelHinzufügen(string name, decimal stückpreis)
