@@ -88,7 +88,7 @@ internal partial class Program
 
     private static void BestellungAusgeben(Bestellung bestellung)
     {
-        Console.WriteLine($"Bestellung für: {bestellung.Kunde}, Bestellungsnummer: {bestellung.BestellungsNummer}");
+        Console.WriteLine($"Bestellung für: {bestellung.Kunde}");
         Console.WriteLine($"Anzahl Artikel: {bestellung.AnzahlArtikel}");
         Console.WriteLine($"Gesamtpreis: {bestellung.Gesamtpreis} €");
 
