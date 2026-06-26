@@ -46,7 +46,55 @@ internal partial class Program
         // OOPAufgabe2_1();
         // OOPAufgabe2_2();
         // StatischeAttribute();
-        StatischeAttribute_Aufgabe2();
+        // StatischeAttribute_Aufgabe2();
+        StatischeAttribute_Aufgabe3();
+    }
+
+    private static void StatischeAttribute_Aufgabe3()
+    {
+        var konto1 = new Bankkonto("Sabine", "DE32 5923 4661 5717 5712 32", 1000.0m);
+        var konto2 = new Bankkonto("Petra", "DE17 1128 3712 3128 7931 09", 100000.0m);
+
+        Bankkonto.Zinssatz = 0.1m;
+        konto1.ZinsenAuszahlen();
+
+        konto1.Info();
+        konto2.Info();
+
+        Bankkonto.Zinssatz = 0.2m;
+        konto1.ZinsenAuszahlen();
+        konto2.ZinsenAuszahlen();
+
+        konto1.Info();
+        konto2.Info();
+    }
+
+    public class Bankkonto
+    {
+        public string Inhaber { get; }
+
+        public string Kontonummer { get; }
+
+        public decimal Kontostand { get; private set; }
+
+        public static decimal Zinssatz { get; set; }
+
+        public Bankkonto(string inhaber, string kontonummer, decimal kontostand)
+        {
+            Inhaber = inhaber;
+            Kontonummer = kontonummer;
+            Kontostand = kontostand;
+        }
+
+        public void ZinsenAuszahlen()
+        {
+            Kontostand += Kontostand * Zinssatz;
+        }
+
+        public void Info()
+        {
+            Console.WriteLine($"{Inhaber} {Kontonummer} {Kontostand}");
+        }
     }
 
     private static void StatischeAttribute_Aufgabe2()
