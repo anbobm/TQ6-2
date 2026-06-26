@@ -53,8 +53,8 @@ Es soll seine Methode `ZinsenAuszahlen()` geben, die den Kontostand um die Zinse
 Führe anschließend den folgenden Beispielcode aus und überprüfe ob die Resultate deinen Erwartungen entsprechen.
 
 ```csharp
-var konto1 = new Konto("Sabine", "DE32 5923 4661 5717 5712 32", 1000.0m);
-var konto2 = new Konto("Petra", "DE17 1128 3712 3128 7931 09", 100000.0m);
+var konto1 = new Bankkonto("Sabine", "DE32 5923 4661 5717 5712 32", 1000.0m);
+var konto2 = new Bankkonto("Petra", "DE17 1128 3712 3128 7931 09", 100000.0m);
 
 Bankkonto.Zinssatz = 0.1m;
 konto1.ZinsenAuszahlen();
@@ -63,7 +63,9 @@ konto1.Info();
 konto2.Info();
 
 Bankkonto.Zinssatz = 0.2m;
+konto1.ZinsenAuszahlen();
+konto2.ZinsenAuszahlen();
 
 konto1.Info();
-konto1.Info();
+konto2.Info();
 ```
