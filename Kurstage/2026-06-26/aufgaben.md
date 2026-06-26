@@ -42,4 +42,28 @@ Erweitere die Klasse `Bestellung` so, dass sie ein (nur lesbares) Attribut `Best
 
 Das soll automatisch passieren, also nicht dem Benutzer der Klasse überlassen werden.
 
-*Tipp: Umsetzen lässt sich das mit einem statischen Feld innerhalb der Klasse Bestellung, welches im Konstruktor hochgezählt und im erzeugten Objekt gespeichert wird.
+*Tipp: Umsetzen lässt sich das mit einem statischen Feld innerhalb der Klasse Bestellung, welches im Konstruktor hochgezählt und im erzeugten Objekt gespeichert wird.*
+
+# Aufgabe 3
+
+Schreibe eine Klasse `Bankkonto` mit den Attributen `Inhaber` (`string`), `Kontonummer` (`string`), `Kontostand` (`decimal`) und einem statischen Attribut `Zinssatz` (`decimal`). Der Zinssatz soll geschrieben werden können, darf aber nicht negativ sein.
+
+Es soll seine Methode `ZinsenAuszahlen()` geben, die den Kontostand um die Zinsen (Kontostand * Zinssatz) erhöht, und eine Methode `Info()` die den Zustand des Kontos ausgibt.
+
+Führe anschließend den folgenden Beispielcode aus und überprüfe ob die Resultate deinen Erwartungen entsprechen.
+
+```csharp
+var konto1 = new Konto("Sabine", "DE32 5923 4661 5717 5712 32", 1000.0m);
+var konto2 = new Konto("Petra", "DE17 1128 3712 3128 7931 09", 100000.0m);
+
+Bankkonto.Zinssatz = 0.1m;
+konto1.ZinsenAuszahlen();
+
+konto1.Info();
+konto2.Info();
+
+Bankkonto.Zinssatz = 0.2m;
+
+konto1.Info();
+konto1.Info();
+```
