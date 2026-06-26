@@ -44,7 +44,37 @@ internal partial class Program
         // OOPAufgabe1();
         // OOPAufgabe4();
         // OOPAufgabe2_1();
-        OOPAufgabe2_2();
+        // OOPAufgabe2_2();
+        StatischeAttribute();
+    }
+
+    private static void StatischeAttribute()
+    {
+        var b1 = new Beispiel();
+        var b2 = new Beispiel();
+
+        b1.Info();
+        b2.Info();
+
+        b1.SetBar(1);
+
+        b1.Info();
+        b2.Info();
+    }
+
+    public class Beispiel
+    {
+        private static int bar;
+
+        public void SetBar(int value)
+        {
+            bar = value;
+        }
+
+        public void Info()
+        {
+            Console.WriteLine($"bar ist {bar}");
+        }
     }
 
     private static void OOPAufgabe2_2()
