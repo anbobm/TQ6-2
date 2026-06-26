@@ -35,3 +35,11 @@ b2.Info();
 ```
 
 Welche Ausgabe erwartest du? Überprüfe deine ob deine Erwartung zutrifft.
+
+# Aufgabe 2
+
+Erweitere die Klasse `Bestellung` so, dass sie ein (nur lesbares) Attribut `Bestellungsnummer` besitzen. Die erste Bestellung soll die Nummer `1` bekommen, die nächste die Nummer `2` usw.
+
+Das soll automatisch passieren, also nicht dem Benutzer der Klasse überlassen werden.
+
+*Tipp: Umsetzen lässt sich das mit einem statischen Feld innerhalb der Klasse Bestellung, welches im Konstruktor hochgezählt und im erzeugten Objekt gespeichert wird.
