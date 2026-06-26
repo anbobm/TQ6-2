@@ -3,6 +3,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Transactions;
 
+
 internal partial class Program
 {
     private static void Main(string[] args)
@@ -45,9 +46,18 @@ internal partial class Program
         // Aufgabe2_20260624();
         // Aufgabe3_20260625();
         // Aufgabe4_20260625();
-        Aufgabe1_20260625();
+        // Aufgabe1_20260625();
+        Aufgabe2_20260625();
 
     }
+
+
+private static void Aufgabe2_20260625()
+{
+    var tier = new Tier("Max");
+tier.SagHallo();
+
+}
 
 private static void Aufgabe1_20260625()
 {
