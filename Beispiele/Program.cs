@@ -47,10 +47,25 @@ internal partial class Program
         // Aufgabe3_20260625();
         // Aufgabe4_20260625();
         // Aufgabe1_20260625();
-        Aufgabe2_20260625();
+        // Aufgabe2_20260625();
+        Aufgabe1_20260626();
 
     }
 
+
+private static void Aufgabe1_20260626()
+{
+    var b1 = new Beispiel();
+    var b2 = new Beispiel();
+
+    b1.Info();
+    b2.Info();
+
+    b1.SetBar(1);
+
+    b1.Info();
+    b2.Info();
+}
 
 private static void Aufgabe2_20260625()
 {
@@ -1211,3 +1226,18 @@ class Buch
 }
 
  
+ public class Beispiel
+{
+    private static int bar;
+
+    public void SetBar(int value)
+    {
+        bar = value;
+    }
+
+    public void Info()
+    {
+        Console.WriteLine($"bar ist {bar}");
+    }
+}
+
