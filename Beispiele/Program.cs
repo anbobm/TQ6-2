@@ -49,8 +49,30 @@ internal partial class Program
         // Aufgabe1_20260625();
         // Aufgabe2_20260625();
         // Aufgabe1_20260626();
-Aufgabe2_20260626();
+        // Aufgabe2_20260626();
+        Aufgabe3_20260626();
     }
+
+private static void Aufgabe3_20260626()
+{
+    var konto1 = new Bankkonto("Sabine", "DE32 5923 4661 5717 5712 32", 1000.0m);
+    var konto2 = new Bankkonto("Petra", "DE17 1128 3712 3128 7931 09", 100000.0m);
+
+    Bankkonto.Zinssatz = 0.1m;
+
+    konto1.ZinsenAuszahlen();
+
+    konto1.Info();
+    konto2.Info();
+
+    Bankkonto.Zinssatz = 0.2m;
+
+    konto1.ZinsenAuszahlen();
+    konto2.ZinsenAuszahlen();
+
+    konto1.Info();
+    konto2.Info();
+}
 
 
 private static void Aufgabe2_20260626()
@@ -1269,5 +1291,42 @@ public class BestellungNeu
     public void Info()
     {
         Console.WriteLine($"Bestellnummer: {Bestellnummer}");
+    }
+}
+
+
+public class Bankkonto
+{
+    public string Inhaber { get; set; }
+    public string Kontonummer { get; set; }
+    public decimal Kontostand { get; set; }
+
+    private static decimal zinssatz;
+
+    public static decimal Zinssatz
+    {
+        get { return zinssatz; }
+        set
+        {
+            if (value >= 0)
+                zinssatz = value;
+        }
+    }
+
+    public Bankkonto(string inhaber, string kontonummer, decimal kontostand)
+    {
+        Inhaber = inhaber;
+        Kontonummer = kontonummer;
+        Kontostand = kontostand;
+    }
+
+    public void ZinsenAuszahlen()
+    {
+        Kontostand += Kontostand * Zinssatz;
+    }
+
+    public void Info()
+    {
+        Console.WriteLine($"{Inhaber} | {Kontonummer} | {Kontostand}");
     }
 }
