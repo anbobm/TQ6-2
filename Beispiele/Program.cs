@@ -48,9 +48,21 @@ internal partial class Program
         // Aufgabe4_20260625();
         // Aufgabe1_20260625();
         // Aufgabe2_20260625();
-        Aufgabe1_20260626();
-
+        // Aufgabe1_20260626();
+Aufgabe2_20260626();
     }
+
+
+private static void Aufgabe2_20260626()
+{
+    var b1 = new BestellungNeu();
+    var b2 = new BestellungNeu();
+    var b3 = new BestellungNeu();
+
+    b1.Info();
+    b2.Info();
+    b3.Info();
+}
 
 
 private static void Aufgabe1_20260626()
@@ -1226,7 +1238,7 @@ class Buch
 }
 
  
- public class Beispiel
+ class Beispiel
 {
     private static int bar;
 
@@ -1241,3 +1253,21 @@ class Buch
     }
 }
 
+
+public class BestellungNeu
+{
+    private static int counter = 0;
+
+    public int Bestellnummer { get; }
+
+    public BestellungNeu()
+    {
+        counter++;
+        Bestellnummer = counter;
+    }
+
+    public void Info()
+    {
+        Console.WriteLine($"Bestellnummer: {Bestellnummer}");
+    }
+}
