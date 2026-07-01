@@ -51,7 +51,7 @@ internal partial class Program
         // Aufgabe1_20260626();
         // Aufgabe2_20260626();
         // Aufgabe3_20260626();
-        Aufgabe1_20260629();
+        // Aufgabe1_20260629();
     }
     
 
