@@ -50,8 +50,27 @@ internal partial class Program
         // Aufgabe2_20260625();
         // Aufgabe1_20260626();
         // Aufgabe2_20260626();
-        Aufgabe3_20260626();
+        // Aufgabe3_20260626();
+        Aufgabe1_20260629();
     }
+    
+
+private static void Aufgabe1_20260629()
+{
+    var a1 = new Auto();
+    a1.Marke = "BMW";
+    a1.Modell = "X5";
+    a1.Baujahr = 2020;
+
+    var a2 = new Auto();
+    a2.Marke = "Opel";
+    a2.Modell = "Corsa";
+    a2.Baujahr = 2018;
+
+    a1.DisplayInfo();
+    a2.DisplayInfo();
+}
+
 
 private static void Aufgabe3_20260626()
 {
@@ -1328,5 +1347,18 @@ public class Bankkonto
     public void Info()
     {
         Console.WriteLine($"{Inhaber} | {Kontonummer} | {Kontostand}");
+    }
+}
+
+
+public class Auto
+{
+    public string Marke;
+    public string Modell;
+    public int Baujahr;
+
+    public void DisplayInfo()
+    {
+        Console.WriteLine($"{Marke} | {Modell} | {Baujahr}");
     }
 }
