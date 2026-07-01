@@ -52,24 +52,28 @@ internal partial class Program
         // Aufgabe2_20260626();
         // Aufgabe3_20260626();
         // Aufgabe1_20260629();
+        Aufgabe2_20260629();
     }
     
 
-private static void Aufgabe1_20260629()
+
+private static void Aufgabe2_20260629()
 {
     var a1 = new Auto();
-    a1.Marke = "BMW";
-    a1.Modell = "X5";
-    a1.Baujahr = 2020;
+    a1.SetMarke("BMW");
+    a1.SetModell("X5");
+    a1.SetBaujahr(2020);
 
     var a2 = new Auto();
-    a2.Marke = "Opel";
-    a2.Modell = "Corsa";
-    a2.Baujahr = 2018;
+    a2.SetMarke("Opel");
+    a2.SetModell("Corsa");
+    a2.SetBaujahr(2018);
 
     a1.DisplayInfo();
     a2.DisplayInfo();
 }
+
+
 
 
 private static void Aufgabe3_20260626()
@@ -1351,14 +1355,51 @@ public class Bankkonto
 }
 
 
+
+
 public class Auto
 {
-    public string Marke;
-    public string Modell;
-    public int Baujahr;
+    private string marke;
+    private string modell;
+    private int baujahr;
+
+    public string GetMarke()
+    {
+        return marke;
+    }
+
+    public void SetMarke(string marke)
+    {
+        this.marke = marke;
+    }
+
+    public string GetModell()
+    {
+        return modell;
+    }
+
+    public void SetModell(string modell)
+    {
+        this.modell = modell;
+    }
+
+    public int GetBaujahr()
+    {
+        return baujahr;
+    }
+
+    public void SetBaujahr(int baujahr)
+    {
+        if (baujahr >= 1880)
+        {
+            this.baujahr = baujahr;
+        }
+    }
 
     public void DisplayInfo()
     {
-        Console.WriteLine($"{Marke} | {Modell} | {Baujahr}");
+        Console.WriteLine($"{marke} | {modell} | {baujahr}");
     }
 }
+
+
