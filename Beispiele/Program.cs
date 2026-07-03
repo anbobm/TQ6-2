@@ -52,10 +52,28 @@ internal partial class Program
         // Aufgabe2_20260626();
         // Aufgabe3_20260626();
         // Aufgabe1_20260629();
-        Aufgabe2_20260629();
+        // Aufgabe2_20260629();
+        Aufgabe3_20260629();
     }
     
 
+private static void Aufgabe3_20260629()
+{
+    var auto1 = new Auto();
+
+    auto1.Marke = "BMW";
+    auto1.Modell = "5er";
+    auto1.Baujahr = 2020;
+
+    var auto2 = new Auto();
+
+    auto2.Marke = "Opel";
+    auto2.Modell = "Corsa";
+    auto2.Baujahr = 2018;
+
+    auto1.DisplayInfo();
+    auto2.DisplayInfo();
+}
 
 private static void Aufgabe2_20260629()
 {
@@ -1355,45 +1373,97 @@ public class Bankkonto
 }
 
 
-
-
 public class Auto
 {
-    private string marke;
-    private string modell;
+    private string marke = "";
+    private string modell = "";
     private int baujahr;
+
+    public string Marke
+    {
+        get { return marke; }
+        set
+        {
+            if (value == "BMW" || value == "Opel" || value == "Trabant")
+            {
+                marke = value;
+
+                if (marke == "BMW")
+                {
+                    modell = "3er";
+                }
+                else if (marke == "Opel")
+                {
+                    modell = "Corsa";
+                }
+                else if (marke == "Trabant")
+                {
+                    modell = "P 50";
+                }
+            }
+        }
+    }
+
+    public string Modell
+    {
+        get { return modell; }
+        set
+        {
+            if (marke == "BMW" && (value == "3er" || value == "5er" || value == "7er"))
+            {
+                modell = value;
+            }
+            else if (marke == "Opel" && (value == "Corsa" || value == "Astra" || value == "Adam"))
+            {
+                modell = value;
+            }
+            else if (marke == "Trabant" && (value == "P 50" || value == "P 60" || value == "P 601" || value == "1.1"))
+            {
+                modell = value;
+            }
+        }
+    }
+
+    public int Baujahr
+    {
+        get { return baujahr; }
+        set
+        {
+            if (value >= 1880)
+            {
+                baujahr = value;
+            }
+        }
+    }
 
     public string GetMarke()
     {
-        return marke;
+        return Marke;
     }
 
     public void SetMarke(string marke)
     {
-        this.marke = marke;
+        Marke = marke;
     }
 
     public string GetModell()
     {
-        return modell;
+        return Modell;
     }
 
     public void SetModell(string modell)
     {
-        this.modell = modell;
+        Modell = modell;
     }
 
     public int GetBaujahr()
     {
-        return baujahr;
+        return Baujahr;
     }
 
     public void SetBaujahr(int baujahr)
     {
-        if (baujahr >= 1880)
-        {
-            this.baujahr = baujahr;
-        }
+        Baujahr = baujahr;
     }
 
     public void DisplayInfo()
@@ -1402,4 +1472,5 @@ public class Auto
     }
 }
 
+    
 
