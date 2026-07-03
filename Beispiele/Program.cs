@@ -53,9 +53,22 @@ internal partial class Program
         // Aufgabe3_20260626();
         // Aufgabe1_20260629();
         // Aufgabe2_20260629();
-        Aufgabe3_20260629();
+        // Aufgabe3_20260629();
+        Aufgabe4_20260629();
     }
+
+
+
     
+private static void Aufgabe4_20260629()
+{
+    var auto1 = new Auto("BMW", "7er", 2021);
+    var auto2 = new Auto("Trabant", "P 601", 1975);
+
+    auto1.DisplayInfo();
+    auto2.DisplayInfo();
+}
+
 
 private static void Aufgabe3_20260629()
 {
@@ -1379,6 +1392,17 @@ public class Auto
     private string modell = "";
     private int baujahr;
 
+    public Auto()
+    {
+    }
+
+    public Auto(string marke, string modell, int baujahr)
+    {
+        Marke = marke;
+        Modell = modell;
+        Baujahr = baujahr;
+    }
+
     public string Marke
     {
         get { return marke; }
@@ -1471,6 +1495,3 @@ public class Auto
         Console.WriteLine($"{marke} | {modell} | {baujahr}");
     }
 }
-
-    
-
