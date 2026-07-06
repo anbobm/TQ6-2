@@ -55,9 +55,24 @@ internal partial class Program
         // Aufgabe2_20260629();
         // Aufgabe3_20260629();
         // Aufgabe4_20260629();
-        Aufgabe5_20260629_Vererbung();
+        // Aufgabe5_20260629_Vererbung();
+        Aufgabe6_20260629_Abstract();
+
 
     }
+
+
+
+private static void Aufgabe6_20260629_Abstract()
+{
+    var auto1 = new Auto("BMW", "5er", 2022);
+    var cabrio1 = new Cabrio("Opel", "Astra", 2020);
+
+    auto1.Fahren();
+    cabrio1.Fahren();
+}
+
+
 
 private static void Aufgabe5_20260629_Vererbung()
 {
@@ -1398,8 +1413,14 @@ public class Bankkonto
 }
 
 
-public class Auto
+public abstract class Fahrzeug
 {
+    public abstract void Fahren();
+}
+
+public class Auto : Fahrzeug
+{
+
     private string marke = "";
     private string modell = "";
     private int baujahr;
@@ -1505,6 +1526,11 @@ public class Auto
     public virtual void DisplayInfo()
 {
     Console.WriteLine($"{Marke} | {Modell} | {Baujahr}");
+}
+
+public override void Fahren()
+{
+    Console.WriteLine($"{Marke} {Modell} faehrt.");
 }
 }
 
