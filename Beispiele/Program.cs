@@ -59,9 +59,31 @@ internal partial class Program
         // Aufgabe6_20260629_Abstract();
         // Aufgabe7_20260629_LKW();
         // Teil2_Aufgabe1_20260629_Produkt();
-        Teil2_Aufgabe2_20260629_Rechteck();
+        // Teil2_Aufgabe2_20260629_Rechteck();
+        Teil2_Aufgabe3_20260629_Benutzer();
 
     }
+
+
+private static void Teil2_Aufgabe3_20260629_Benutzer()
+{
+    var benutzer1 = new Benutzer("nataliya", "geheim123");
+
+    Console.WriteLine($"Eingeloggt: {benutzer1.Eingeloggt()}");
+
+    benutzer1.Login("falsch");
+    Console.WriteLine($"Eingeloggt: {benutzer1.Eingeloggt()}");
+
+    benutzer1.Login("geheim123");
+    Console.WriteLine($"Eingeloggt: {benutzer1.Eingeloggt()}");
+
+    benutzer1.PasswortAendern("geheim123", "neuesPasswort");
+    benutzer1.Logout();
+
+    benutzer1.Login("neuesPasswort");
+    Console.WriteLine($"Eingeloggt: {benutzer1.Eingeloggt()}");
+}
+
 
 
 
@@ -1710,5 +1732,46 @@ public class Rechteck
     public double Umfang()
     {
         return 2 * (breite + hoehe);
+    }
+}
+
+
+public class Benutzer
+{
+    private string benutzername;
+    private string passwort;
+    private bool istEingeloggt;
+
+    public Benutzer(string benutzername, string passwort)
+    {
+        this.benutzername = benutzername;
+        this.passwort = passwort;
+        istEingeloggt = false;
+    }
+
+    public void Login(string passwort)
+    {
+        if (this.passwort == passwort)
+        {
+            istEingeloggt = true;
+        }
+    }
+
+    public void Logout()
+    {
+        istEingeloggt = false;
+    }
+
+    public void PasswortAendern(string altesPw, string neuesPw)
+    {
+        if (passwort == altesPw && neuesPw.Length >= 8)
+        {
+            passwort = neuesPw;
+        }
+    }
+
+    public bool Eingeloggt()
+    {
+        return istEingeloggt;
     }
 }
