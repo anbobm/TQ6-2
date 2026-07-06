@@ -1,5 +1,11 @@
 public class Auto
 {
+    public Auto(string marke, string modell, int baujahr)
+    {
+        this.Marke = marke;
+        this.Modell = modell;
+        this.Baujahr = baujahr;
+    }
 
     public void DisplayInfo()
     {
