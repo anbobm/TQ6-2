@@ -60,9 +60,25 @@ internal partial class Program
         // Aufgabe7_20260629_LKW();
         // Teil2_Aufgabe1_20260629_Produkt();
         // Teil2_Aufgabe2_20260629_Rechteck();
-        Teil2_Aufgabe3_20260629_Benutzer();
+        // Teil2_Aufgabe3_20260629_Benutzer();
+        Teil2_Aufgabe4_20260629_Temperatursensor();
 
     }
+
+
+
+private static void Teil2_Aufgabe4_20260629_Temperatursensor()
+{
+    var sensor1 = new Temperatursensor();
+
+    sensor1.SetCelsius(20);
+    sensor1.Erhoehen(5);
+    sensor1.Senken(3);
+
+    Console.WriteLine($"Celsius: {sensor1.GetCelsius()}");
+    Console.WriteLine($"Fahrenheit: {sensor1.GetFahrenheit()}");
+}
+
 
 
 private static void Teil2_Aufgabe3_20260629_Benutzer()
@@ -1773,5 +1789,39 @@ public class Benutzer
     public bool Eingeloggt()
     {
         return istEingeloggt;
+    }
+}
+
+
+public class Temperatursensor
+{
+    private double celsius = 0;
+
+    public void SetCelsius(double wert)
+    {
+        if (wert >= -273.15)
+        {
+            celsius = wert;
+        }
+    }
+
+    public double GetCelsius()
+    {
+        return celsius;
+    }
+
+    public double GetFahrenheit()
+    {
+        return celsius * 9 / 5 + 32;
+    }
+
+    public void Erhoehen(double wert)
+    {
+        SetCelsius(celsius + wert);
+    }
+
+    public void Senken(double wert)
+    {
+        SetCelsius(celsius - wert);
     }
 }
