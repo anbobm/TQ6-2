@@ -57,9 +57,24 @@ internal partial class Program
         // Aufgabe4_20260629();
         // Aufgabe5_20260629_Vererbung();
         // Aufgabe6_20260629_Abstract();
-Aufgabe7_20260629_LKW();
+        // Aufgabe7_20260629_LKW();
+        Teil2_Aufgabe1_20260629_Produkt();
 
     }
+
+
+private static void Teil2_Aufgabe1_20260629_Produkt()
+{
+    var produkt1 = new Produkt("Laptop", 899.99m);
+
+    produkt1.Nachbestellen(10);
+    produkt1.Verkaufen(3);
+    produkt1.SetPreis(849.99m);
+
+    Console.WriteLine(produkt1.GetInfo());
+}
+
+
 
 
 private static void Aufgabe7_20260629_LKW()
@@ -1598,5 +1613,48 @@ public class LKW : Fahrzeug
     public override void Fahren()
     {
         Console.WriteLine($"LKW faehrt mit {Beladung} kg Beladung.");
+    }
+}
+
+public class Produkt
+{
+    private string name;
+    private decimal preis;
+    private int lagerbestand;
+
+    public Produkt(string name, decimal preis)
+    {
+        this.name = name;
+        SetPreis(preis);
+        lagerbestand = 0;
+    }
+
+    public void Verkaufen(int menge)
+    {
+        if (menge > 0 && menge <= lagerbestand)
+        {
+            lagerbestand -= menge;
+        }
+    }
+
+    public void Nachbestellen(int menge)
+    {
+        if (menge > 0)
+        {
+            lagerbestand += menge;
+        }
+    }
+
+    public void SetPreis(decimal neuerPreis)
+    {
+        if (neuerPreis >= 0)
+        {
+            preis = neuerPreis;
+        }
+    }
+
+    public string GetInfo()
+    {
+        return $"{name} | {preis} EUR | Lagerbestand: {lagerbestand}";
     }
 }
