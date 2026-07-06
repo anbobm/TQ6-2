@@ -12,7 +12,7 @@ public class Auto
         Console.WriteLine($"Auto der Marke {marke}, Modell: {modell}, Baujahr: {baujahr}");
     }
 
-    public string marke;
+    private string marke;
 
     public string Marke
     {
