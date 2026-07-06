@@ -62,7 +62,7 @@ internal partial class Program
         // Teil2_Aufgabe2_20260629_Rechteck();
         // Teil2_Aufgabe3_20260629_Benutzer();
         // Teil2_Aufgabe4_20260629_Temperatursensor();
-        Teil2_Aufgabe5_20260629_Mitarbeiter();
+        // Teil2_Aufgabe5_20260629_Mitarbeiter();
 
 
     }
