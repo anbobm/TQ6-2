@@ -20,7 +20,7 @@ private static void Teil1_Aufgabe4_20260701_Konstruktor()
         // Teil1_Aufgabe1_20260701_Klasse();
         // Teil1_Aufgabe2_20260701_Kapselung();
         // Teil1_Aufgabe3_20260701_Properties();
-        Teil1_Aufgabe4_20260701_Konstruktor();
+         Teil1_Aufgabe4_20260701_Konstruktor();
 
     }
 
