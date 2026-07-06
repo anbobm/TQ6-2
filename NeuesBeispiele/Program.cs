@@ -20,9 +20,24 @@ private static void Teil1_Aufgabe4_20260701_Konstruktor()
         // Teil1_Aufgabe1_20260701_Klasse();
         // Teil1_Aufgabe2_20260701_Kapselung();
         // Teil1_Aufgabe3_20260701_Properties();
-         Teil1_Aufgabe4_20260701_Konstruktor();
+        // Teil1_Aufgabe4_20260701_Konstruktor();
+        Teil1_Aufgabe5_20260701_SinglePageApp();
 
     }
+
+
+private static void Teil1_Aufgabe5_20260701_SinglePageApp()
+{
+    var app1 = new SinglePageApp("Portfolio", "JavaScript", 2024);
+    app1.IstResponsive = true;
+
+    var app2 = new SinglePageApp("Dashboard", "C#", 2023);
+    app2.IstResponsive = false;
+
+    app1.ZeigeInfo();
+    app2.ZeigeInfo();
+}
+
 
     private static void Teil1_Aufgabe1_20260701_Klasse()
     {
@@ -179,8 +194,33 @@ public class Webprojekt
         Erstellungsjahr = erstellungsjahr;
     }
 
-    public void ZeigeInfo()
+    public virtual void ZeigeInfo()
     {
         Console.WriteLine($"{Titel} | {Sprache} | {Framework} | {Erstellungsjahr}");
+    }
+}
+
+
+public class SinglePageApp : Webprojekt
+{
+    public bool IstResponsive { get; set; }
+
+    public SinglePageApp(string titel, string sprache, int erstellungsjahr)
+        : base(titel, sprache, erstellungsjahr)
+    {
+    }
+
+    public override void ZeigeInfo()
+    {
+        base.ZeigeInfo();
+
+        if (IstResponsive)
+        {
+            Console.WriteLine("Die Anwendung ist responsive.");
+        }
+        else
+        {
+            Console.WriteLine("Die Anwendung ist nicht responsive.");
+        }
     }
 }
