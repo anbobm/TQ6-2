@@ -21,9 +21,21 @@ private static void Teil1_Aufgabe4_20260701_Konstruktor()
         // Teil1_Aufgabe2_20260701_Kapselung();
         // Teil1_Aufgabe3_20260701_Properties();
         // Teil1_Aufgabe4_20260701_Konstruktor();
-        Teil1_Aufgabe5_20260701_SinglePageApp();
+        // Teil1_Aufgabe5_20260701_SinglePageApp();
+        Teil1_Aufgabe6_20260701_Abstract();
+
 
     }
+
+
+private static void Teil1_Aufgabe6_20260701_Abstract()
+{
+    var projekt1 = new Webprojekt("Shop", "C#", 2024);
+    var app1 = new SinglePageApp("Portfolio", "JavaScript", 2024);
+
+    projekt1.Veroeffentlichen();
+    app1.Veroeffentlichen();
+}
 
 
 private static void Teil1_Aufgabe5_20260701_SinglePageApp()
@@ -89,7 +101,15 @@ private static void Teil1_Aufgabe5_20260701_SinglePageApp()
 }
 
 
-public class Webprojekt
+public abstract class DigitalesProdukt
+{
+    public abstract void Veroeffentlichen();
+}
+
+
+
+
+public class Webprojekt : DigitalesProdukt
 {
 
 
@@ -198,7 +218,13 @@ public class Webprojekt
     {
         Console.WriteLine($"{Titel} | {Sprache} | {Framework} | {Erstellungsjahr}");
     }
+
+public override void Veroeffentlichen()
+{
+    Console.WriteLine($"{Titel} wurde veroeffentlicht.");
 }
+}
+
 
 
 public class SinglePageApp : Webprojekt
