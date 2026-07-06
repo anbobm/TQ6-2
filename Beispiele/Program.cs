@@ -58,9 +58,24 @@ internal partial class Program
         // Aufgabe5_20260629_Vererbung();
         // Aufgabe6_20260629_Abstract();
         // Aufgabe7_20260629_LKW();
-        Teil2_Aufgabe1_20260629_Produkt();
+        // Teil2_Aufgabe1_20260629_Produkt();
+        Teil2_Aufgabe2_20260629_Rechteck();
 
     }
+
+
+
+private static void Teil2_Aufgabe2_20260629_Rechteck()
+{
+    var rechteck1 = new Rechteck(5, 3);
+
+    rechteck1.SetBreite(8);
+    rechteck1.SetHoehe(4);
+
+    Console.WriteLine($"Flaeche: {rechteck1.Flaeche()}");
+    Console.WriteLine($"Umfang: {rechteck1.Umfang()}");
+}
+
 
 
 private static void Teil2_Aufgabe1_20260629_Produkt()
@@ -1656,5 +1671,44 @@ public class Produkt
     public string GetInfo()
     {
         return $"{name} | {preis} EUR | Lagerbestand: {lagerbestand}";
+    }
+}
+
+
+public class Rechteck
+{
+    private double breite;
+    private double hoehe;
+
+    public Rechteck(double breite, double hoehe)
+    {
+        SetBreite(breite);
+        SetHoehe(hoehe);
+    }
+
+    public void SetBreite(double wert)
+    {
+        if (wert > 0)
+        {
+            breite = wert;
+        }
+    }
+
+    public void SetHoehe(double wert)
+    {
+        if (wert > 0)
+        {
+            hoehe = wert;
+        }
+    }
+
+    public double Flaeche()
+    {
+        return breite * hoehe;
+    }
+
+    public double Umfang()
+    {
+        return 2 * (breite + hoehe);
     }
 }
