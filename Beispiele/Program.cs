@@ -56,10 +56,23 @@ internal partial class Program
         // Aufgabe3_20260629();
         // Aufgabe4_20260629();
         // Aufgabe5_20260629_Vererbung();
-        Aufgabe6_20260629_Abstract();
-
+        // Aufgabe6_20260629_Abstract();
+Aufgabe7_20260629_LKW();
 
     }
+
+
+private static void Aufgabe7_20260629_LKW()
+{
+    var lkw1 = new LKW(5000);
+
+    lkw1.Beladung = 3000;
+    lkw1.Fahren();
+
+    lkw1.Beladung = 6000;
+    Console.WriteLine($"Beladung: {lkw1.Beladung} kg");
+    Console.WriteLine($"Maximale Beladung: {lkw1.MaximaleBeladung} kg");
+}
 
 
 
@@ -1555,5 +1568,35 @@ public class Cabrio : Auto
         {
             Console.WriteLine("Das Verdeck ist geschlossen.");
         }
+    }
+}
+
+
+public class LKW : Fahrzeug
+{
+    private int beladung;
+
+    public int Beladung
+    {
+        get { return beladung; }
+        set
+        {
+            if (value >= 0 && value <= MaximaleBeladung)
+            {
+                beladung = value;
+            }
+        }
+    }
+
+    public int MaximaleBeladung { get; private set; }
+
+    public LKW(int maximaleBeladung)
+    {
+        MaximaleBeladung = maximaleBeladung;
+    }
+
+    public override void Fahren()
+    {
+        Console.WriteLine($"LKW faehrt mit {Beladung} kg Beladung.");
     }
 }
