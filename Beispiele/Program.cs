@@ -49,18 +49,25 @@ internal partial class Program
         // StatischeAttribute_Aufgabe2();
         // StatischeAttribute_Aufgabe3();
 
-        var auto1 = new Auto();
-        auto1.SetBaujahr(1981);
-        auto1.SetMarke("Opel");
-        auto1.SetModell("Manta");
+        var auto1 = new Auto
+        {
+            Baujahr = 1981,
+            Marke = "Opel",
+            Modell = "Astra"
+        };
 
         var auto2 = new Auto();
-        auto2.SetBaujahr(1985);
-        auto2.SetMarke("Trabant");
-        auto2.SetModell("P601");
+        auto2.Baujahr = 1985;
+        auto2.Marke = "Trabant";
+        auto2.Modell = "P 601";
+
+        var auto3 = new Auto();
+        auto3.Baujahr = 1985;
+        auto3.Marke = "BMW";
 
         auto1.DisplayInfo();
         auto2.DisplayInfo();
+        auto3.DisplayInfo();
     }
 
     private static void StatischeAttribute_Aufgabe3()
