@@ -52,10 +52,13 @@ internal partial class Program
         var auto1 = new Auto("Opel", "Astra", 1981);
         var auto2 = new Auto("Trabant", "P 601", 1985);
         var auto3 = new Auto("BMW", "3er", 1990);
+        Auto auto4 = new Cabrio("Opel", "Adam", 2010);
 
         auto1.DisplayInfo();
         auto2.DisplayInfo();
         auto3.DisplayInfo();
+
+        auto4.DisplayInfo();
     }
 
     private static void StatischeAttribute_Aufgabe3()

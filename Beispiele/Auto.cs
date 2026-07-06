@@ -7,7 +7,7 @@ public class Auto
         this.Baujahr = baujahr;
     }
 
-    public void DisplayInfo()
+    public virtual void DisplayInfo()
     {
         Console.WriteLine($"Auto der Marke {marke}, Modell: {modell}, Baujahr: {baujahr}");
     }
@@ -107,4 +107,36 @@ public class Auto
         }
     }
 
+}
+
+public class Cabrio : Auto
+{
+    public bool IsVerdeckOffen { get; set; }
+
+    public Cabrio(string marke, string modell, int baujahr)
+        : base(marke, modell, baujahr)
+    {
+        
+    }
+
+    public override void DisplayInfo()
+    {
+        Console.WriteLine($"Cabrio von der Marke {Marke}, Modell {Modell}, Baujahr {Baujahr}");
+
+        if (IsVerdeckOffen)
+        {
+            Console.WriteLine($"Verdeck ist offen");
+        }
+        else
+        {
+            Console.WriteLine($"Verdeck ist zu");
+        }
+        
+        // // Alternative 1
+        // var verdeck = IsVerdeckOffen ? "Verdeck ist offen" : "Verdeck ist zu";
+        // Console.WriteLine(verdeck);
+        
+        // // Alternative 2
+        // Console.WriteLine($"Verdeck ist {(IsVerdeckOffen ? "offen" : "zu")}");
+    }
 }
