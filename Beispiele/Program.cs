@@ -54,10 +54,22 @@ internal partial class Program
         // Aufgabe1_20260629();
         // Aufgabe2_20260629();
         // Aufgabe3_20260629();
-        Aufgabe4_20260629();
+        // Aufgabe4_20260629();
+        Aufgabe5_20260629_Vererbung();
+
     }
 
+private static void Aufgabe5_20260629_Vererbung()
+{
+    var cabrio1 = new Cabrio("BMW", "3er", 2022);
+    cabrio1.IsVerdeckOffen = true;
 
+    var cabrio2 = new Cabrio("Opel", "Astra", 2019);
+    cabrio2.IsVerdeckOffen = false;
+
+    cabrio1.DisplayInfo();
+    cabrio2.DisplayInfo();
+}
 
     
 private static void Aufgabe4_20260629()
@@ -1490,8 +1502,32 @@ public class Auto
         Baujahr = baujahr;
     }
 
-    public void DisplayInfo()
+    public virtual void DisplayInfo()
+{
+    Console.WriteLine($"{Marke} | {Modell} | {Baujahr}");
+}
+}
+
+public class Cabrio : Auto
+{
+    public bool IsVerdeckOffen { get; set; }
+
+    public Cabrio(string marke, string modell, int baujahr)
+        : base(marke, modell, baujahr)
     {
-        Console.WriteLine($"{marke} | {modell} | {baujahr}");
+    }
+
+    public override void DisplayInfo()
+    {
+        base.DisplayInfo();
+
+        if (IsVerdeckOffen)
+        {
+            Console.WriteLine("Das Verdeck ist offen.");
+        }
+        else
+        {
+            Console.WriteLine("Das Verdeck ist geschlossen.");
+        }
     }
 }
