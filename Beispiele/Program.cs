@@ -47,7 +47,20 @@ internal partial class Program
         // OOPAufgabe2_2();
         // StatischeAttribute();
         // StatischeAttribute_Aufgabe2();
-        StatischeAttribute_Aufgabe3();
+        // StatischeAttribute_Aufgabe3();
+
+        var auto1 = new Auto();
+        auto1.SetBaujahr(1981);
+        auto1.SetMarke("Opel");
+        auto1.SetModell("Manta");
+
+        var auto2 = new Auto();
+        auto2.SetBaujahr(1985);
+        auto2.SetMarke("Trabant");
+        auto2.SetModell("P601");
+
+        auto1.DisplayInfo();
+        auto2.DisplayInfo();
     }
 
     private static void StatischeAttribute_Aufgabe3()
