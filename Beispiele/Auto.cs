@@ -1,4 +1,45 @@
-public class Auto
+using System.Diagnostics.Contracts;
+
+public abstract class Fahrzeug
+{
+    public abstract void Fahren();
+}
+
+public class LKW : Fahrzeug
+{
+    public override void Fahren()
+    {
+        Console.WriteLine("Der LKW fährt");
+    }
+
+    public int MaximaleBeladung { get; private set;}
+
+    public LKW(int maximaleBeladung)
+    {
+        MaximaleBeladung = maximaleBeladung;
+    }
+
+    private int beladung;
+
+    public int Beladung
+    {
+        get
+        {
+            return beladung;
+        }
+        set
+        {
+            if (value < 0 || value > MaximaleBeladung)
+            {
+                throw new ArgumentException("Beladung ist nicht im gültigen Bereich");
+            }
+
+            beladung = value;
+        }
+    }
+}
+
+public class Auto : Fahrzeug
 {
     public Auto(string marke, string modell, int baujahr)
     {
@@ -10,6 +51,11 @@ public class Auto
     public virtual void DisplayInfo()
     {
         Console.WriteLine($"Auto der Marke {marke}, Modell: {modell}, Baujahr: {baujahr}");
+    }
+
+    public override void Fahren()
+    {
+        Console.WriteLine("Das Auto fährt.");
     }
 
     private string marke;
