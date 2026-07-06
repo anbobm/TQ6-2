@@ -61,10 +61,25 @@ internal partial class Program
         // Teil2_Aufgabe1_20260629_Produkt();
         // Teil2_Aufgabe2_20260629_Rechteck();
         // Teil2_Aufgabe3_20260629_Benutzer();
-        Teil2_Aufgabe4_20260629_Temperatursensor();
+        // Teil2_Aufgabe4_20260629_Temperatursensor();
+        Teil2_Aufgabe5_20260629_Mitarbeiter();
+
 
     }
 
+
+private static void Teil2_Aufgabe5_20260629_Mitarbeiter()
+{
+    var mitarbeiter1 = new Mitarbeiter("Anna", 3000);
+    mitarbeiter1.GehaltErhoehen(10);
+
+    var manager1 = new Manager("Max", 5000, 1000);
+    manager1.GehaltErhoehen(5);
+    manager1.SetBonus(1500);
+
+    Console.WriteLine($"Mitarbeiter Gehalt: {mitarbeiter1.GetGehalt()}");
+    Console.WriteLine($"Manager Gehalt: {manager1.GetGehalt()}");
+}
 
 
 private static void Teil2_Aufgabe4_20260629_Temperatursensor()
@@ -1824,4 +1839,56 @@ public class Temperatursensor
     {
         SetCelsius(celsius - wert);
     }
+
 }
+
+
+public class Mitarbeiter
+{
+    private string name;
+    private decimal gehalt;
+
+    public Mitarbeiter(string name, decimal gehalt)
+    {
+        this.name = name;
+        this.gehalt = gehalt;
+    }
+
+    public virtual decimal GetGehalt()
+    {
+        return gehalt;
+    }
+
+    public void GehaltErhoehen(decimal prozent)
+    {
+        if (prozent > 0)
+        {
+            gehalt += gehalt * prozent / 100;
+        }
+    }
+}
+
+public class Manager : Mitarbeiter
+{
+    private decimal bonus;
+
+    public Manager(string name, decimal gehalt, decimal bonus)
+        : base(name, gehalt)
+    {
+        SetBonus(bonus);
+    }
+
+    public override decimal GetGehalt()
+    {
+        return base.GetGehalt() + bonus;
+    }
+
+    public void SetBonus(decimal bonus)
+    {
+        if (bonus >= 0)
+        {
+            this.bonus = bonus;
+        }
+    }
+}
+
