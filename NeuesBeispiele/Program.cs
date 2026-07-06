@@ -22,10 +22,25 @@ private static void Teil1_Aufgabe4_20260701_Konstruktor()
         // Teil1_Aufgabe3_20260701_Properties();
         // Teil1_Aufgabe4_20260701_Konstruktor();
         // Teil1_Aufgabe5_20260701_SinglePageApp();
-        Teil1_Aufgabe6_20260701_Abstract();
-
+        // Teil1_Aufgabe6_20260701_Abstract();
+        Teil1_Aufgabe7_20260701_Api();
 
     }
+
+
+private static void Teil1_Aufgabe7_20260701_Api()
+{
+    var api1 = new Api(1000);
+
+    api1.AktuelleAnfragenProMinute = 750;
+    api1.Veroeffentlichen();
+
+    api1.AktuelleAnfragenProMinute = 1200;
+
+    Console.WriteLine($"Aktuelle Anfragen pro Minute: {api1.AktuelleAnfragenProMinute}");
+    Console.WriteLine($"Maximale Anfragen pro Minute: {api1.MaximaleAnfragenProMinute}");
+}
+
 
 
 private static void Teil1_Aufgabe6_20260701_Abstract()
@@ -248,5 +263,36 @@ public class SinglePageApp : Webprojekt
         {
             Console.WriteLine("Die Anwendung ist nicht responsive.");
         }
+    }
+}
+
+
+
+public class Api : DigitalesProdukt
+{
+    private int aktuelleAnfragenProMinute;
+
+    public int AktuelleAnfragenProMinute
+    {
+        get { return aktuelleAnfragenProMinute; }
+        set
+        {
+            if (value >= 0 && value <= MaximaleAnfragenProMinute)
+            {
+                aktuelleAnfragenProMinute = value;
+            }
+        }
+    }
+
+    public int MaximaleAnfragenProMinute { get; private set; }
+
+    public Api(int maximaleAnfragenProMinute)
+    {
+        MaximaleAnfragenProMinute = maximaleAnfragenProMinute;
+    }
+
+    public override void Veroeffentlichen()
+    {
+        Console.WriteLine("Api wurde veroeffentlicht.");
     }
 }
