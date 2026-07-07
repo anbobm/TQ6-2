@@ -31,8 +31,25 @@ private static void Teil1_Aufgabe4_20260701_Konstruktor()
         // Teil1_Aufgabe10_20260701_Static();
         // Teil2_Aufgabe1_20260701_Benutzerkonto();
         //Teil2_Aufgabe2_20260701_Warenkorb();
-        Teil2_Aufgabe3_20260701_HttpAnfrage();
+        //Teil2_Aufgabe3_20260701_HttpAnfrage();
+        Teil2_Aufgabe4_20260701_Cookie();
+
 }
+
+
+private static void Teil2_Aufgabe4_20260701_Cookie()
+{
+    var cookie1 = new Cookie("session", "abc123", 7);
+
+    Console.WriteLine($"Abgelaufen nach 3 Tagen: {cookie1.IstAbgelaufen(3)}");
+    Console.WriteLine($"Abgelaufen nach 8 Tagen: {cookie1.IstAbgelaufen(8)}");
+
+    cookie1.Verlaengern(5);
+    cookie1.SetWert("xyz789");
+
+    Console.WriteLine($"Abgelaufen nach 8 Tagen nach Verlaengerung: {cookie1.IstAbgelaufen(8)}");
+}
+
 
 
 private static void Teil2_Aufgabe3_20260701_HttpAnfrage()
@@ -603,3 +620,38 @@ public class HttpAnfrage
     }
 }
 
+
+public class Cookie
+{
+    private string name;
+    private string wert;
+    private int gueltigkeitsdauerTage;
+
+    public Cookie(string name, string wert, int gueltigkeitsdauerTage)
+    {
+        this.name = name;
+        this.wert = wert;
+        this.gueltigkeitsdauerTage = gueltigkeitsdauerTage;
+    }
+
+    public bool IstAbgelaufen(int vergangeneTage)
+    {
+        return vergangeneTage > gueltigkeitsdauerTage;
+    }
+
+    public void Verlaengern(int tage)
+    {
+        if (tage <= 0)
+        {
+            Console.WriteLine("Fehler: Nur positive Werte zulaessig.");
+            return;
+        }
+
+        gueltigkeitsdauerTage += tage;
+    }
+
+    public void SetWert(string neuerWert)
+    {
+        wert = neuerWert;
+    }
+}
