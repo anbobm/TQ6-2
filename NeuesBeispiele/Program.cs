@@ -39,11 +39,25 @@ private static void Teil1_Aufgabe4_20260701_Konstruktor()
         // Teil2_Aufgabe9_20260701_Passwortvalidator(); 
         // Teil2_Aufgabe10_20260701_Seitenaufrufzaehler();
         // Teil2_Aufgabe11_20260701_Rabattcode();
-        Teil2_Aufgabe12_20260701_UrlKuerzer();
+        // Teil2_Aufgabe12_20260701_UrlKuerzer();
+        Teil2_Aufgabe13_20260701_Kontaktformular(); 
+        
 
 
 
+}
 
+
+private static void Teil2_Aufgabe13_20260701_Kontaktformular()
+{
+    var formular1 = new Kontaktformular();
+
+    formular1.SetName("Nataliya");
+    formular1.SetEmail("nataliya@example.com");
+    formular1.SetNachricht("Hallo, ich habe eine Frage zum Kurs.");
+
+    Console.WriteLine($"Formular gueltig: {formular1.IstGueltig()}");
+    Console.WriteLine(formular1.Zusammenfassung());
 }
 
 
@@ -1010,5 +1024,42 @@ public class UrlKuerzer
     public string GetStatistik()
     {
         return $"{originalUrl} wurde {klicks} mal aufgerufen.";
+    }
+}
+
+
+
+public class Kontaktformular
+{
+    private string name = "";
+    private string email = "";
+    private string nachricht = "";
+
+    public void SetName(string name)
+    {
+        this.name = name;
+    }
+
+    public void SetEmail(string email)
+    {
+        if (email.Contains("@"))
+        {
+            this.email = email;
+        }
+    }
+
+    public void SetNachricht(string nachricht)
+    {
+        this.nachricht = nachricht;
+    }
+
+    public bool IstGueltig()
+    {
+        return name != "" && email != "" && nachricht != "";
+    }
+
+    public string Zusammenfassung()
+    {
+        return $"{name} ({email}): {nachricht}";
     }
 }
