@@ -24,11 +24,23 @@ private static void Teil1_Aufgabe4_20260701_Konstruktor()
         // Teil1_Aufgabe5_20260701_SinglePageApp();
         // Teil1_Aufgabe6_20260701_Abstract();
         // Teil1_Aufgabe7_20260701_Api();
-        // Teil1_Aufgabe7_20260701_Api();
-        Teil1_Aufgabe8_20260701_Onlineshop();
-
+        // Teil1_Aufgabe8_20260701_Onlineshop();
+        Teil1_Aufgabe9_20260701_ToString();
     }
 
+
+
+
+private static void Teil1_Aufgabe9_20260701_ToString()
+{
+    var projekt1 = new Webprojekt("Portfolio", "JavaScript", 2024);
+    var projekt2 = new Webprojekt("Shop", "C#", 2023);
+
+    projekt1.ZeigeInfo();
+    projekt2.ZeigeInfo();
+
+    Console.WriteLine(projekt1.ToString());
+}
 
 
 private static void Teil1_Aufgabe8_20260701_Onlineshop()
@@ -246,11 +258,15 @@ public class Webprojekt : DigitalesProdukt
         Erstellungsjahr = erstellungsjahr;
     }
 
-    public virtual void ZeigeInfo()
-    {
-        Console.WriteLine($"{Titel} | {Sprache} | {Framework} | {Erstellungsjahr}");
-    }
+   public override string ToString()
+{
+    return $"{Titel} | {Sprache} | {Framework} | {Erstellungsjahr}";
+}
 
+public virtual void ZeigeInfo()
+{
+    Console.WriteLine(ToString());
+}
 public override void Veroeffentlichen()
 {
     Console.WriteLine($"{Titel} wurde veroeffentlicht.");
