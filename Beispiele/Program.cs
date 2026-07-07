@@ -46,7 +46,28 @@
         // AufgabenTeil1_1();
         // PrivaterKonstruktorBeispiel();
         // AufgabenTeil2_1();
-        AufgabenTeil2_2();
+        // AufgabenTeil2_2();
+        AufgabenTeil2_3();
+    }
+
+    private static void AufgabenTeil2_3()
+    {
+        var benutzer = new Benutzer("admin", "p4ssw0rd!");
+
+        benutzer.Login("p4ssw0rd!");
+        Console.WriteLine($"Eingeloggt: {benutzer.IstEingeloggt}");
+
+        benutzer.Logout();
+        Console.WriteLine($"Eingeloggt: {benutzer.IstEingeloggt}");
+
+        if (benutzer.PasswortÄndern("p4ssw0rd!", "kurz"))
+        {
+            Console.WriteLine("Password erfolgreich geändert");
+        }
+        else
+        {
+            Console.WriteLine("Password konnte nicht geändert werden");
+        }
     }
 
     private static void AufgabenTeil2_2()
