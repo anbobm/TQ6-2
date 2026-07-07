@@ -38,8 +38,26 @@ private static void Teil1_Aufgabe4_20260701_Konstruktor()
         // Teil2_Aufgabe7_20260701_Newsletterabonnent();
         // Teil2_Aufgabe9_20260701_Passwortvalidator(); 
         // Teil2_Aufgabe10_20260701_Seitenaufrufzaehler();
-        Teil2_Aufgabe11_20260701_Rabattcode();
+        // Teil2_Aufgabe11_20260701_Rabattcode();
+        Teil2_Aufgabe12_20260701_UrlKuerzer();
 
+
+
+
+}
+
+
+
+private static void Teil2_Aufgabe12_20260701_UrlKuerzer()
+{
+    var url1 = new UrlKuerzer("https://example.com/produkte/laptop", "abc123");
+
+    Console.WriteLine(url1.GetKurzUrl());
+
+    url1.Klicken();
+    url1.Klicken();
+
+    Console.WriteLine(url1.GetStatistik());
 }
 
 
@@ -966,3 +984,31 @@ public class Rabattcode
     }
 }
 
+public class UrlKuerzer
+{
+    private string originalUrl;
+    private string kurzCode;
+    private int klicks;
+
+    public UrlKuerzer(string originalUrl, string kurzCode)
+    {
+        this.originalUrl = originalUrl;
+        this.kurzCode = kurzCode;
+        klicks = 0;
+    }
+
+    public void Klicken()
+    {
+        klicks++;
+    }
+
+    public string GetKurzUrl()
+    {
+        return $"https://kurz.ly/{kurzCode}";
+    }
+
+    public string GetStatistik()
+    {
+        return $"{originalUrl} wurde {klicks} mal aufgerufen.";
+    }
+}
