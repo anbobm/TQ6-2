@@ -63,9 +63,29 @@ internal partial class Program
         // Teil2_Aufgabe3_20260629_Benutzer();
         // Teil2_Aufgabe4_20260629_Temperatursensor();
         // Teil2_Aufgabe5_20260629_Mitarbeiter();
+        Aufgabe1_20260707_Person();
+
 
 
     }
+
+
+private static void Aufgabe1_20260707_Person()
+{
+    Console.Write("Name eingeben: ");
+    string? name = Console.ReadLine();
+
+    Person? person = Person.Create(name);
+
+    if (person != null)
+    {
+        Console.WriteLine($"Person wurde erstellt: {person.Name}");
+    }
+    else
+    {
+        Console.WriteLine("Ungueltiger Name. Person wurde nicht erstellt.");
+    }
+}
 
 
 private static void Teil2_Aufgabe5_20260629_Mitarbeiter()
@@ -1889,6 +1909,28 @@ public class Manager : Mitarbeiter
         {
             this.bonus = bonus;
         }
+    }
+}
+
+
+
+public class Person
+{
+    public string Name { get; }
+
+    private Person(string name)
+    {
+        Name = name;
+    }
+
+    public static Person? Create(string? name)
+    {
+        if (name != null && name != "")
+        {
+            return new Person(name);
+        }
+
+        return null;
     }
 }
 
