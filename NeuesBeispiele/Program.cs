@@ -30,9 +30,27 @@ private static void Teil1_Aufgabe4_20260701_Konstruktor()
         // Teil1_Aufgabe9_20260701_ToString();
         // Teil1_Aufgabe10_20260701_Static();
         // Teil2_Aufgabe1_20260701_Benutzerkonto();
-        Teil2_Aufgabe2_20260701_Warenkorb();
-        
+        //Teil2_Aufgabe2_20260701_Warenkorb();
+        Teil2_Aufgabe3_20260701_HttpAnfrage();
 }
+
+
+private static void Teil2_Aufgabe3_20260701_HttpAnfrage()
+{
+    var anfrage1 = new HttpAnfrage("GET", "https://example.com/api/products");
+
+    anfrage1.SendenSimulieren(200);
+
+    Console.WriteLine(anfrage1.GetInfo());
+    Console.WriteLine($"Erfolgreich: {anfrage1.IstErfolgreich()}");
+
+    anfrage1.SetMethode("POST");
+    anfrage1.SendenSimulieren(404);
+
+    Console.WriteLine(anfrage1.GetInfo());
+    Console.WriteLine($"Erfolgreich: {anfrage1.IstErfolgreich()}");
+}
+
 
 
 private static void Teil2_Aufgabe1_20260701_Benutzerkonto()
@@ -541,3 +559,47 @@ public class Warenkorb
         return anzahl;
     }
 }
+
+
+public class HttpAnfrage
+{
+    private static readonly string[] ErlaubteMethoden = { "GET", "POST", "PUT", "DELETE" };
+
+    private string methode = "";
+    private string url;
+    private int statuscode = 0;
+
+    public HttpAnfrage(string methode, string url)
+    {
+        SetMethode(methode);
+        this.url = url;
+    }
+
+    public void SetMethode(string methode)
+    {
+        if (Array.IndexOf(ErlaubteMethoden, methode) >= 0)
+        {
+            this.methode = methode;
+        }
+        else
+        {
+            Console.WriteLine("Fehler: Ungueltige HTTP-Methode.");
+        }
+    }
+
+    public void SendenSimulieren(int statuscode)
+    {
+        this.statuscode = statuscode;
+    }
+
+    public bool IstErfolgreich()
+    {
+        return statuscode >= 200 && statuscode <= 299;
+    }
+
+    public string GetInfo()
+    {
+        return $"{methode} {url} -> Status {statuscode}";
+    }
+}
+
