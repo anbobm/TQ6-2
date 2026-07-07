@@ -43,7 +43,31 @@
         // StatischeAttribute();
         // StatischeAttribute_Aufgabe2();
         // StatischeAttribute_Aufgabe3();
-        PrivaterKonstruktorBeispiel();
+        // AufgabenTeil1_1();
+        // PrivaterKonstruktorBeispiel();
+        AufgabenTeil2_1();
+    }
+
+    private static void AufgabenTeil2_1()
+    {
+        var produkt = new Produkt("Goldener Apfel", 100m);
+
+        Console.WriteLine(produkt.GetInfo());
+
+        produkt.Nachbestellen(50);
+
+        Console.WriteLine(produkt.GetInfo());
+
+        produkt.Nachbestellen(50);
+
+        Console.WriteLine(produkt.GetInfo());
+
+        produkt.Verkaufen(100);
+
+        Console.WriteLine(produkt.GetInfo());
+
+        // Müsste Exception werfen
+        produkt.Nachbestellen(1);
     }
 
     private static void PrivaterKonstruktorBeispiel()

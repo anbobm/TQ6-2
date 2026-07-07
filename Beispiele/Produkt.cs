@@ -1,5 +1,3 @@
-using System.Diagnostics.Contracts;
-
 public class Produkt
 {
     public string Name { get; }
