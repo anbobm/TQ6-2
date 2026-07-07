@@ -33,9 +33,27 @@ private static void Teil1_Aufgabe4_20260701_Konstruktor()
         //Teil2_Aufgabe2_20260701_Warenkorb();
         //Teil2_Aufgabe3_20260701_HttpAnfrage();
         // Teil2_Aufgabe4_20260701_Cookie();
-        Teil2_Aufgabe5_20260701_Session();
+        // Teil2_Aufgabe5_20260701_Session();
+        Teil2_Aufgabe6_20260701_Blogbeitrag();
 
 }
+
+private static void Teil2_Aufgabe6_20260701_Blogbeitrag()
+{
+    var beitrag1 = new Blogbeitrag("C# lernen", "Heute lernen wir Klassen und Objekte.");
+
+    beitrag1.KommentarHinzufuegen();
+
+    Console.WriteLine(beitrag1.GetInfo());
+
+    beitrag1.Veroeffentlichen();
+    beitrag1.KommentarHinzufuegen();
+    beitrag1.KommentarHinzufuegen();
+
+    Console.WriteLine(beitrag1.GetInfo());
+}
+
+
 
 
 private static void Teil2_Aufgabe5_20260701_Session()
@@ -697,4 +715,44 @@ public class Session
         return (aktuelleMinute - letzteAktivitaetMinute) > timeoutMinuten;
     }
 }
+
+
+
+public class Blogbeitrag
+{
+    private string titel;
+    private string inhalt;
+    private bool veroeffentlicht = false;
+    private int kommentarAnzahl = 0;
+
+    public Blogbeitrag(string titel, string inhalt)
+    {
+        this.titel = titel;
+        this.inhalt = inhalt;
+    }
+
+    public void Veroeffentlichen()
+    {
+        veroeffentlicht = true;
+    }
+
+    public void KommentarHinzufuegen()
+    {
+        if (veroeffentlicht)
+        {
+            kommentarAnzahl++;
+        }
+        else
+        {
+            Console.WriteLine("Fehler: Beitrag ist noch nicht veroeffentlicht.");
+        }
+    }
+
+    public string GetInfo()
+    {
+        return $"{titel} (veroeffentlicht: {veroeffentlicht}, Kommentare: {kommentarAnzahl})";
+    }
+}
+
+
 
