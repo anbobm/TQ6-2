@@ -19,7 +19,7 @@ Es gibt aber noch eine andere Option: den Konstruktor `private` machen. Jetzt ka
 
 # Aufgabe 2
 
-Schreibe eine Methode `public static bool IsValid(string value)`, die eine (13-stellige) [ISBN](https://en.wikipedia.org/wiki/ISBN) bekommt und zurückgibt, ob sie ([gemäß der Prüfsummenberechnung](https://en.wikipedia.org/wiki/ISBN#ISBN-13_check_digit_calculation)) gültig ist.
+Schreibe eine Methode `public static bool IsValid(string value)`, die eine (13-stellige) [ISBN](https://en.wikipedia.org/wiki/ISBN) bekommt und zurückgibt, ob sie ([gemäß der Prüfsummenberechnung](https://en.wikipedia.org/wiki/ISBN#ISBN-13_check_digit_calculation)) gültig ist. (`a + b + c = 0 (mod 10)` bedeutet einfach nur dass `(a + b + c) / 10` den Rest `0` hat. Dafür kannst du einfach wie gehabt den Modulo-Operator `%` von C# benutzen: `x % 10` liefert den Rest wenn man `x` durch `10` dividiert.)
 
 **Hinweis:** Du kannst zunächst davon ausgehen, dass der String normalisiert ist, also "9780306406157" und nicht "9780-3064-06157" oder ähnliches.
 
