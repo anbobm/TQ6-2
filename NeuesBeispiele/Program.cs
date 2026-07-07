@@ -27,8 +27,33 @@ private static void Teil1_Aufgabe4_20260701_Konstruktor()
         // Teil1_Aufgabe8_20260701_Onlineshop();
         // Teil1_Aufgabe9_20260701_ToString();
         // Teil1_Aufgabe9_20260701_ToString();
-        Teil1_Aufgabe10_20260701_Static();
-    }
+        // Teil1_Aufgabe10_20260701_Static();
+        Teil2_Aufgabe1_20260701_Benutzerkonto();
+        
+}
+
+
+private static void Teil2_Aufgabe1_20260701_Benutzerkonto()
+{
+    var konto1 = new Benutzerkonto("nataliya", "geheim123");
+
+    konto1.EmailFestlegen("nataliya@example.com");
+
+    Console.WriteLine($"Login falsch: {konto1.Login("falsch")}");
+    Console.WriteLine($"Eingeloggt: {konto1.Eingeloggt()}");
+
+    Console.WriteLine($"Login richtig: {konto1.Login("geheim123")}");
+    Console.WriteLine($"Eingeloggt: {konto1.Eingeloggt()}");
+
+    konto1.PasswortAendern("geheim123", "neuesPasswort");
+
+    konto1.Logout();
+    Console.WriteLine($"Eingeloggt nach Logout: {konto1.Eingeloggt()}");
+
+    Console.WriteLine($"Login neues Passwort: {konto1.Login("neuesPasswort")}");
+}
+
+
 
 
 
@@ -380,5 +405,70 @@ public class Onlineshop : DigitalesProdukt
     public override void Veroeffentlichen()
     {
         Console.WriteLine("Onlineshop wurde veroeffentlicht.");
+    }
+}
+
+
+
+public class Benutzerkonto
+{
+    private string benutzername;
+    private string email = "";
+    private string passwort;
+    private bool eingeloggt = false;
+
+    public Benutzerkonto(string benutzername, string passwort)
+    {
+        this.benutzername = benutzername;
+        this.passwort = passwort;
+    }
+
+    public void EmailFestlegen(string email)
+    {
+        if (email.Contains("@") && email.Contains("."))
+        {
+            this.email = email;
+        }
+        else
+        {
+            Console.WriteLine("Fehler: Ungueltige Email-Adresse.");
+        }
+    }
+
+    public bool Login(string passwort)
+    {
+        if (this.passwort == passwort)
+        {
+            eingeloggt = true;
+        }
+
+        return eingeloggt;
+    }
+
+    public void Logout()
+    {
+        eingeloggt = false;
+    }
+
+    public void PasswortAendern(string altesPw, string neuesPw)
+    {
+        if (altesPw != passwort)
+        {
+            Console.WriteLine("Fehler: Altes Passwort stimmt nicht ueberein.");
+            return;
+        }
+
+        if (neuesPw.Length < 8)
+        {
+            Console.WriteLine("Fehler: Neues Passwort muss mindestens 8 Zeichen lang sein.");
+            return;
+        }
+
+        passwort = neuesPw;
+    }
+
+    public bool Eingeloggt()
+    {
+        return eingeloggt;
     }
 }
