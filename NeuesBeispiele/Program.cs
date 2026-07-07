@@ -41,11 +41,28 @@ private static void Teil1_Aufgabe4_20260701_Konstruktor()
         // Teil2_Aufgabe11_20260701_Rabattcode();
         // Teil2_Aufgabe12_20260701_UrlKuerzer();
         // Teil2_Aufgabe13_20260701_Kontaktformular(); 
-        Teil2_Aufgabe14_20260701_Serverauslastung();
-
+        // Teil2_Aufgabe14_20260701_Serverauslastung();
+        Teil2_Aufgabe15_20260701_MitarbeiterTeamleiter();
 
 
 }
+
+
+private static void Teil2_Aufgabe15_20260701_MitarbeiterTeamleiter()
+{
+    var mitarbeiter1 = new WebMitarbeiter("Anna", "Frontend");
+    var teamleiter1 = new Teamleiter("Max", "Backend", 5);
+
+    mitarbeiter1.Arbeiten();
+    teamleiter1.Arbeiten();
+
+    Console.WriteLine(mitarbeiter1.GetInfo());
+    Console.WriteLine(teamleiter1.GetInfo());
+}
+
+
+
+
 
 
 
@@ -1120,3 +1137,47 @@ public class Serverauslastung
     }
 }
 
+
+
+public class WebMitarbeiter
+{
+    private string name;
+    private string bereich;
+
+    public WebMitarbeiter(string name, string bereich)
+    {
+        this.name = name;
+        this.bereich = bereich;
+    }
+
+    public virtual void Arbeiten()
+    {
+        Console.WriteLine($"{name} arbeitet im Bereich {bereich}.");
+    }
+
+    public virtual string GetInfo()
+    {
+        return $"{name} | {bereich}";
+    }
+}
+
+public class Teamleiter : WebMitarbeiter
+{
+    private int teamGroesse;
+
+    public Teamleiter(string name, string bereich, int teamGroesse)
+        : base(name, bereich)
+    {
+        this.teamGroesse = teamGroesse;
+    }
+
+    public override void Arbeiten()
+    {
+        Console.WriteLine("Teamleiter koordiniert das Team.");
+    }
+
+    public override string GetInfo()
+    {
+        return base.GetInfo() + $" | Teamgroesse: {teamGroesse}";
+    }
+}
