@@ -45,7 +45,19 @@
         // StatischeAttribute_Aufgabe3();
         // AufgabenTeil1_1();
         // PrivaterKonstruktorBeispiel();
-        AufgabenTeil2_1();
+        // AufgabenTeil2_1();
+        AufgabenTeil2_2();
+    }
+
+    private static void AufgabenTeil2_2()
+    {
+        var rechteck = new Rechteck(20, 30);
+
+        Console.WriteLine($"Breite: {rechteck.Breite}, Hoehe: {rechteck.Hoehe}");
+        Console.WriteLine($"Fläche: {rechteck.Flaeche}, Umfang: {rechteck.Umfang}");
+
+        // Exception
+        rechteck.Hoehe = -30;
     }
 
     private static void AufgabenTeil2_1()
