@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 class Program
 {
@@ -28,7 +29,8 @@ private static void Teil1_Aufgabe4_20260701_Konstruktor()
         // Teil1_Aufgabe9_20260701_ToString();
         // Teil1_Aufgabe9_20260701_ToString();
         // Teil1_Aufgabe10_20260701_Static();
-        Teil2_Aufgabe1_20260701_Benutzerkonto();
+        // Teil2_Aufgabe1_20260701_Benutzerkonto();
+        Teil2_Aufgabe2_20260701_Warenkorb();
         
 }
 
@@ -54,7 +56,22 @@ private static void Teil2_Aufgabe1_20260701_Benutzerkonto()
 }
 
 
+private static void Teil2_Aufgabe2_20260701_Warenkorb()
+{
+    var warenkorb1 = new Warenkorb();
 
+    warenkorb1.ArtikelHinzufuegen("Laptop", 899.99m, 1);
+    warenkorb1.ArtikelHinzufuegen("Maus", 19.99m, 2);
+    warenkorb1.ArtikelHinzufuegen("Tastatur", 49.99m, 1);
+
+    Console.WriteLine($"Anzahl Artikel: {warenkorb1.AnzahlArtikel()}");
+    Console.WriteLine($"Gesamtsumme: {warenkorb1.Gesamtsumme()} EUR");
+
+    warenkorb1.ArtikelEntfernen("Maus");
+
+    Console.WriteLine($"Anzahl Artikel nach Entfernen: {warenkorb1.AnzahlArtikel()}");
+    Console.WriteLine($"Gesamtsumme nach Entfernen: {warenkorb1.Gesamtsumme()} EUR");
+}
 
 
 private static void Teil1_Aufgabe10_20260701_Static()
@@ -470,5 +487,57 @@ public class Benutzerkonto
     public bool Eingeloggt()
     {
         return eingeloggt;
+    }
+}
+
+public class Warenkorb
+{
+    private class Artikel
+    {
+        public string Name = "";
+        public decimal Preis;
+        public int Menge;
+    }
+
+    private List<Artikel> artikel = new List<Artikel>();
+
+    public void ArtikelHinzufuegen(string name, decimal preis, int menge)
+    {
+        if (preis <= 0 || menge <= 0)
+        {
+            Console.WriteLine("Fehler: Preis und Menge muessen positiv sein.");
+            return;
+        }
+
+        artikel.Add(new Artikel { Name = name, Preis = preis, Menge = menge });
+    }
+
+    public void ArtikelEntfernen(string name)
+    {
+        artikel.RemoveAll(a => a.Name == name);
+    }
+
+    public decimal Gesamtsumme()
+    {
+        decimal summe = 0;
+
+        foreach (var a in artikel)
+        {
+            summe += a.Preis * a.Menge;
+        }
+
+        return summe;
+    }
+
+    public int AnzahlArtikel()
+    {
+        int anzahl = 0;
+
+        foreach (var a in artikel)
+        {
+            anzahl += a.Menge;
+        }
+
+        return anzahl;
     }
 }
