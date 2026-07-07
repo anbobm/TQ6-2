@@ -35,7 +35,23 @@ private static void Teil1_Aufgabe4_20260701_Konstruktor()
         // Teil2_Aufgabe4_20260701_Cookie();
         // Teil2_Aufgabe5_20260701_Session();
         //Teil2_Aufgabe6_20260701_Blogbeitrag();
-        Teil2_Aufgabe7_20260701_Newsletterabonnent();
+        // Teil2_Aufgabe7_20260701_Newsletterabonnent();
+       Teil2_Aufgabe9_20260701_Passwortvalidator(); 
+}
+
+
+
+private static void Teil2_Aufgabe9_20260701_Passwortvalidator()
+{
+    var validator1 = new Passwortvalidator();
+
+    Console.WriteLine($"abc gueltig: {validator1.IstGueltig("abc")}");
+    Console.WriteLine($"passwort123 gueltig: {validator1.IstGueltig("passwort123")}");
+    Console.WriteLine($"Passwort123 gueltig: {validator1.IstGueltig("Passwort123")}");
+
+    validator1.SetMindestlaenge(5);
+
+    Console.WriteLine($"Abc1d gueltig: {validator1.IstGueltig("Abc1d")}");
 }
 
 
@@ -819,3 +835,41 @@ public class Newsletterabonnent
 }
 
 
+public class Passwortvalidator
+{
+    private int mindestlaenge = 8;
+
+    public void SetMindestlaenge(int laenge)
+    {
+        if (laenge >= 4)
+        {
+            mindestlaenge = laenge;
+        }
+    }
+
+    public bool IstGueltig(string passwort)
+    {
+        if (passwort.Length < mindestlaenge)
+        {
+            return false;
+        }
+
+        bool hatZiffer = false;
+        bool hatGrossbuchstabe = false;
+
+        foreach (char zeichen in passwort)
+        {
+            if (char.IsDigit(zeichen))
+            {
+                hatZiffer = true;
+            }
+
+            if (char.IsUpper(zeichen))
+            {
+                hatGrossbuchstabe = true;
+            }
+        }
+
+        return hatZiffer && hatGrossbuchstabe;
+    }
+}
