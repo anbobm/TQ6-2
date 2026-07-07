@@ -15,4 +15,4 @@ Das Objekt soll aber nur erzeugt werden, wenn der eingegebene Name gültig ist (
 
 Das Problem: `new Person(...)` liefert immer ein Person-Objekt zurück, auch wenn wir keinen gültigen Namen übergeben (es sei denn wir werfen eine *Exception*).
 
-Es gibt aber noch eine andere Option: den Konstruktor `private` machen. Jetzt kann man `new Person(...)` außerhalb der Klasse selbst nicht mehr aufrufen. Wie kommt man nun an ein Objekt der Klasse? So: schreibe eine (`public`) Methode `Create(string name)`, die den übergebenen Namen validiert und falls gültig ein `Person`-Objekt zurückgibt, ansonsten `null`.
+Es gibt aber noch eine andere Option: den Konstruktor `private` machen. Jetzt kann man `new Person(...)` außerhalb der Klasse selbst nicht mehr aufrufen. Wie kommt man nun an ein Objekt der Klasse? So: schreibe eine (`public`) Methode `Create(string name)`, die den übergebenen Namen validiert und falls gültig ein `Person`-Objekt zurückgibt, ansonsten `null`. Diese Methode muss natürlich `static` sein, damit man sie ohne Objekt aufrufen kann.
