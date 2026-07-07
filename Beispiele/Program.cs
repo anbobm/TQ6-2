@@ -48,7 +48,23 @@
         // AufgabenTeil2_1();
         // AufgabenTeil2_2();
         // AufgabenTeil2_3();
-        AufgabenTeil2_4();
+        // AufgabenTeil2_4();
+        AufgabenTeil2_5();
+    }
+
+    private static void AufgabenTeil2_5()
+    {
+        var mitarbeiter = new Mitarbeiter("Paul", 4500);
+        Console.WriteLine($"{mitarbeiter.Name}: Gehalt: {mitarbeiter.GetGehalt()}");
+
+        mitarbeiter.GehaltErhoehen(10);
+        Console.WriteLine($"{mitarbeiter.Name}: Gehalt: {mitarbeiter.GetGehalt()}");
+
+        var manager = new Manager("Max", 10000, 50000);
+        Console.WriteLine($"{manager.Name}: Gehalt: {manager.GetGehalt()}");
+
+        manager.GehaltErhoehen(10);
+        Console.WriteLine($"{manager.Name}: Gehalt: {manager.GetGehalt()}");
     }
 
     private static void AufgabenTeil2_4()
