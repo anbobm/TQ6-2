@@ -37,8 +37,21 @@ private static void Teil1_Aufgabe4_20260701_Konstruktor()
         //Teil2_Aufgabe6_20260701_Blogbeitrag();
         // Teil2_Aufgabe7_20260701_Newsletterabonnent();
         // Teil2_Aufgabe9_20260701_Passwortvalidator(); 
-        Teil2_Aufgabe10_20260701_Seitenaufrufzaehler();
+        // Teil2_Aufgabe10_20260701_Seitenaufrufzaehler();
+        Teil2_Aufgabe11_20260701_Rabattcode();
 
+}
+
+
+private static void Teil2_Aufgabe11_20260701_Rabattcode()
+{
+    var rabatt1 = new Rabattcode("SOMMER2026");
+
+    rabatt1.SetProzentRabatt(15);
+
+    Console.WriteLine($"Code gueltig: {rabatt1.IstGueltig("SOMMER2026")}");
+    Console.WriteLine($"Code gueltig: {rabatt1.IstGueltig("WINTER2026")}");
+    Console.WriteLine($"Preis nach Rabatt: {rabatt1.BerechnePreis(100)} EUR");
 }
 
 
@@ -917,5 +930,39 @@ public class Seitenaufrufzaehler
 
 
 
+public class Rabattcode
+{
+    private string code;
+    private int prozentRabatt;
 
+    public Rabattcode(string code)
+    {
+        this.code = code;
+        prozentRabatt = 0;
+    }
+
+    public void SetProzentRabatt(int prozent)
+    {
+        if (prozent >= 0 && prozent <= 100)
+        {
+            prozentRabatt = prozent;
+        }
+    }
+
+    public bool IstGueltig(string eingegebenerCode)
+    {
+        return eingegebenerCode == code;
+    }
+
+    public decimal BerechnePreis(decimal preis)
+    {
+        if (preis < 0)
+        {
+            return 0;
+        }
+
+        decimal rabatt = preis * prozentRabatt / 100;
+        return preis - rabatt;
+    }
+}
 
