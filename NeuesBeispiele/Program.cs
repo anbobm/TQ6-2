@@ -34,9 +34,25 @@ private static void Teil1_Aufgabe4_20260701_Konstruktor()
         //Teil2_Aufgabe3_20260701_HttpAnfrage();
         // Teil2_Aufgabe4_20260701_Cookie();
         // Teil2_Aufgabe5_20260701_Session();
-        Teil2_Aufgabe6_20260701_Blogbeitrag();
-
+        //Teil2_Aufgabe6_20260701_Blogbeitrag();
+        Teil2_Aufgabe7_20260701_Newsletterabonnent();
 }
+
+
+private static void Teil2_Aufgabe7_20260701_Newsletterabonnent()
+{
+    var abonnent1 = new Newsletterabonnent("nataliya@example.com");
+
+    abonnent1.Abbestellen();
+    abonnent1.Abonnieren();
+
+    abonnent1.EmailAendern("neue.adresse@example.com");
+    abonnent1.EmailAendern("ungueltige-email");
+
+    Console.WriteLine("Newsletterabonnent wurde getestet.");
+}
+
+
 
 private static void Teil2_Aufgabe6_20260701_Blogbeitrag()
 {
@@ -754,5 +770,52 @@ public class Blogbeitrag
     }
 }
 
+
+
+public class Newsletterabonnent
+{
+    private string email;
+    private bool aktiv = true;
+
+    public Newsletterabonnent(string email)
+    {
+        if (IstGueltig(email))
+        {
+            this.email = email;
+        }
+        else
+        {
+            throw new ArgumentException("Ungueltige Email-Adresse.");
+        }
+    }
+
+    private bool IstGueltig(string email)
+    {
+        int at = email.IndexOf('@');
+        return at > 0 && email.IndexOf('.', at) > at;
+    }
+
+    public void Abbestellen()
+    {
+        aktiv = false;
+    }
+
+    public void Abonnieren()
+    {
+        aktiv = true;
+    }
+
+    public void EmailAendern(string neueEmail)
+    {
+        if (IstGueltig(neueEmail))
+        {
+            email = neueEmail;
+        }
+        else
+        {
+            Console.WriteLine("Fehler: Ungueltige Email-Adresse.");
+        }
+    }
+}
 
 
