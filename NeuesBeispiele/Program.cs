@@ -32,9 +32,28 @@ private static void Teil1_Aufgabe4_20260701_Konstruktor()
         // Teil2_Aufgabe1_20260701_Benutzerkonto();
         //Teil2_Aufgabe2_20260701_Warenkorb();
         //Teil2_Aufgabe3_20260701_HttpAnfrage();
-        Teil2_Aufgabe4_20260701_Cookie();
+        // Teil2_Aufgabe4_20260701_Cookie();
+        Teil2_Aufgabe5_20260701_Session();
 
 }
+
+
+private static void Teil2_Aufgabe5_20260701_Session()
+{
+    var session1 = new Session("ABC123");
+
+    session1.AktivitaetAktualisieren(10);
+
+    Console.WriteLine($"Abgelaufen bei Minute 15 und Timeout 10: {session1.IstAbgelaufen(15, 10)}");
+    Console.WriteLine($"Abgelaufen bei Minute 25 und Timeout 10: {session1.IstAbgelaufen(25, 10)}");
+
+    session1.AktivitaetAktualisieren(25);
+
+    Console.WriteLine($"Abgelaufen nach neuer Aktivitaet bei Minute 30: {session1.IstAbgelaufen(30, 10)}");
+}
+
+
+
 
 
 private static void Teil2_Aufgabe4_20260701_Cookie()
@@ -654,4 +673,28 @@ public class Cookie
     {
         wert = neuerWert;
     }
+
 }
+
+
+public class Session
+{
+    private string sessionId;
+    private int letzteAktivitaetMinute = 0;
+
+    public Session(string sessionId)
+    {
+        this.sessionId = sessionId;
+    }
+
+    public void AktivitaetAktualisieren(int aktuelleMinute)
+    {
+        letzteAktivitaetMinute = aktuelleMinute;
+    }
+
+    public bool IstAbgelaufen(int aktuelleMinute, int timeoutMinuten)
+    {
+        return (aktuelleMinute - letzteAktivitaetMinute) > timeoutMinuten;
+    }
+}
+
