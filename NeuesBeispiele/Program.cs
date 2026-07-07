@@ -23,9 +23,26 @@ private static void Teil1_Aufgabe4_20260701_Konstruktor()
         // Teil1_Aufgabe4_20260701_Konstruktor();
         // Teil1_Aufgabe5_20260701_SinglePageApp();
         // Teil1_Aufgabe6_20260701_Abstract();
-        Teil1_Aufgabe7_20260701_Api();
+        // Teil1_Aufgabe7_20260701_Api();
+        // Teil1_Aufgabe7_20260701_Api();
+        Teil1_Aufgabe8_20260701_Onlineshop();
 
     }
+
+
+
+private static void Teil1_Aufgabe8_20260701_Onlineshop()
+{
+    var shop1 = new Onlineshop();
+
+    shop1.AnzahlProdukte = 25;
+    shop1.Veroeffentlichen();
+
+    shop1.AnzahlProdukte = -5;
+
+    Console.WriteLine($"Anzahl Produkte: {shop1.AnzahlProdukte}");
+}
+
 
 
 private static void Teil1_Aufgabe7_20260701_Api()
@@ -294,5 +311,32 @@ public class Api : DigitalesProdukt
     public override void Veroeffentlichen()
     {
         Console.WriteLine("Api wurde veroeffentlicht.");
+    }
+}
+
+
+
+
+
+
+public class Onlineshop : DigitalesProdukt
+{
+    private int anzahlProdukte;
+
+    public int AnzahlProdukte
+    {
+        get { return anzahlProdukte; }
+        set
+        {
+            if (value >= 0)
+            {
+                anzahlProdukte = value;
+            }
+        }
+    }
+
+    public override void Veroeffentlichen()
+    {
+        Console.WriteLine("Onlineshop wurde veroeffentlicht.");
     }
 }
