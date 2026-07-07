@@ -25,8 +25,22 @@ private static void Teil1_Aufgabe4_20260701_Konstruktor()
         // Teil1_Aufgabe6_20260701_Abstract();
         // Teil1_Aufgabe7_20260701_Api();
         // Teil1_Aufgabe8_20260701_Onlineshop();
-        Teil1_Aufgabe9_20260701_ToString();
+        // Teil1_Aufgabe9_20260701_ToString();
+        // Teil1_Aufgabe9_20260701_ToString();
+        Teil1_Aufgabe10_20260701_Static();
     }
+
+
+
+private static void Teil1_Aufgabe10_20260701_Static()
+{
+    var projekt1 = new Webprojekt("Portfolio", "JavaScript", 2024);
+    var app1 = new SinglePageApp("Dashboard", "C#", 2023);
+    var api1 = new Api(1000);
+    var shop1 = new Onlineshop();
+
+    Console.WriteLine($"Gesamtanzahl: {DigitalesProdukt.GetGesamtanzahl()}");
+}
 
 
 
@@ -147,6 +161,18 @@ private static void Teil1_Aufgabe5_20260701_SinglePageApp()
 
 public abstract class DigitalesProdukt
 {
+    public static int AnzahlErstellterProdukte { get; private set; }
+
+    protected DigitalesProdukt()
+    {
+        AnzahlErstellterProdukte++;
+    }
+
+    public static int GetGesamtanzahl()
+    {
+        return AnzahlErstellterProdukte;
+    }
+
     public abstract void Veroeffentlichen();
 }
 
