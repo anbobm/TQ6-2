@@ -36,8 +36,27 @@ private static void Teil1_Aufgabe4_20260701_Konstruktor()
         // Teil2_Aufgabe5_20260701_Session();
         //Teil2_Aufgabe6_20260701_Blogbeitrag();
         // Teil2_Aufgabe7_20260701_Newsletterabonnent();
-       Teil2_Aufgabe9_20260701_Passwortvalidator(); 
+        // Teil2_Aufgabe9_20260701_Passwortvalidator(); 
+        Teil2_Aufgabe10_20260701_Seitenaufrufzaehler();
+
 }
+
+
+private static void Teil2_Aufgabe10_20260701_Seitenaufrufzaehler()
+{
+    var zaehler1 = new Seitenaufrufzaehler();
+
+    zaehler1.AufrufRegistrieren();
+    zaehler1.AufrufRegistrieren();
+    zaehler1.AufrufRegistrieren();
+
+    Console.WriteLine($"Aufrufe: {zaehler1.GetAufrufe()}");
+
+    zaehler1.Zuruecksetzen();
+
+    Console.WriteLine($"Aufrufe nach Reset: {zaehler1.GetAufrufe()}");
+}
+
 
 
 
@@ -873,3 +892,30 @@ public class Passwortvalidator
         return hatZiffer && hatGrossbuchstabe;
     }
 }
+
+
+
+public class Seitenaufrufzaehler
+{
+    private int aufrufe;
+
+    public void AufrufRegistrieren()
+    {
+        aufrufe++;
+    }
+
+    public void Zuruecksetzen()
+    {
+        aufrufe = 0;
+    }
+
+    public int GetAufrufe()
+    {
+        return aufrufe;
+    }
+}
+
+
+
+
+
