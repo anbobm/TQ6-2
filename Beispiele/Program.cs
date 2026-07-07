@@ -1,9 +1,4 @@
-﻿using System.Reflection.Metadata;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using System.Transactions;
-
-internal partial class Program
+﻿internal partial class Program
 {
     private static void Main(string[] args)
     {
@@ -48,7 +43,18 @@ internal partial class Program
         // StatischeAttribute();
         // StatischeAttribute_Aufgabe2();
         // StatischeAttribute_Aufgabe3();
+        PrivaterKonstruktorBeispiel();
+    }
 
+    private static void PrivaterKonstruktorBeispiel()
+    {
+        var person = Person.Create(null);
+
+        Console.WriteLine(person.Name);
+    }
+
+    private static void AufgabenTeil1_1()
+    {
         var auto1 = new Auto("Opel", "Astra", 1981);
         var auto2 = new Auto("Trabant", "P 601", 1985);
         var auto3 = new Auto("BMW", "3er", 1990);
@@ -64,7 +70,6 @@ internal partial class Program
         lkw1.Fahren();
         lkw1.Beladung = 1000;
         lkw1.Beladung = 40001;
-
     }
 
     private static void StatischeAttribute_Aufgabe3()
