@@ -40,11 +40,29 @@ private static void Teil1_Aufgabe4_20260701_Konstruktor()
         // Teil2_Aufgabe10_20260701_Seitenaufrufzaehler();
         // Teil2_Aufgabe11_20260701_Rabattcode();
         // Teil2_Aufgabe12_20260701_UrlKuerzer();
-        Teil2_Aufgabe13_20260701_Kontaktformular(); 
-        
+        // Teil2_Aufgabe13_20260701_Kontaktformular(); 
+        Teil2_Aufgabe14_20260701_Serverauslastung();
 
 
 
+}
+
+
+
+private static void Teil2_Aufgabe14_20260701_Serverauslastung()
+{
+    var server1 = new Serverauslastung();
+
+    server1.SetCpuAuslastung(45);
+    server1.SetRamAuslastung(70);
+
+    Console.WriteLine($"CPU: {server1.GetCpuAuslastung()}%");
+    Console.WriteLine($"RAM: {server1.GetRamAuslastung()}%");
+    Console.WriteLine($"Kritisch: {server1.IstKritisch()}");
+
+    server1.SetCpuAuslastung(95);
+
+    Console.WriteLine($"Kritisch nach CPU-Erhoehung: {server1.IstKritisch()}");
 }
 
 
@@ -1063,3 +1081,42 @@ public class Kontaktformular
         return $"{name} ({email}): {nachricht}";
     }
 }
+
+
+public class Serverauslastung
+{
+    private int cpuAuslastung;
+    private int ramAuslastung;
+
+    public void SetCpuAuslastung(int wert)
+    {
+        if (wert >= 0 && wert <= 100)
+        {
+            cpuAuslastung = wert;
+        }
+    }
+
+    public int GetCpuAuslastung()
+    {
+        return cpuAuslastung;
+    }
+
+    public void SetRamAuslastung(int wert)
+    {
+        if (wert >= 0 && wert <= 100)
+        {
+            ramAuslastung = wert;
+        }
+    }
+
+    public int GetRamAuslastung()
+    {
+        return ramAuslastung;
+    }
+
+    public bool IstKritisch()
+    {
+        return cpuAuslastung > 90 || ramAuslastung > 90;
+    }
+}
+
