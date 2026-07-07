@@ -47,7 +47,23 @@
         // PrivaterKonstruktorBeispiel();
         // AufgabenTeil2_1();
         // AufgabenTeil2_2();
-        AufgabenTeil2_3();
+        // AufgabenTeil2_3();
+        AufgabenTeil2_4();
+    }
+
+    private static void AufgabenTeil2_4()
+    {
+        var sensor = new Temperatursensor();
+        Console.WriteLine($"{sensor.TemperaturCelsius} °C, {sensor.TemperaturFahrenheit} °F");
+
+        sensor.Erhoehen(100);
+        Console.WriteLine($"{sensor.TemperaturCelsius} °C, {sensor.TemperaturFahrenheit} °F");
+
+        sensor.Senken(373.15m);
+        Console.WriteLine($"{sensor.TemperaturCelsius} °C, {sensor.TemperaturFahrenheit} °F");
+
+        sensor.Senken(0.0001m);
+        Console.WriteLine($"{sensor.TemperaturCelsius} °C, {sensor.TemperaturFahrenheit} °F");
     }
 
     private static void AufgabenTeil2_3()
