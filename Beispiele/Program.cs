@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Transactions;
-
+using System.Collections.Generic;
 
 internal partial class Program
 {
@@ -63,13 +63,42 @@ internal partial class Program
         // Teil2_Aufgabe3_20260629_Benutzer();
         // Teil2_Aufgabe4_20260629_Temperatursensor();
         // Teil2_Aufgabe5_20260629_Mitarbeiter();
-        Aufgabe1_20260707_Person();
+        // Aufgabe1_20260707_Person();
+        Aufgabe2_20260707_ISBN();
 
 
 
     }
 
+private static void Aufgabe2_20260707_ISBN()
+{
+    Dictionary<string, bool> isbns = new Dictionary<string, bool>
+    {
+        { "9780306406157", true },
+        { "9783423264303", true },
+        { "9781784878979", true },
+        { "97817-84878-979", true },
+        { "9781784878978", false },
+        { "97803064061572", false },
+        { "978178487896", false }
+    };
 
+    foreach (var kvp in isbns)
+    {
+        var isbn = kvp.Key;
+        var valid = kvp.Value;
+        var validString = valid ? "gueltig" : "ungueltig";
+
+        if (IsValid(isbn) == valid)
+        {
+            Console.WriteLine($"{isbn} erfolgreich als {validString} erkannt!");
+        }
+        else
+        {
+            Console.WriteLine($"FEHLER: {isbn} nicht als {validString} erkannt!");
+        }
+    }
+}
 private static void Aufgabe1_20260707_Person()
 {
     Console.Write("Name eingeben: ");
@@ -99,6 +128,41 @@ private static void Teil2_Aufgabe5_20260629_Mitarbeiter()
 
     Console.WriteLine($"Mitarbeiter Gehalt: {mitarbeiter1.GetGehalt()}");
     Console.WriteLine($"Manager Gehalt: {manager1.GetGehalt()}");
+}
+
+
+
+public static bool IsValid(string value)
+{
+    value = value.Replace("-", "");
+
+    if (value.Length != 13)
+    {
+        return false;
+    }
+
+    int summe = 0;
+
+    for (int i = 0; i < value.Length; i++)
+    {
+        if (!char.IsDigit(value[i]))
+        {
+            return false;
+        }
+
+        int ziffer = value[i] - '0';
+
+        if (i % 2 == 0)
+        {
+            summe += ziffer;
+        }
+        else
+        {
+            summe += ziffer * 3;
+        }
+    }
+
+    return summe % 10 == 0;
 }
 
 
