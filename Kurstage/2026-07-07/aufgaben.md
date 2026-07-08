@@ -23,6 +23,8 @@ Schreibe eine Methode `public static bool IsValid(string value)`, die eine (13-s
 
 **Hinweis:** Du kannst zunächst davon ausgehen, dass der String normalisiert ist, also "9780306406157" und nicht "9780-3064-06157" oder ähnliches.
 
+Du kannst folgenden Code ausführen, um deine Methode zu testen:
+
 ```csharp
 Dictionary<string,bool> isbns = new Dictionary<string, bool>
 {
