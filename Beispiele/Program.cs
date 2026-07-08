@@ -49,7 +49,75 @@
         // AufgabenTeil2_2();
         // AufgabenTeil2_3();
         // AufgabenTeil2_4();
-        AufgabenTeil2_5();
+        // AufgabenTeil2_5();
+        AufgabeIsbn();
+    }
+
+    private static void AufgabeIsbn()
+    {
+        Dictionary<string,bool> isbns = new Dictionary<string, bool>
+        {
+            {"9780306406157", true}, // gültig
+            {"9783423264303", true}, // gültig
+            {"9781784878979", true}, // gültig
+            {"97817-84878-979", true}, // gültig aber mit Trennstrichen
+            {"9781784878978", false}, // ungültig
+            {"97803064061572", false}, // ungültig (zu lang), könnte aber für manche gültig aussehen
+            {"978178487896", false} // ungültig (zu kurz), könnte aber für manche gültig aussehen
+        };
+
+        foreach (var kvp in isbns)
+        {
+            var isbn = kvp.Key;
+            var valid = kvp.Value;
+            var validString = valid ? "gültig" : "ungültig";
+
+            if (IsValid(isbn) == valid)
+            {
+                Console.WriteLine($"{isbn} erfolgreich als {validString} erkannt!");
+            }
+            else
+            {
+                Console.WriteLine($"FEHLER: {isbn} nicht als {validString} erkannt!");
+                
+            }
+        }
+    }
+
+    private static bool IsValid(string isbn)
+    {
+        // (x1 + 3x2 + x3 + 3x4 + x5 + 3x6 + x7 + 3x8 + x9 + 3x10 + x11 + 3x12 + x13) ≡ 0 (mod 10).
+
+        var count = 0;
+        var sum = 0;
+        for (int i = 0; i < isbn.Length; i++)
+        {
+            if (Char.IsDigit(isbn[i]))
+            {
+                var digit = Convert.ToInt32(isbn[i].ToString());
+                
+                if (count % 2 == 0)
+                {
+                    sum += digit;
+                }
+                else
+                {
+                    sum += 3 * digit;
+                }
+
+                // // Alternative
+                // sum += i % 2 == 0 ? digit : 3 * digit;
+
+                count++;
+            }
+        }
+
+        if (count != 13)
+        {
+            return false;
+        }
+
+        return sum % 10 == 0;
     }
 
     private static void AufgabenTeil2_5()
