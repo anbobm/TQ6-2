@@ -64,11 +64,104 @@ internal partial class Program
         // Teil2_Aufgabe4_20260629_Temperatursensor();
         // Teil2_Aufgabe5_20260629_Mitarbeiter();
         // Aufgabe1_20260707_Person();
-        Aufgabe2_20260707_ISBN();
+        // Aufgabe2_20260707_ISBN();
+        Aufgabe3_20260707_Isbn();
 
 
 
     }
+
+
+
+public class Isbn
+{
+    public string Value { get; }
+
+    private Isbn(string value)
+    {
+        Value = value;
+    }
+
+    public static Isbn? Create(string value)
+    {
+        if (IsValid(value))
+        {
+            return new Isbn(value);
+        }
+
+        return null;
+    }
+
+    public static bool IsValid(string value)
+    {
+        value = value.Replace("-", "");
+
+        if (value.Length != 13)
+        {
+            return false;
+        }
+
+        int summe = 0;
+
+        for (int i = 0; i < value.Length; i++)
+        {
+            if (!char.IsDigit(value[i]))
+            {
+                return false;
+            }
+
+            int ziffer = value[i] - '0';
+
+            if (i % 2 == 0)
+            {
+                summe += ziffer;
+            }
+            else
+            {
+                summe += ziffer * 3;
+            }
+        }
+
+        return summe % 10 == 0;
+    }
+}
+
+
+private static void Aufgabe3_20260707_Isbn()
+{
+    Isbn? isbn1 = Isbn.Create("9780306406157");
+    Isbn? isbn2 = Isbn.Create("9781784878978");
+    Isbn? isbn3 = Isbn.Create("97817-84878-979");
+
+    if (isbn1 != null)
+    {
+        Console.WriteLine($"ISBN wurde erstellt: {isbn1.Value}");
+    }
+    else
+    {
+        Console.WriteLine("ISBN 1 ist ungueltig.");
+    }
+
+    if (isbn2 != null)
+    {
+        Console.WriteLine($"ISBN wurde erstellt: {isbn2.Value}");
+    }
+    else
+    {
+        Console.WriteLine("ISBN 2 ist ungueltig.");
+    }
+
+    if (isbn3 != null)
+    {
+        Console.WriteLine($"ISBN wurde erstellt: {isbn3.Value}");
+    }
+    else
+    {
+        Console.WriteLine("ISBN 3 ist ungueltig.");
+    }
+}
+
+
 
 private static void Aufgabe2_20260707_ISBN()
 {
