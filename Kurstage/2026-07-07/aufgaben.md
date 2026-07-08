@@ -54,3 +54,9 @@ foreach (var kvp in isbns)
     }
 }
 ```
+
+# Aufgabe 3
+
+Füge die geschriebene Methode `IsValid` als statische Methode einer neuen Klasse `Isbn`.
+
+Jedes Objekt der Klasse `Isbn` soll eine konkrete ISBN-13 repräsentieren. Objekte von ungültigen ISBNs soll es nicht geben. Wir setzen das wieder so um, dass wir den Konstruktor `private` machen und Objekte nur über eine `Create(string value)` Methode erzeugen, die nur bei einer gültigen ISBN ein Objekt zurückgibt, ansonsten `null`.
