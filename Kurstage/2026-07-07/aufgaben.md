@@ -33,8 +33,8 @@ Dictionary<string,bool> isbns = new Dictionary<string, bool>
     {"9781784878979", true}, // gültig
     {"97817-84878-979", true}, // gültig aber mit Trennstrichen
     {"9781784878978", false}, // ungültig
-    {"97803064061572", false}, // ungültig (zu lang), könnte aber für manche gültig aussehen
-    {"978178487896", false} // ungültig (zu kurz), könnte aber für manche gültig aussehen
+    {"97803064061570", false}, // ungültig (zu lang), könnte aber für manche gültig aussehen
+    {"9781784871", false} // ungültig (zu kurz), könnte aber für manche gültig aussehen
 };
 
 foreach (var kvp in isbns)
