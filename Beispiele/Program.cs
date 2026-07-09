@@ -67,15 +67,37 @@ internal partial class Program
         // Aufgabe1_20260707_Person();
         // Aufgabe2_20260707_ISBN();
         // Aufgabe3_20260707_Isbn();
-        // Aufgabe1_20260708_Bibliothek();
-        // AufgabeBibliothek2();
-        AufgabeBibliothek3();
-        
+        // Aufgabe1_20260708_Bibliothek_Medium();
+        // Aufgabe2_20260708_Bibliothek_Hinzufuegen();
+        // Aufgabe3_20260708_Bibliothek_Benutzer();
+        Aufgabe4_20260708_Bibliothek_Anzahl();
 
     }
 
 
-private static void AufgabeBibliothek3()
+private static void Aufgabe4_20260708_Bibliothek_Anzahl()
+{
+    var bibliothek = new Bibliothek();
+
+    var buch1 = new Buch("Das Parfuem", 280, "Patrick Sueskind");
+    var buch2 = new Buch("Harry Potter der Stein der Weisen", 342, "J.K. Rowling");
+    var dvd1 = new Dvd("Inception", 148, "Christopher Nolan");
+
+    bibliothek.Hinzufuegen(buch1);
+    bibliothek.Hinzufuegen(buch2);
+    bibliothek.Hinzufuegen(dvd1);
+
+    buch1.Ausleihen(new Benutzer("Nataliya"));
+
+    Console.WriteLine($"Anzahl Medien: {bibliothek.AnzahlMedien}");
+    Console.WriteLine($"Anzahl Buecher: {bibliothek.AnzahlBuecher}");
+    Console.WriteLine($"Anzahl DVDs: {bibliothek.AnzahlDvds}");
+    Console.WriteLine($"Anzahl ausgeliehen: {bibliothek.AnzahlAusgeliehen}");
+    Console.WriteLine($"Anzahl verfuegbar: {bibliothek.AnzahlVerfuegbar}");
+}
+
+
+private static void Aufgabe3_20260708_Bibliothek_Benutzer()
 {
     var bibliothek = new Bibliothek();
 
@@ -97,7 +119,7 @@ private static void AufgabeBibliothek3()
 }
 
 
-private static void AufgabeBibliothek2()
+private static void Aufgabe2_20260708Bibliothek__Hinzufuegen()
 {
     var bibliothek = new Bibliothek();
 
@@ -149,7 +171,7 @@ private static void MedienAusgeben(List<Medium> medien)
 
 
 
-private static void Aufgabe1_20260708_Bibliothek()
+private static void Aufgabe1_20260708_Bbliothek_Medium()
 {
     var bibliothek = new Bibliothek();
 
@@ -2293,6 +2315,35 @@ public class Bibliothek
         get { return medien.Where(medium => medium.IstAusgeliehen).ToList(); }
     }
 
+
+
+public int AnzahlMedien
+{
+    get { return medien.Count; }
+}
+
+public int AnzahlBuecher
+{
+    get { return medien.Count(medium => medium is Buch); }
+}
+
+public int AnzahlDvds
+{
+    get { return medien.Count(medium => medium is Dvd); }
+}
+
+public int AnzahlAusgeliehen
+{
+    get { return AusgelieheneMedien.Count; }
+}
+
+public int AnzahlVerfuegbar
+{
+    get { return AnzahlMedien - AnzahlAusgeliehen; }
+}
+
+
+
     public Bibliothek()
     {
         medien = new List<Medium>();
@@ -2306,3 +2357,7 @@ public class Bibliothek
 
 
 }
+
+
+
+

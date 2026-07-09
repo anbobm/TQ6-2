@@ -86,6 +86,15 @@ AnzahlAusgeliehen: gibt die Anzahl der ausgeliehenen Medien zurück
 AnzahlVerfügbar: gibt die Anzahl der verfügbaren Medien zurück
 * Um herauszufinden, welcher (Sub-)Typ in einer Variable gespeichert ist, kann man das -Keyword verwenden: , oder man verwendet die -Methode, die jedes Objekt besitzt und vergleicht den Rückgabewert mit einem Typ: .ismedium is BuchGetType()medium.GetType() == typeof(Buch)
 
+## Ausgabe 4
+PS C:\Users\Nataliya\Desktop\TQ6-2_Nataliya\Beispiele> dotnet run
+Anzahl Medien: 3
+Anzahl Buecher: 2
+Anzahl DVDs: 1
+Anzahl ausgeliehen: 1
+Anzahl verfuegbar: 2
+PS C:\Users\Nataliya\Desktop\TQ6-2_Nataliya\Beispiele> 
+
 ## Aufgabe 5
 Zeichne ein UML-Klassendiagramm welches die Klassen aus Aufgaben 1 bis 4 enthält.
 
