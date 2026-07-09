@@ -74,13 +74,10 @@ internal partial class Program
         bibliothek.Hinzufuegen(dvd1);
         bibliothek.Hinzufuegen(dvd2);
 
-        MedienAusgeben(bibliothek.Medien);
-        MedienAusgeben(bibliothek.AusgelieheneMedien);
-
-        dvd2.Zurueckgeben();
-
-        MedienAusgeben(bibliothek.Medien);
-        MedienAusgeben(bibliothek.AusgelieheneMedien);
+        Console.WriteLine($"Anzahl ausgeliehener Medien: {bibliothek.AnzahlAusgeliehen}");
+        Console.WriteLine($"Anzahl Bücher: {bibliothek.AnzahlBuecher}");
+        Console.WriteLine($"Anzahl Dvds: {bibliothek.AnzahlDvds}");
+        Console.WriteLine($"Anzahl Verfügbarer Medien: {bibliothek.AnzahlVerfügbar}");
     }
 
     private static void MedienAusgeben(List<Medium> medien)

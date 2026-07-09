@@ -77,6 +77,34 @@ public class Bibliothek
     // // Alternative:
     // public List<Medium> AusgelieheneMedien => medien.Where(m => m.IstAusgeliehen).ToList();
 
+    public int AnzahlMedien => medien.Count();
+
+    // public int AnzahlBuecher
+    // {
+    //     get
+    //     {
+    //         var count = 0;
+
+    //         foreach (var medium in medien)
+    //         {
+    //             if (medium is Buch)
+    //             {
+    //                 count++;
+    //             }
+    //         }
+
+    //         return count;
+    //     }
+    // }
+
+    public int AnzahlBuecher => medien.Count(m => m is Buch);
+
+    public int AnzahlDvds => medien.Count(m => m is Dvd);
+
+    public int AnzahlAusgeliehen => AusgelieheneMedien.Count();
+
+    public int AnzahlVerfügbar => medien.Count(m => !m.IstAusgeliehen);
+
     public Bibliothek()
     {
         medien = new List<Medium>();
