@@ -4,21 +4,23 @@ public class Medium
 {
     public string Titel { get; }
 
-    public bool IstAusgeliehen { get; private set; }
+    public bool IstAusgeliehen => AusgeliehenVon != null;
+
+    public Benutzer AusgeliehenVon { get; private set; }
 
     public Medium(string titel)
     {
         Titel = titel;
     }
 
-    public void Ausleihen()
+    public void Ausleihen(Benutzer benutzer)
     {
-        IstAusgeliehen = true;
+        AusgeliehenVon = benutzer;
     }
 
     public void Zurueckgeben()
     {
-        IstAusgeliehen = false;
+        AusgeliehenVon = null;
     }
 }
 
@@ -83,5 +85,15 @@ public class Bibliothek
     public void Hinzufuegen(Medium medium)
     {
         medien.Add(medium);
+    }
+}
+
+public class Benutzer
+{
+    public string Name { get; }
+
+    public Benutzer(string name)
+    {
+        Name = name;
     }
 }

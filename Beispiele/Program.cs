@@ -59,20 +59,25 @@ internal partial class Program
     private static void AufgabeBibiliothek2()
     {
         var bibliothek = new Bibliothek.Bibliothek();
-        MedienAusgeben(bibliothek.Medien);
-        MedienAusgeben(bibliothek.AusgelieheneMedien);
+
+        var benutzer1 = new Bibliothek.Benutzer("Max Mustermann");
 
         var buch1 = new Bibliothek.Buch("Das Parfüm", 280, "Patrick Süskind");
         var buch2 = new Bibliothek.Buch("Harry Potter der Stein der Weisen", 342, "Lord Voldemort");
 
         var dvd1 = new Dvd("Harry Potter der Stein der Weisen", 90, "Chris Columbus");
         var dvd2 = new Dvd("Herr der Ringe: Rückkehr des Königs", 180, "Peter Jackson");
-        dvd2.Ausleihen();
+        dvd2.Ausleihen(benutzer1);
 
         bibliothek.Hinzufuegen(buch1);
         bibliothek.Hinzufuegen(buch2);
         bibliothek.Hinzufuegen(dvd1);
         bibliothek.Hinzufuegen(dvd2);
+
+        MedienAusgeben(bibliothek.Medien);
+        MedienAusgeben(bibliothek.AusgelieheneMedien);
+
+        dvd2.Zurueckgeben();
 
         MedienAusgeben(bibliothek.Medien);
         MedienAusgeben(bibliothek.AusgelieheneMedien);
@@ -86,7 +91,16 @@ internal partial class Program
         }
         foreach(var medium in medien)
         {
-            Console.WriteLine($"{medium.Titel}: {(medium.IstAusgeliehen ? "" : "nicht")} ausgeliehen");
+            Console.Write($"{medium.Titel}: ");
+
+            if (medium.IstAusgeliehen)
+            {
+                Console.WriteLine($"ausgeliehen von {medium.AusgeliehenVon.Name}");
+            }
+            else
+            {
+                Console.WriteLine("nicht ausgeliehen");
+            }
         }
     }
 
