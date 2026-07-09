@@ -66,3 +66,7 @@ Füge der Klasse `Bibliothek` folgende Properties hinzu:
 * `AnzahlVerfügbar`: gibt die Anzahl der verfügbaren Medien zurück
 
 \* Um herauszufinden, welcher (Sub-)Typ in einer Variable gespeichert ist, kann man das `is`-Keyword verwenden: `medium is Buch`, oder man verwendet die `GetType()`-Methode, die jedes Objekt besitzt und vergleicht den Rückgabewert mit einem Typ: `medium.GetType() == typeof(Buch)`.
+
+# Aufgabe 5
+
+Zeichne ein UML-Klassendiagramm welches die Klassen aus Aufgaben 1 bis 4 enthält.
