@@ -3,6 +3,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Transactions;
 using System.Collections.Generic;
+using System.Linq;
 
 internal partial class Program
 {
@@ -66,11 +67,85 @@ internal partial class Program
         // Aufgabe1_20260707_Person();
         // Aufgabe2_20260707_ISBN();
         // Aufgabe3_20260707_Isbn();
-        Aufgabe1_20260708_Bibliothek();
-
-
+        // Aufgabe1_20260708_Bibliothek();
+        // AufgabeBibliothek2();
+        AufgabeBibliothek3();
+        
 
     }
+
+
+private static void AufgabeBibliothek3()
+{
+    var bibliothek = new Bibliothek();
+
+    var benutzer1 = new Benutzer("Nataliya");
+    var benutzer2 = new Benutzer("Max");
+
+    var buch1 = new Buch("Das Parfuem", 280, "Patrick Sueskind");
+    var buch2 = new Buch("Harry Potter der Stein der Weisen", 342, "J.K. Rowling");
+    var dvd1 = new Dvd("Inception", 148, "Christopher Nolan");
+
+    bibliothek.Hinzufuegen(buch1);
+    bibliothek.Hinzufuegen(buch2);
+    bibliothek.Hinzufuegen(dvd1);
+
+    buch1.Ausleihen(benutzer1);
+    dvd1.Ausleihen(benutzer2);
+
+    MedienAusgeben(bibliothek.Medien);
+}
+
+
+private static void AufgabeBibliothek2()
+{
+    var bibliothek = new Bibliothek();
+
+    var buch1 = new Buch("Das Parfuem", 280, "Patrick Sueskind");
+    var buch2 = new Buch("Harry Potter der Stein der Weisen", 342, "J.K. Rowling");
+    var dvd1 = new Dvd("Inception", 148, "Christopher Nolan");
+
+    bibliothek.Hinzufuegen(buch1);
+    bibliothek.Hinzufuegen(buch2);
+    bibliothek.Hinzufuegen(dvd1);
+
+    Console.WriteLine("Medien in der Bibliothek:");
+
+    foreach (var medium in bibliothek.Medien)
+    {
+        Console.WriteLine(medium.Titel);
+    }
+}
+
+
+private static void MedienAusgeben(List<Medium> medien)
+{
+    if (medien.Count == 0)
+    {
+        Console.WriteLine("Keine Medien gefunden");
+        return;
+    }
+
+    foreach (var medium in medien)
+    {
+        Console.Write($"{medium.Titel}: ");
+
+        if (medium.IstAusgeliehen && medium.AusgeliehenVon != null)
+        {
+            Console.WriteLine($"ausgeliehen von {medium.AusgeliehenVon.Name}");
+        }
+        else if (medium.IstAusgeliehen)
+        {
+            Console.WriteLine("ausgeliehen");
+        }
+        else
+        {
+            Console.WriteLine("nicht ausgeliehen");
+        }
+    }
+}
+
+
 
 
 
@@ -82,9 +157,10 @@ private static void Aufgabe1_20260708_Bibliothek()
     var buch2 = new Buch("Clean Code", 464, "Robert C. Martin");
     var dvd1 = new Dvd("Inception", 148, "Christopher Nolan");
 
-    bibliothek.Medien.Add(buch1);
-    bibliothek.Medien.Add(buch2);
-    bibliothek.Medien.Add(dvd1);
+    bibliothek.Hinzufuegen(buch1);
+    bibliothek.Hinzufuegen(buch2);
+    bibliothek.Hinzufuegen(dvd1);
+
 
     buch1.Ausleihen();
     dvd1.Ausleihen();
@@ -1976,6 +2052,7 @@ public class Rechteck
         return 2 * (breite + hoehe);
     }
 }
+    
 
 
 public class Benutzer
@@ -1984,10 +2061,22 @@ public class Benutzer
     private string passwort;
     private bool istEingeloggt;
 
+    public string Name
+    {
+        get { return benutzername; }
+    }
+
     public Benutzer(string benutzername, string passwort)
     {
         this.benutzername = benutzername;
         this.passwort = passwort;
+        istEingeloggt = false;
+    }
+
+    public Benutzer(string name)
+    {
+        benutzername = name;
+        passwort = "";
         istEingeloggt = false;
     }
 
@@ -2017,6 +2106,8 @@ public class Benutzer
         return istEingeloggt;
     }
 }
+
+
 
 
 public class Temperatursensor
@@ -2131,11 +2222,13 @@ public class Medium
 {
     public string Titel { get; }
     public bool IstAusgeliehen { get; private set; }
+    public Benutzer? AusgeliehenVon { get; private set; }
 
     public Medium(string titel)
     {
         Titel = titel;
         IstAusgeliehen = false;
+        AusgeliehenVon = null;
     }
 
     public void Ausleihen()
@@ -2143,11 +2236,22 @@ public class Medium
         IstAusgeliehen = true;
     }
 
+    public void Ausleihen(Benutzer benutzer)
+    {
+        IstAusgeliehen = true;
+        AusgeliehenVon = benutzer;
+    }
+
     public void Zurueckgeben()
     {
         IstAusgeliehen = false;
+        AusgeliehenVon = null;
     }
 }
+
+
+
+
 
 public class Buch : Medium
 {
@@ -2177,28 +2281,28 @@ public class Dvd : Medium
 
 public class Bibliothek
 {
-    public List<Medium> Medien { get; }
+    private List<Medium> medien;
 
-    public Bibliothek()
+    public List<Medium> Medien
     {
-        Medien = new List<Medium>();
+        get { return medien.ToList(); }
     }
 
     public List<Medium> AusgelieheneMedien
     {
-        get
-        {
-            var ausgeliehen = new List<Medium>();
-
-            foreach (var medium in Medien)
-            {
-                if (medium.IstAusgeliehen)
-                {
-                    ausgeliehen.Add(medium);
-                }
-            }
-
-            return ausgeliehen;
-        }
+        get { return medien.Where(medium => medium.IstAusgeliehen).ToList(); }
     }
+
+    public Bibliothek()
+    {
+        medien = new List<Medium>();
+    }
+
+    public void Hinzufuegen(Medium medium)
+    {
+        medien.Add(medium);
+    }
+
+
+
 }
