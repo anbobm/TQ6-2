@@ -65,12 +65,46 @@ internal partial class Program
         // Teil2_Aufgabe5_20260629_Mitarbeiter();
         // Aufgabe1_20260707_Person();
         // Aufgabe2_20260707_ISBN();
-        Aufgabe3_20260707_Isbn();
+        // Aufgabe3_20260707_Isbn();
+        Aufgabe1_20260708_Bibliothek();
 
 
 
     }
 
+
+
+private static void Aufgabe1_20260708_Bibliothek()
+{
+    var bibliothek = new Bibliothek();
+
+    var buch1 = new Buch("Der Hobbit", 310, "J.R.R. Tolkien");
+    var buch2 = new Buch("Clean Code", 464, "Robert C. Martin");
+    var dvd1 = new Dvd("Inception", 148, "Christopher Nolan");
+
+    bibliothek.Medien.Add(buch1);
+    bibliothek.Medien.Add(buch2);
+    bibliothek.Medien.Add(dvd1);
+
+    buch1.Ausleihen();
+    dvd1.Ausleihen();
+
+    Console.WriteLine("Ausgeliehene Medien:");
+
+    foreach (var medium in bibliothek.AusgelieheneMedien)
+    {
+        Console.WriteLine(medium.Titel);
+    }
+
+    buch1.Zurueckgeben();
+
+    Console.WriteLine("Nach Rueckgabe:");
+
+    foreach (var medium in bibliothek.AusgelieheneMedien)
+    {
+        Console.WriteLine(medium.Titel);
+    }
+}
 
 
 public class Isbn
@@ -464,8 +498,8 @@ tier.SagHallo();
 
 private static void Aufgabe1_20260625()
 {
-    var buch1 = new Buch("Harry Potter");
-    var buch2 = new Buch("1984", "George Orwell");
+    var buch1 = new BuchAlt("Harry Potter");
+var buch2 = new BuchAlt("1984", "George Orwell");
 
     Console.WriteLine($"{buch1.Titel} - {buch1.Autor}");
     Console.WriteLine($"{buch2.Titel} - {buch2.Autor}");
@@ -1595,18 +1629,18 @@ class Bestellung
 }
 
 
-class Buch
+class BuchAlt
 {
     public string Titel { get; set; }
     public string Autor { get; set; }
 
-    public Buch(string titel)
+    public BuchAlt(string titel)
     {
         Titel = titel;
         Autor = "Unbekannt";
     }
 
-    public Buch(string titel, string autor)
+    public BuchAlt(string titel, string autor)
     {
         Titel = titel;
         Autor = autor;
@@ -2091,3 +2125,80 @@ public class Person
     }
 }
 
+
+
+public class Medium
+{
+    public string Titel { get; }
+    public bool IstAusgeliehen { get; private set; }
+
+    public Medium(string titel)
+    {
+        Titel = titel;
+        IstAusgeliehen = false;
+    }
+
+    public void Ausleihen()
+    {
+        IstAusgeliehen = true;
+    }
+
+    public void Zurueckgeben()
+    {
+        IstAusgeliehen = false;
+    }
+}
+
+public class Buch : Medium
+{
+    public int Seitenzahl { get; }
+    public string Autor { get; }
+
+    public Buch(string titel, int seitenzahl, string autor)
+        : base(titel)
+    {
+        Seitenzahl = seitenzahl;
+        Autor = autor;
+    }
+}
+
+public class Dvd : Medium
+{
+    public int Laufzeit { get; }
+    public string Regisseur { get; }
+
+    public Dvd(string titel, int laufzeit, string regisseur)
+        : base(titel)
+    {
+        Laufzeit = laufzeit;
+        Regisseur = regisseur;
+    }
+}
+
+public class Bibliothek
+{
+    public List<Medium> Medien { get; }
+
+    public Bibliothek()
+    {
+        Medien = new List<Medium>();
+    }
+
+    public List<Medium> AusgelieheneMedien
+    {
+        get
+        {
+            var ausgeliehen = new List<Medium>();
+
+            foreach (var medium in Medien)
+            {
+                if (medium.IstAusgeliehen)
+                {
+                    ausgeliehen.Add(medium);
+                }
+            }
+
+            return ausgeliehen;
+        }
+    }
+}
