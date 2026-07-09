@@ -53,22 +53,29 @@ internal partial class Program
         // AufgabenTeil2_4();
         // AufgabenTeil2_5();
         // AufgabeIsbn();
-        AufgabeBibiliothek1();
+        AufgabeBibiliothek2();
     }
 
-    private static void AufgabeBibiliothek1()
+    private static void AufgabeBibiliothek2()
     {
         var bibliothek = new Bibliothek.Bibliothek();
         MedienAusgeben(bibliothek.Medien);
         MedienAusgeben(bibliothek.AusgelieheneMedien);
 
-        
         var buch1 = new Bibliothek.Buch("Das Parfüm", 280, "Patrick Süskind");
         var buch2 = new Bibliothek.Buch("Harry Potter der Stein der Weisen", 342, "Lord Voldemort");
 
         var dvd1 = new Dvd("Harry Potter der Stein der Weisen", 90, "Chris Columbus");
         var dvd2 = new Dvd("Herr der Ringe: Rückkehr des Königs", 180, "Peter Jackson");
         dvd2.Ausleihen();
+
+        bibliothek.Hinzufuegen(buch1);
+        bibliothek.Hinzufuegen(buch2);
+        bibliothek.Hinzufuegen(dvd1);
+        bibliothek.Hinzufuegen(dvd2);
+
+        MedienAusgeben(bibliothek.Medien);
+        MedienAusgeben(bibliothek.AusgelieheneMedien);
     }
 
     private static void MedienAusgeben(List<Medium> medien)

@@ -79,4 +79,9 @@ public class Bibliothek
     {
         medien = new List<Medium>();
     }
+
+    public void Hinzufuegen(Medium medium)
+    {
+        medien.Add(medium);
+    }
 }
