@@ -1,4 +1,6 @@
-﻿internal partial class Program
+﻿using Bibliothek;
+
+internal partial class Program
 {
     private static void Main(string[] args)
     {
@@ -50,7 +52,35 @@
         // AufgabenTeil2_3();
         // AufgabenTeil2_4();
         // AufgabenTeil2_5();
-        AufgabeIsbn();
+        // AufgabeIsbn();
+        AufgabeBibiliothek1();
+    }
+
+    private static void AufgabeBibiliothek1()
+    {
+        var bibliothek = new Bibliothek.Bibliothek();
+        MedienAusgeben(bibliothek.Medien);
+        MedienAusgeben(bibliothek.AusgelieheneMedien);
+
+        
+        var buch1 = new Bibliothek.Buch("Das Parfüm", 280, "Patrick Süskind");
+        var buch2 = new Bibliothek.Buch("Harry Potter der Stein der Weisen", 342, "Lord Voldemort");
+
+        var dvd1 = new Dvd("Harry Potter der Stein der Weisen", 90, "Chris Columbus");
+        var dvd2 = new Dvd("Herr der Ringe: Rückkehr des Königs", 180, "Peter Jackson");
+        dvd2.Ausleihen();
+    }
+
+    private static void MedienAusgeben(List<Medium> medien)
+    {
+        if (medien.Count == 0)
+        {
+            Console.WriteLine("Keine Medien gefunden");
+        }
+        foreach(var medium in medien)
+        {
+            Console.WriteLine($"{medium.Titel}: {(medium.IstAusgeliehen ? "" : "nicht")} ausgeliehen");
+        }
     }
 
     private static void AufgabeIsbn()
