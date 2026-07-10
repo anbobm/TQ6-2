@@ -99,11 +99,13 @@ public class Abteilung
     public void MitarbeiterHinzufügen(Mitarbeiter mitarbeiter)
     {
         this.mitarbeiter.Add(mitarbeiter);
+        mitarbeiter.Abteilung = this;
     }
 
     public void MitarbeiterEntfernen(Mitarbeiter mitarbeiter)
     {
         this.mitarbeiter.Remove(mitarbeiter);
+        mitarbeiter.Abteilung = null;
     }
 }
 
@@ -112,6 +114,8 @@ public class Mitarbeiter
     public string Name { get; }
 
     public string Personalnummer { get; }
+
+    public Abteilung Abteilung { get; set; }
 
     public Mitarbeiter(string personalnummer, string name)
     {
