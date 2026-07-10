@@ -8,6 +8,21 @@ public class Unternehmen
 
     public List<Abteilung> Abteilungen => abteilungen.ToList();
 
+    public List<Mitarbeiter> Mitarbeiter
+    {
+        get
+        {
+            var mitarbeiter = new List<Mitarbeiter>();
+
+            foreach (var abteilung in abteilungen)
+            {
+                mitarbeiter.AddRange(abteilung.Mitarbeiter);
+            }
+
+            return mitarbeiter;
+        }
+    }
+
     public Unternehmen(string name)
     {
         Name = name;
@@ -28,14 +43,7 @@ public class Unternehmen
 
     public void AlleMitarbeiterAnzeigen()
     {
-        var mitarbeiter = new List<Mitarbeiter>();
-
-        foreach (var abteilung in abteilungen)
-        {
-            mitarbeiter.AddRange(abteilung.Mitarbeiter);
-        }
-
-        foreach (var m in mitarbeiter)
+        foreach (var m in Mitarbeiter)
         {
             Console.WriteLine($"{m.Personalnummer}: {m.Name}");
         }
@@ -43,14 +51,7 @@ public class Unternehmen
 
     public Mitarbeiter MitarbeiterSuchen(string personalnummer)
     {
-        var mitarbeiter = new List<Mitarbeiter>();
-
-        foreach (var abteilung in abteilungen)
-        {
-            mitarbeiter.AddRange(abteilung.Mitarbeiter);
-        }
-
-        return mitarbeiter.FirstOrDefault(m => m.Personalnummer == personalnummer);
+        return Mitarbeiter.FirstOrDefault(m => m.Personalnummer == personalnummer);
     }
 
     public void Info()
@@ -65,6 +66,18 @@ public class Unternehmen
             {
                 Console.WriteLine($"        Mitarbeiter: {mitarbeiter.Personalnummer} {mitarbeiter.Name}");
             }
+        }
+    }
+
+    public Mitarbeiter MitarbeiterErzeugen(string personalnummer, string name)
+    {
+        if (MitarbeiterSuchen(personalnummer) != null)
+        {
+            return null;
+        }
+        else
+        {
+            return new Mitarbeiter(personalnummer, name);
         }
     }
 }

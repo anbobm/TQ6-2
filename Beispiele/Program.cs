@@ -55,10 +55,10 @@ internal partial class Program
         // AufgabenTeil2_5();
         // AufgabeIsbn();
         // AufgabeBibiliothek2();
-        AufgabeUnternehmen3();
+        AufgabeUnternehmen5();
     }
 
-    private static void AufgabeUnternehmen3()
+    private static void AufgabeUnternehmen5()
     {
         var unternehmen = new Unternehmen.Unternehmen("Print GmbH");
 
@@ -74,16 +74,16 @@ internal partial class Program
             unternehmen.AbteilungHinzufügen(abteilung);
         }
 
-        produktion.MitarbeiterHinzufügen(new Unternehmen.Mitarbeiter("001", "Tunahan"));
-        produktion.MitarbeiterHinzufügen(new Unternehmen.Mitarbeiter("002", "Anne"));
-        produktion.MitarbeiterHinzufügen(new Unternehmen.Mitarbeiter("003", "Katja"));
-        produktion.MitarbeiterHinzufügen(new Unternehmen.Mitarbeiter("004", "Mohamad"));
-        produktion.MitarbeiterHinzufügen(new Unternehmen.Mitarbeiter("005", "Sebastian"));
-        produktion.MitarbeiterHinzufügen(new Unternehmen.Mitarbeiter("006", "Ihor"));
-        entwicklung.MitarbeiterHinzufügen(new Unternehmen.Mitarbeiter("007", "Ruwen"));
-        vertrieb.MitarbeiterHinzufügen(new Unternehmen.Mitarbeiter("008", "Nataliya"));
-        buchhaltung.MitarbeiterHinzufügen(new Unternehmen.Mitarbeiter("009", "Andreas"));
-        buchhaltung.MitarbeiterHinzufügen(new Unternehmen.Mitarbeiter("010", "Efkan"));
+        produktion.MitarbeiterHinzufügen(unternehmen.MitarbeiterErzeugen("001", "Tunahan"));
+        produktion.MitarbeiterHinzufügen(unternehmen.MitarbeiterErzeugen("002", "Anne"));
+        produktion.MitarbeiterHinzufügen(unternehmen.MitarbeiterErzeugen("003", "Katja"));
+        produktion.MitarbeiterHinzufügen(unternehmen.MitarbeiterErzeugen("004", "Mohamad"));
+        produktion.MitarbeiterHinzufügen(unternehmen.MitarbeiterErzeugen("005", "Sebastian"));
+        produktion.MitarbeiterHinzufügen(unternehmen.MitarbeiterErzeugen("006", "Ihor"));
+        entwicklung.MitarbeiterHinzufügen(unternehmen.MitarbeiterErzeugen("007", "Ruwen"));
+        vertrieb.MitarbeiterHinzufügen(unternehmen.MitarbeiterErzeugen("008", "Nataliya"));
+        buchhaltung.MitarbeiterHinzufügen(unternehmen.MitarbeiterErzeugen("009", "Andreas"));
+        buchhaltung.MitarbeiterHinzufügen(unternehmen.MitarbeiterErzeugen("010", "Efkan"));
 
         unternehmen.Info();
     }
