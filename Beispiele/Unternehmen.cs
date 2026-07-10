@@ -23,6 +23,35 @@ public class Unternehmen
     {
         abteilungen.Remove(abteilung);
     }
+
+    public Abteilung AbteilungFinden(string bezeichnung) => abteilungen.FirstOrDefault(a => a.Bezeichnung == bezeichnung);
+
+    public void AlleMitarbeiterAnzeigen()
+    {
+        var mitarbeiter = new List<Mitarbeiter>();
+
+        foreach (var abteilung in abteilungen)
+        {
+            mitarbeiter.AddRange(abteilung.Mitarbeiter);
+        }
+
+        foreach (var m in mitarbeiter)
+        {
+            Console.WriteLine($"{m.Personalnummer}: {m.Name}");
+        }
+    }
+
+    public Mitarbeiter MitarbeiterSuchen(string personalnummer)
+    {
+        var mitarbeiter = new List<Mitarbeiter>();
+
+        foreach (var abteilung in abteilungen)
+        {
+            mitarbeiter.AddRange(abteilung.Mitarbeiter);
+        }
+
+        return mitarbeiter.FirstOrDefault(m => m.Personalnummer == personalnummer);
+    }
 }
 
 public class Abteilung
