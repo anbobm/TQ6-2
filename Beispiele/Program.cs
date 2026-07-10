@@ -1,4 +1,5 @@
 ﻿using Bibliothek;
+using Unternehmen;
 
 internal partial class Program
 {
@@ -53,7 +54,36 @@ internal partial class Program
         // AufgabenTeil2_4();
         // AufgabenTeil2_5();
         // AufgabeIsbn();
-        AufgabeBibiliothek2();
+        // AufgabeBibiliothek2();
+        AufgabeUnternehmen1();
+    }
+
+    private static void AufgabeUnternehmen1()
+    {
+        var unternehmen = new Unternehmen.Unternehmen("Print GmbH");
+
+        var entwicklung = new Abteilung("Entwicklung");
+        var vertrieb = new Abteilung("Vertrieb");
+        var produktion = new Abteilung("Produktion");
+        var buchhaltung = new Abteilung("Buchhaltung");
+
+        Abteilung[] abteilungen = [entwicklung, vertrieb, produktion, buchhaltung];
+
+        foreach (var abteilung in abteilungen)
+        {
+            unternehmen.AbteilungHinzufügen(abteilung);
+        }
+
+        produktion.MitarbeiterHinzufügen(new Unternehmen.Mitarbeiter("001", "Tunahan"));
+        produktion.MitarbeiterHinzufügen(new Unternehmen.Mitarbeiter("002", "Anne"));
+        produktion.MitarbeiterHinzufügen(new Unternehmen.Mitarbeiter("003", "Katja"));
+        produktion.MitarbeiterHinzufügen(new Unternehmen.Mitarbeiter("004", "Mohamad"));
+        produktion.MitarbeiterHinzufügen(new Unternehmen.Mitarbeiter("005", "Sebastian"));
+        produktion.MitarbeiterHinzufügen(new Unternehmen.Mitarbeiter("006", "Ihor"));
+        entwicklung.MitarbeiterHinzufügen(new Unternehmen.Mitarbeiter("007", "Ruwen"));
+        vertrieb.MitarbeiterHinzufügen(new Unternehmen.Mitarbeiter("008", "Nataliya"));
+        buchhaltung.MitarbeiterHinzufügen(new Unternehmen.Mitarbeiter("009", "Andreas"));
+        buchhaltung.MitarbeiterHinzufügen(new Unternehmen.Mitarbeiter("010", "Efkan"));
     }
 
     private static void AufgabeBibiliothek2()
