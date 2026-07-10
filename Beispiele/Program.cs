@@ -55,10 +55,10 @@ internal partial class Program
         // AufgabenTeil2_5();
         // AufgabeIsbn();
         // AufgabeBibiliothek2();
-        AufgabeUnternehmen2();
+        AufgabeUnternehmen3();
     }
 
-    private static void AufgabeUnternehmen2()
+    private static void AufgabeUnternehmen3()
     {
         var unternehmen = new Unternehmen.Unternehmen("Print GmbH");
 
@@ -85,11 +85,7 @@ internal partial class Program
         buchhaltung.MitarbeiterHinzufügen(new Unternehmen.Mitarbeiter("009", "Andreas"));
         buchhaltung.MitarbeiterHinzufügen(new Unternehmen.Mitarbeiter("010", "Efkan"));
 
-        unternehmen.AlleMitarbeiterAnzeigen();
-
-        Console.WriteLine();
-
-        Console.WriteLine($"Mitarbeiter mit Nummer 003: {unternehmen.MitarbeiterSuchen("003").Name}");
+        unternehmen.Info();
     }
 
     private static void AufgabeBibiliothek2()

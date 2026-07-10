@@ -52,6 +52,21 @@ public class Unternehmen
 
         return mitarbeiter.FirstOrDefault(m => m.Personalnummer == personalnummer);
     }
+
+    public void Info()
+    {
+        Console.WriteLine($"Unternehmen: {Name}");
+
+        foreach(var abteilung in abteilungen)
+        {
+            Console.WriteLine($"    Abteilung: {abteilung.Bezeichnung}");
+
+            foreach (var mitarbeiter in abteilung.Mitarbeiter)
+            {
+                Console.WriteLine($"        Mitarbeiter: {mitarbeiter.Personalnummer} {mitarbeiter.Name}");
+            }
+        }
+    }
 }
 
 public class Abteilung
