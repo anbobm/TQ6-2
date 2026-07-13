@@ -32,6 +32,7 @@ public class Unternehmen
     public void AbteilungHinzufügen(Abteilung abteilung)
     {
         abteilungen.Add(abteilung);
+        File.AppendAllText("foo.txt", $"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fffffff} Abteilung {abteilung.Bezeichnung} zugefügt\n");
     }
 
     public void AbteilungEntfernen(Abteilung abteilung)
