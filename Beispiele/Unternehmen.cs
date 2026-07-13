@@ -1,3 +1,4 @@
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -28,6 +29,38 @@ public class Unternehmen
     public void AbteilungEntfernen(Abteilung abteilung)
     {
         abteilungen.Remove(abteilung);
+    }
+
+    public Abteilung? AbteilungFinden(string bezeichnung)
+    {
+        return abteilungen.FirstOrDefault(a => a.Bezeichnung == bezeichnung);
+    }
+
+    public void AlleMitarbeiterAnzeigen()
+    {
+        var alleMitarbeiter = new List<Mitarbeiter>();
+
+        foreach (var abteilung in abteilungen)
+        {
+            alleMitarbeiter.AddRange(abteilung.Mitarbeiter);
+        }
+
+        foreach (var mitarbeiter in alleMitarbeiter.OrderBy(m => m.Personalnummer))
+        {
+            Console.WriteLine($"{mitarbeiter.Personalnummer}: {mitarbeiter.Name}");
+        }
+    }
+
+    public Mitarbeiter? MitarbeiterSuchen(string personalnummer)
+    {
+        var alleMitarbeiter = new List<Mitarbeiter>();
+
+        foreach (var abteilung in abteilungen)
+        {
+            alleMitarbeiter.AddRange(abteilung.Mitarbeiter);
+        }
+
+        return alleMitarbeiter.FirstOrDefault(m => m.Personalnummer == personalnummer);
     }
 }
 

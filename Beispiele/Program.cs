@@ -74,8 +74,53 @@ internal partial class Program
         // Aufgabe2_20260708_Bibliothek_Hinzufuegen();
         // Aufgabe3_20260708_Bibliothek_Benutzer();
         // Aufgabe4_20260708_Bibliothek_Anzahl();
-    Aufgabe1_20260710_Unternehmen_Grundklassen();
+        // Aufgabe1_20260710_Unternehmen_Grundklassen();
+        Aufgabe2_20260710_Unternehmen_Methoden();
+        
     }
+
+private static void Aufgabe2_20260710_Unternehmen_Suchen()
+{
+    var unternehmen = new Unternehmen.Unternehmen("Print GmbH");
+
+    var entwicklung = new Unternehmen.Abteilung("Entwicklung");
+    var vertrieb = new Unternehmen.Abteilung("Vertrieb");
+    var produktion = new Unternehmen.Abteilung("Produktion");
+    var buchhaltung = new Unternehmen.Abteilung("Buchhaltung");
+
+    Unternehmen.Abteilung[] abteilungen = { entwicklung, vertrieb, produktion, buchhaltung };
+
+    foreach (var abteilung in abteilungen)
+    {
+        unternehmen.AbteilungHinzufuegen(abteilung);
+    }
+
+    produktion.MitarbeiterHinzufuegen(new Unternehmen.Mitarbeiter("001", "Tunahan"));
+    produktion.MitarbeiterHinzufuegen(new Unternehmen.Mitarbeiter("002", "Anne"));
+    produktion.MitarbeiterHinzufuegen(new Unternehmen.Mitarbeiter("003", "Katja"));
+    produktion.MitarbeiterHinzufuegen(new Unternehmen.Mitarbeiter("004", "Mohamad"));
+    produktion.MitarbeiterHinzufuegen(new Unternehmen.Mitarbeiter("005", "Sebastian"));
+    produktion.MitarbeiterHinzufuegen(new Unternehmen.Mitarbeiter("006", "Ihor"));
+    entwicklung.MitarbeiterHinzufuegen(new Unternehmen.Mitarbeiter("007", "Ruwen"));
+    vertrieb.MitarbeiterHinzufuegen(new Unternehmen.Mitarbeiter("008", "Nataliya"));
+    buchhaltung.MitarbeiterHinzufuegen(new Unternehmen.Mitarbeiter("009", "Andreas"));
+    buchhaltung.MitarbeiterHinzufuegen(new Unternehmen.Mitarbeiter("010", "Efkan"));
+
+    Console.WriteLine("Alle Mitarbeiter:");
+    unternehmen.AlleMitarbeiterAnzeigen();
+
+    var gefundeneAbteilung = unternehmen.AbteilungFinden("Vertrieb");
+    if (gefundeneAbteilung != null)
+    {
+        Console.WriteLine($"Gefundene Abteilung: {gefundeneAbteilung.Bezeichnung}");
+    }
+
+    var gefundenerMitarbeiter = unternehmen.MitarbeiterSuchen("008");
+    if (gefundenerMitarbeiter != null)
+    {
+        Console.WriteLine($"Gefundener Mitarbeiter: {gefundenerMitarbeiter.Personalnummer}: {gefundenerMitarbeiter.Name}");
+    }
+}
 
 
 private static void Aufgabe1_20260710_Unternehmen_Grundklassen()
@@ -105,6 +150,49 @@ private static void Aufgabe1_20260710_Unternehmen_Grundklassen()
 }
 
 
+
+private static void Aufgabe2_20260710_Unternehmen_Methoden()
+{
+    var unternehmen = new Unternehmen.Unternehmen("Print GmbH");
+
+    var entwicklung = new Unternehmen.Abteilung("Entwicklung");
+    var vertrieb = new Unternehmen.Abteilung("Vertrieb");
+    var produktion = new Unternehmen.Abteilung("Produktion");
+    var buchhaltung = new Unternehmen.Abteilung("Buchhaltung");
+
+    Unternehmen.Abteilung[] abteilungen = { entwicklung, vertrieb, produktion, buchhaltung };
+
+    foreach (var abteilung in abteilungen)
+    {
+        unternehmen.AbteilungHinzufuegen(abteilung);
+    }
+
+    produktion.MitarbeiterHinzufuegen(new Unternehmen.Mitarbeiter("001", "Tunahan"));
+    produktion.MitarbeiterHinzufuegen(new Unternehmen.Mitarbeiter("002", "Anne"));
+    produktion.MitarbeiterHinzufuegen(new Unternehmen.Mitarbeiter("003", "Katja"));
+    produktion.MitarbeiterHinzufuegen(new Unternehmen.Mitarbeiter("004", "Mohamad"));
+    produktion.MitarbeiterHinzufuegen(new Unternehmen.Mitarbeiter("005", "Sebastian"));
+    produktion.MitarbeiterHinzufuegen(new Unternehmen.Mitarbeiter("006", "Ihor"));
+    entwicklung.MitarbeiterHinzufuegen(new Unternehmen.Mitarbeiter("007", "Ruwen"));
+    vertrieb.MitarbeiterHinzufuegen(new Unternehmen.Mitarbeiter("008", "Nataliya"));
+    buchhaltung.MitarbeiterHinzufuegen(new Unternehmen.Mitarbeiter("009", "Andreas"));
+    buchhaltung.MitarbeiterHinzufuegen(new Unternehmen.Mitarbeiter("010", "Efkan"));
+
+    Console.WriteLine("Alle Mitarbeiter:");
+    unternehmen.AlleMitarbeiterAnzeigen();
+
+    var gefundeneAbteilung = unternehmen.AbteilungFinden("Vertrieb");
+    if (gefundeneAbteilung != null)
+    {
+        Console.WriteLine($"Gefundene Abteilung: {gefundeneAbteilung.Bezeichnung}");
+    }
+
+    var gefundenerMitarbeiter = unternehmen.MitarbeiterSuchen("008");
+    if (gefundenerMitarbeiter != null)
+    {
+        Console.WriteLine($"Gefundener Mitarbeiter: {gefundenerMitarbeiter.Personalnummer}: {gefundenerMitarbeiter.Name}");
+    }
+}
 
 private static void Aufgabe4_20260708_Bibliothek_Anzahl()
 {
@@ -2388,6 +2476,8 @@ public int AnzahlVerfuegbar
 
 
 }
+
+
 
 
 
