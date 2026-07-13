@@ -77,7 +77,8 @@ internal partial class Program
         // Aufgabe1_20260710_Unternehmen_Grundklassen();
         // Aufgabe2_20260710_Unternehmen_Methoden();
         // Aufgabe3_20260710_Unternehmeninfo();
-        Aufgabe4_20260710_MitarbeiterAbteilung();
+        // Aufgabe4_20260710_MitarbeiterAbteilung();
+        Aufgabe5_20260710_MitarbeiterErzeugen();
 
         
     }
@@ -241,6 +242,32 @@ private static void Aufgabe4_20260710_MitarbeiterAbteilung()
     Console.WriteLine($"Mitarbeiter: {mitarbeiter.Personalnummer}: {mitarbeiter.Name}");
     Console.WriteLine($"Abteilung: {mitarbeiter.Abteilung?.Bezeichnung}");
 }
+
+
+private static void Aufgabe5_20260710_MitarbeiterErzeugen()
+{
+    var unternehmen = new Unternehmen.Unternehmen("Print GmbH");
+    var entwicklung = new Unternehmen.Abteilung("Entwicklung");
+
+    unternehmen.AbteilungHinzufuegen(entwicklung);
+
+    var mitarbeiter1 = unternehmen.MitarbeiterErzeugen("008", "Nataliya");
+
+    if (mitarbeiter1 != null)
+    {
+        entwicklung.MitarbeiterHinzufuegen(mitarbeiter1);
+    }
+
+    var mitarbeiter2 = unternehmen.MitarbeiterErzeugen("008", "Andreas");
+
+    if (mitarbeiter2 == null)
+    {
+        Console.WriteLine("Mitarbeiter wurde nicht erstellt, Personalnummer ist schon vorhanden.");
+    }
+
+    unternehmen.Unternehmeninfo();
+}
+
 
 
 private static void Aufgabe4_20260708_Bibliothek_Anzahl()

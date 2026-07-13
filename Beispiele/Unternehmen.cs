@@ -62,6 +62,19 @@ public class Unternehmen
 
         return alleMitarbeiter.FirstOrDefault(m => m.Personalnummer == personalnummer);
     }
+
+
+public Mitarbeiter? MitarbeiterErzeugen(string personalnummer, string name)
+{
+    if (MitarbeiterSuchen(personalnummer) != null)
+    {
+        return null;
+    }
+
+    return new Mitarbeiter(personalnummer, name);
+}
+
+
     public void Unternehmeninfo()
     {
         Console.WriteLine($"Unternehmen {Name}");
