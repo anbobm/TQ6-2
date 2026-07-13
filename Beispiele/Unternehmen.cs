@@ -1,4 +1,4 @@
-namespace Unternehmen;
+namespace Unternehmenszeug;
 
 public class Unternehmen
 {

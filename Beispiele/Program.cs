@@ -1,5 +1,5 @@
 ﻿using Bibliothek;
-using Unternehmen;
+using Unternehmenszeug;
 
 internal partial class Program
 {
@@ -60,7 +60,7 @@ internal partial class Program
 
     private static void AufgabeUnternehmen5()
     {
-        var unternehmen = new Unternehmen.Unternehmen("Print GmbH");
+        var unternehmen = new Unternehmen("Print GmbH");
 
         var entwicklung = new Abteilung("Entwicklung");
         var vertrieb = new Abteilung("Vertrieb");
