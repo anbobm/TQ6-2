@@ -6,7 +6,7 @@ Dieses Interface soll eine Methode `Bezahlen(decimal betrag)` besitzen.
 
 Schreibe drei Klassen, die dieses Interface implementieren: `KreditkartenBezahlung`, `PayPalBezahlung`, `BarZahlung`. Die Implementierung simulieren wir nur, indem wir einen entsprechenden String auf die Kommandozeile ausgeben, z.B. `xx.xx € mit PayPal bezahlt.`.
 
-Rufe anschließend eine Beispiel-Bestellung jeweils mit Objekten dieser drei Klassen als Parameter auf, um das ganze zu testen.
+Rufe anschließend eine Beispiel-Bestellung jeweils mit Objekten dieser drei Klassen als Parameter auf, um das Ganze zu testen.
 
 ```csharp
 public class Bestellung
