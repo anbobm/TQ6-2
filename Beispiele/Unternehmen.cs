@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -97,12 +97,22 @@ public class Abteilung
 
     public void MitarbeiterHinzufuegen(Mitarbeiter mitarbeiter)
     {
+        if (mitarbeiter.Abteilung != null)
+        {
+            Console.WriteLine($"{mitarbeiter.Name} ist bereits in Abteilung {mitarbeiter.Abteilung.Bezeichnung}.");
+            return;
+        }
+
         this.mitarbeiter.Add(mitarbeiter);
+        mitarbeiter.AbteilungSetzen(this);
     }
 
     public void MitarbeiterEntfernen(Mitarbeiter mitarbeiter)
     {
-        this.mitarbeiter.Remove(mitarbeiter);
+        if (this.mitarbeiter.Remove(mitarbeiter))
+        {
+            mitarbeiter.AbteilungSetzen(null);
+        }
     }
 }
 
@@ -110,11 +120,17 @@ public class Mitarbeiter
 {
     public string Personalnummer { get; }
     public string Name { get; }
+    public Abteilung? Abteilung { get; private set; }
 
     public Mitarbeiter(string personalnummer, string name)
     {
         Personalnummer = personalnummer;
         Name = name;
+    }
+
+    internal void AbteilungSetzen(Abteilung? abteilung)
+    {
+        Abteilung = abteilung;
     }
 }
 

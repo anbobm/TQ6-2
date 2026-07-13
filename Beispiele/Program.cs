@@ -76,7 +76,9 @@ internal partial class Program
         // Aufgabe4_20260708_Bibliothek_Anzahl();
         // Aufgabe1_20260710_Unternehmen_Grundklassen();
         // Aufgabe2_20260710_Unternehmen_Methoden();
-        Aufgabe3_20260710_Unternehmeninfo();
+        // Aufgabe3_20260710_Unternehmeninfo();
+        Aufgabe4_20260710_MitarbeiterAbteilung();
+
         
     }
 
@@ -224,6 +226,23 @@ private static void Aufgabe3_20260710_Unternehmeninfo()
 
     unternehmen.Unternehmeninfo();
 }
+
+
+private static void Aufgabe4_20260710_MitarbeiterAbteilung()
+{
+    var entwicklung = new Unternehmen.Abteilung("Entwicklung");
+    var vertrieb = new Unternehmen.Abteilung("Vertrieb");
+
+    var mitarbeiter = new Unternehmen.Mitarbeiter("008", "Nataliya");
+
+    entwicklung.MitarbeiterHinzufuegen(mitarbeiter);
+    vertrieb.MitarbeiterHinzufuegen(mitarbeiter);
+
+    Console.WriteLine($"Mitarbeiter: {mitarbeiter.Personalnummer}: {mitarbeiter.Name}");
+    Console.WriteLine($"Abteilung: {mitarbeiter.Abteilung?.Bezeichnung}");
+}
+
+
 private static void Aufgabe4_20260708_Bibliothek_Anzahl()
 {
     var bibliothek = new Bibliothek();
