@@ -62,6 +62,20 @@ public class Unternehmen
 
         return alleMitarbeiter.FirstOrDefault(m => m.Personalnummer == personalnummer);
     }
+    public void Unternehmeninfo()
+    {
+        Console.WriteLine($"Unternehmen {Name}");
+
+        foreach (var abteilung in abteilungen)
+        {
+            Console.WriteLine($"    Abteilung {abteilung.Bezeichnung}");
+
+            foreach (var mitarbeiter in abteilung.Mitarbeiter.OrderBy(m => m.Personalnummer))
+            {
+                Console.WriteLine($"        {mitarbeiter.Personalnummer}: {mitarbeiter.Name}");
+            }
+        }
+    }
 }
 
 public class Abteilung
@@ -103,3 +117,6 @@ public class Mitarbeiter
         Name = name;
     }
 }
+
+
+

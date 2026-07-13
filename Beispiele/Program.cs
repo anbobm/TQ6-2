@@ -75,7 +75,8 @@ internal partial class Program
         // Aufgabe3_20260708_Bibliothek_Benutzer();
         // Aufgabe4_20260708_Bibliothek_Anzahl();
         // Aufgabe1_20260710_Unternehmen_Grundklassen();
-        Aufgabe2_20260710_Unternehmen_Methoden();
+        // Aufgabe2_20260710_Unternehmen_Methoden();
+        Aufgabe3_20260710_Unternehmeninfo();
         
     }
 
@@ -194,6 +195,35 @@ private static void Aufgabe2_20260710_Unternehmen_Methoden()
     }
 }
 
+private static void Aufgabe3_20260710_Unternehmeninfo()
+{
+    var unternehmen = new Unternehmen.Unternehmen("Print GmbH");
+
+    var entwicklung = new Unternehmen.Abteilung("Entwicklung");
+    var vertrieb = new Unternehmen.Abteilung("Vertrieb");
+    var produktion = new Unternehmen.Abteilung("Produktion");
+    var buchhaltung = new Unternehmen.Abteilung("Buchhaltung");
+
+    Unternehmen.Abteilung[] abteilungen = { entwicklung, vertrieb, produktion, buchhaltung };
+
+    foreach (var abteilung in abteilungen)
+    {
+        unternehmen.AbteilungHinzufuegen(abteilung);
+    }
+
+    produktion.MitarbeiterHinzufuegen(new Unternehmen.Mitarbeiter("001", "Tunahan"));
+    produktion.MitarbeiterHinzufuegen(new Unternehmen.Mitarbeiter("002", "Anne"));
+    produktion.MitarbeiterHinzufuegen(new Unternehmen.Mitarbeiter("003", "Katja"));
+    produktion.MitarbeiterHinzufuegen(new Unternehmen.Mitarbeiter("004", "Mohamad"));
+    produktion.MitarbeiterHinzufuegen(new Unternehmen.Mitarbeiter("005", "Sebastian"));
+    produktion.MitarbeiterHinzufuegen(new Unternehmen.Mitarbeiter("006", "Ihor"));
+    entwicklung.MitarbeiterHinzufuegen(new Unternehmen.Mitarbeiter("007", "Ruwen"));
+    vertrieb.MitarbeiterHinzufuegen(new Unternehmen.Mitarbeiter("008", "Nataliya"));
+    buchhaltung.MitarbeiterHinzufuegen(new Unternehmen.Mitarbeiter("009", "Andreas"));
+    buchhaltung.MitarbeiterHinzufuegen(new Unternehmen.Mitarbeiter("010", "Efkan"));
+
+    unternehmen.Unternehmeninfo();
+}
 private static void Aufgabe4_20260708_Bibliothek_Anzahl()
 {
     var bibliothek = new Bibliothek();
@@ -2476,6 +2506,8 @@ public int AnzahlVerfuegbar
 
 
 }
+
+
 
 
 

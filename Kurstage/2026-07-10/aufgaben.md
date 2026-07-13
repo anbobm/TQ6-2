@@ -83,3 +83,20 @@ Ergaenze die Klasse Mitarbeiter um ein Attribut Abteilung. Mit diesem soll siche
 ## Aufgabe 5
 
 Wir wollen durchsetzen, dass die Personalnummer des Mitarbeiters in einem Unternehmen eindeutig ist. Dazu erstellen wir eine Methode MitarbeiterErzeugen() in Unternehmen, die einen Mitarbeiter nur erstellt, wenn es die uebergebene Personalnummer im Unternehmen nicht gibt.
+
+## Ausgabe Aufgabe 3
+Unternehmen Print GmbH
+    Abteilung Entwicklung
+        007: Ruwen
+    Abteilung Vertrieb
+        008: Nataliya
+    Abteilung Produktion
+        001: Tunahan
+        002: Anne
+        003: Katja
+        004: Mohamad
+        005: Sebastian
+        006: Ihor
+    Abteilung Buchhaltung
+        009: Andreas
+        010: Efkan
