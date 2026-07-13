@@ -2,6 +2,7 @@
   <Folder Name="/Kurstage/" />
   <Folder Name="/Kurstage/2026-07-13/">
     <Project Path="Kurstage/2026-07-13/BestellungBezahlen/BestellungBezahlen.csproj" />
+    <Project Path="Kurstage/2026-07-13/BestellungBezahlenPlus/BestellungBezahlenPlus.csproj" />
   </Folder>
   <Project Path="Beispiele/Beispiele.csproj" />
 </Solution>
