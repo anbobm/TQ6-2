@@ -4,6 +4,9 @@ using System.Runtime.InteropServices;
 using System.Transactions;
 using System.Collections.Generic;
 using System.Linq;
+using Unternehmen;
+
+
 
 internal partial class Program
 {
@@ -70,9 +73,37 @@ internal partial class Program
         // Aufgabe1_20260708_Bibliothek_Medium();
         // Aufgabe2_20260708_Bibliothek_Hinzufuegen();
         // Aufgabe3_20260708_Bibliothek_Benutzer();
-        Aufgabe4_20260708_Bibliothek_Anzahl();
-
+        // Aufgabe4_20260708_Bibliothek_Anzahl();
+    Aufgabe1_20260710_Unternehmen_Grundklassen();
     }
+
+
+private static void Aufgabe1_20260710_Unternehmen_Grundklassen()
+{
+    var unternehmen = new Unternehmen.Unternehmen("Print GmbH");
+
+    var entwicklung = new Unternehmen.Abteilung("Entwicklung");
+    var vertrieb = new Unternehmen.Abteilung("Vertrieb");
+    var produktion = new Unternehmen.Abteilung("Produktion");
+    var buchhaltung = new Unternehmen.Abteilung("Buchhaltung");
+
+    unternehmen.AbteilungHinzufuegen(entwicklung);
+    unternehmen.AbteilungHinzufuegen(vertrieb);
+    unternehmen.AbteilungHinzufuegen(produktion);
+    unternehmen.AbteilungHinzufuegen(buchhaltung);
+
+    produktion.MitarbeiterHinzufuegen(new Unternehmen.Mitarbeiter("001", "Tunahan"));
+    produktion.MitarbeiterHinzufuegen(new Unternehmen.Mitarbeiter("002", "Anne"));
+    produktion.MitarbeiterHinzufuegen(new Unternehmen.Mitarbeiter("003", "Katja"));
+    entwicklung.MitarbeiterHinzufuegen(new Unternehmen.Mitarbeiter("007", "Ruwen"));
+    vertrieb.MitarbeiterHinzufuegen(new Unternehmen.Mitarbeiter("008", "Nataliya"));
+    buchhaltung.MitarbeiterHinzufuegen(new Unternehmen.Mitarbeiter("009", "Andreas"));
+    buchhaltung.MitarbeiterHinzufuegen(new Unternehmen.Mitarbeiter("010", "Efkan"));
+
+    Console.WriteLine(unternehmen.Name);
+    Console.WriteLine($"Abteilungen: {unternehmen.Abteilungen.Count}");
+}
+
 
 
 private static void Aufgabe4_20260708_Bibliothek_Anzahl()
