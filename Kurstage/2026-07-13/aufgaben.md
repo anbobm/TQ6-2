@@ -51,3 +51,21 @@ public class Bestellung
     }
 }
 ```
+
+# Aufgabe 2
+
+Erweitere die Klassen `Unternehmen` und `Abteilung` so, dass immer wenn eine Abteilung oder ein Mitarbeiter hinzugefügt oder entfernt wird, dies protokolliert wird. Dabei soll nicht direkt auf die Kommandozeile geschrieben werden, sondern es soll nur eine entsprechende Nachricht an eine andere Klasse übergeben werden.
+
+Welche Klasse das konkret übernimmt, soll für `Unternehmen` und `Abteilung` keine Rolle spielen. Wichtig ist nur, dass das Interface `ILogger` mit der zugehörigen Methode `Log(string message)` bereitgestellt wird. Ein Objekt, das dieses Interface bereitstellt, sollen `Unternehmen` und `Abteilung` im Konstruktor erhalten.
+
+Schreibe eine `ConsoleLogger` und eine `FileLogger` Klasse, die das `ILogger`-Interface implementieren.
+`ConsoleLogger` soll auf die Kommandozeile schreiben, `FileLogger` in eine Datei eurer Wahl, z.B. `protokoll.log`.
+Beide sollen beim protokollieren der Nachricht einen Zeitstempel voranstellen. (z.B. `DateTime.Now`)
+
+Einer Datei Text anhängen geht zum Beispiel so:
+
+```csharp
+File.AppendAllText("foo.txt", "Das ist der Text");
+```
+
+Hinweis: Der Pfad im ersten Parameter ist relativ zum Arbeitsverzeichnis des kompilierten Programms.
