@@ -6,5 +6,8 @@
     <Project Path="Kurstage/2026-07-13/UnternehmenMitLogger/UnternehmenMitLogger.csproj" />
     <Project Path="Kurstage/2026-07-13/UnternehmenMitLoggerPlus/UnternehmenMitLoggerPlus.csproj" />
   </Folder>
+  <Folder Name="/Kurstage/2026-07-14/">
+    <Project Path="Kurstage/2026-07-14/Aufgabe100/Aufgabe100.csproj" />
+  </Folder>
   <Project Path="Beispiele/Beispiele.csproj" />
 </Solution>
