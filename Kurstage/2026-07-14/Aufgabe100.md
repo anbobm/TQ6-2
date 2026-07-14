@@ -1,4 +1,4 @@
-# Aufgabe 1
+# Aufgabe 100
 
 Erweitere die Methode `BestellungBezahlen()` der Klasse `Bestellung` um einen Parameter `rabatt` des Typs `IRabatt`.
 
