@@ -97,4 +97,3 @@ PS C:\Users\Nataliya\Desktop\TQ6-2_Nataliya\Beispiele>
 
 ## Aufgabe 5
 Zeichne ein UML-Klassendiagramm welches die Klassen aus Aufgaben 1 bis 4 enthält.
-
