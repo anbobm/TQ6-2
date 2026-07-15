@@ -63,7 +63,8 @@ Schreibe **Unit-Tests** für die folgenden Fälle:
 * Prüfe, ob die Methode true zurückgibt, wenn genügend Guthaben vorhanden ist.
 * Prüfe, ob die Methode true zurückgibt, wenn Guthaben und Betrag genau gleich sind.
 * Prüfe, ob die Methode false zurückgibt, wenn nicht genügend Guthaben vorhanden ist.
-Benennung der Tests
+
+## Benennung der Tests
 
 Versuche, aussagekräftige Testnamen zu verwenden, zum Beispiel:
 
