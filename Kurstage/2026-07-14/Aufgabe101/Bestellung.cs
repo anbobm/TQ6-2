@@ -2,6 +2,8 @@ public class Bestellung
 {
     private static int letzteBestellungsnummer;
     public int Bestellungsnummer { get; }
+
+    private ILogger logger;
     private List<(string Name, decimal Stückpreis)> artikel;
 
     public string Kunde { get; }
@@ -10,20 +12,25 @@ public class Bestellung
 
     public List<(string Name, decimal Stückpreis)> Artikel => artikel.ToList();
 
-    public Bestellung(string kunde) : this(kunde, new List<(string Name, decimal Stückpreis)>())
+    public Bestellung(string kunde, ILogger logger) : this(kunde, new List<(string Name, decimal Stückpreis)>(), logger)
     {
     }
 
-    public Bestellung(string kunde, List<(string Name, decimal Stückpreis)> artikel)
+    public Bestellung(string kunde, List<(string Name, decimal Stückpreis)> artikel, ILogger logger)
     {
         Kunde = kunde;
         this.artikel = artikel;
         Bestellungsnummer = ++letzteBestellungsnummer;
+        this.logger = logger;
+
+        logger.Log($"Bestellung {Bestellungsnummer} wurde erzeugt");
     }
 
     public void ArtikelHinzufügen(string name, decimal stückpreis)
     {
         artikel.Add((name, stückpreis));
+
+        logger.Log($"Artikel {name} für {stückpreis} € wurde der Bestellung {Bestellungsnummer} zugefügt");
     }
 
     public decimal Gesamtpreis
@@ -48,5 +55,7 @@ public class Bestellung
         var abzug = rabatt.RabattBerechnen(Gesamtpreis);
 
         bezahlung.Bezahlen(Gesamtpreis - abzug);
+
+        logger.Log($"Die Bestellung {Bestellungsnummer} wurde bezahlt");
     }
 }

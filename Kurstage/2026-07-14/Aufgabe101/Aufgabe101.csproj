@@ -6,4 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\2026-07-13\UnternehmenMitLoggerPlus\UnternehmenMitLoggerPlus.csproj" />
+  </ItemGroup>
+
 </Project>

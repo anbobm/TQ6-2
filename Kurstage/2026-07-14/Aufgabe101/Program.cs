@@ -1,16 +1,11 @@
-﻿var bestellung = new Bestellung("Tunahan", [("Klimaanlage", 500.00m), ("Eismaschine", 80.00m)]);
-bestellung.ArtikelHinzufügen("Klimaanlage", 1000.00m);
-
+﻿var logger = new FileLogger();
 var bezahlung = new BarBezahlung();
+var rabatt = new StudentenRabatt();
 
-var rabatt1 = new KeinRabatt();
-var rabatt2 = new StudentenRabatt();
-var rabatt3 = new SeniorenRabatt();
+var bestellung1 = new Bestellung("Tunahan", logger);
+bestellung1.ArtikelHinzufügen("Klimaanlage", 1000.00m);
+bestellung1.BestellungBezahlen(bezahlung, rabatt);
 
-// BestellungBezahlen erwartet nur das Interface IRabatt
-// Alle Objekte, die dieses Implementieren können benutzt werden
-// Die Bestellungsklasse interessiert sich nicht für die 
-// konkrete Implementierung
-bestellung.BestellungBezahlen(bezahlung, rabatt1);
-bestellung.BestellungBezahlen(bezahlung, rabatt2);
-bestellung.BestellungBezahlen(bezahlung, rabatt3);
+var bestellung2 = new Bestellung("Max Mustermann", logger);
+bestellung2.ArtikelHinzufügen("Fußball (gebraucht)", 9.99m);
+bestellung2.BestellungBezahlen(bezahlung, rabatt);
