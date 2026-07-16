@@ -68,9 +68,9 @@ Schreibe **Unit-Tests** für die folgenden Fälle:
 
 Versuche, aussagekräftige Testnamen zu verwenden, zum Beispiel:
 
-`Constructor_SetsInitialBalance`
-`Deposit_IncreasesBalance`
-`Deposit_ThrowsArgumentException_WhenAmountIsZero`
-`Withdraw_DecreasesBalance`
-`Withdraw_ThrowsInvalidOperationException_WhenBalanceIsTooLow`
-`HasEnoughFunds_ReturnsTrue_WhenBalanceIsEqualToAmount`
+* `Constructor_SetsInitialBalance`
+* `Deposit_IncreasesBalance`
+* `Deposit_ThrowsArgumentException_WhenAmountIsZero`
+* `Withdraw_DecreasesBalance`
+* `Withdraw_ThrowsInvalidOperationException_WhenBalanceIsTooLow`
+* `HasEnoughFunds_ReturnsTrue_WhenBalanceIsEqualToAmount`
