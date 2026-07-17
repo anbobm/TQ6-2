@@ -16,6 +16,7 @@
   </Folder>
   <Folder Name="/Kurstage/2026-07-16/">
     <Project Path="Kurstage/2026-07-16/Aufgabe103/Aufgabe103.csproj" />
+    <Project Path="Kurstage/2026-07-16/Aufgabe104/Aufgabe104.csproj" />
   </Folder>
   <Project Path="Beispiele/Beispiele.csproj" />
 </Solution>
