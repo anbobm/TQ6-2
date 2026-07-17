@@ -7,14 +7,17 @@ public class VendingMachine
 {
     public decimal InsertMoney(decimal amount)
     {
+        throw new NotImplementedException();
     }
 
     public bool BuyDrink()
     {
+        throw new NotImplementedException();
     }
 
     public decimal ReturnMoney()
     {
+        throw new NotImplementedException();
     }
 
     public decimal CurrentBalance { get; }
