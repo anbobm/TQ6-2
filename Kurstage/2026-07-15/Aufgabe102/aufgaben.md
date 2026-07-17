@@ -37,7 +37,7 @@ public class BankAccount
 
 Schreibe Unit-Tests für die folgenden Fälle:
 
-Konstruktor
+## Konstruktor
 Prüfe, ob der Anfangskontostand korrekt gesetzt wird.
 Deposit (Einzahlen)
 Prüfe, ob sich der Kontostand nach einer gültigen Einzahlung erhöht.
@@ -56,7 +56,7 @@ Prüfe, ob die Methode false zurückgibt, wenn nicht genügend Guthaben vorhande
 Benennung der Tests
 Versuche, aussagekräftige Testnamen zu verwenden, zum Beispiel:
 
-Constructor_SetsInitialBalance
+## Constructor_SetsInitialBalance
 Deposit_IncreasesBalance
 Deposit_ThrowsArgumentException_WhenAmountIsZero
 Withdraw_DecreasesBalance
