@@ -50,17 +50,17 @@ Eine Klasse, die dieses Interface implementiert könnte vielleicht so aussehen:
 ```csharp
 public class Inventar : IInventar
 {
-    int GetBestand(int id)
+    public int GetBestand(int id)
     {
         // Datenbankabfrage an SQL-DB
     }
 
-    int GetKapazität(int id)
+    public int GetKapazität(int id)
     {
         // Datenbankabfrage an SQL-DB
     }
 
-    void UpdateBestand(int id, int anzahl)
+    public void UpdateBestand(int id, int anzahl)
     {
         // Datenbankabfrage an SQL-DB
     }
