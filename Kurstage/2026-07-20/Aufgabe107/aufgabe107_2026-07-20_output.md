@@ -13,4 +13,12 @@ Die Klasse `Lager` arbeitet mit einem `IInventar`. Im Unit-Test wird kein echtes
 ### Test
 
 ```powershell
-dotnet test Kurstage/2026-07-20/Aufgabe107/Aufgabe107.csproj
+
+Testzusammenfassung: gesamt: 1; Fehler: 0; erfolgreich: 1; übersprungen: 0
+
+Build erfolgreich.
+
+
+Testzusammenfassung: gesamt: 1; Fehler: 0; erfolgreich: 1; übersprungen: 0
+
+Build erfolgreich.
