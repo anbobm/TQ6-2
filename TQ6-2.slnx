@@ -1,3 +1,23 @@
 <Solution>
+  <Folder Name="/Kurstage/" />
+  <Folder Name="/Kurstage/2026-07-13/">
+    <Project Path="Kurstage/2026-07-13/BestellungBezahlen/BestellungBezahlen.csproj" />
+    <Project Path="Kurstage/2026-07-13/BestellungBezahlenPlus/BestellungBezahlenPlus.csproj" />
+    <Project Path="Kurstage/2026-07-13/UnternehmenMitLogger/UnternehmenMitLogger.csproj" />
+    <Project Path="Kurstage/2026-07-13/UnternehmenMitLoggerPlus/UnternehmenMitLoggerPlus.csproj" />
+  </Folder>
+  <Folder Name="/Kurstage/2026-07-14/">
+    <Project Path="Kurstage/2026-07-14/Aufgabe100/Aufgabe100.csproj" />
+    <Project Path="Kurstage/2026-07-14/Aufgabe101/Aufgabe101.csproj" />
+  </Folder>
+  <Folder Name="/Kurstage/2026-07-15/">
+    <Project Path="Kurstage/2026-07-15/Aufgabe102/Aufgabe102.csproj" />
+    <Project Path="Kurstage/2026-07-15/BeispielTests/BeispielTests.csproj" />
+  </Folder>
+  <Folder Name="/Kurstage/2026-07-16/">
+    <Project Path="Kurstage/2026-07-16/Aufgabe103/Aufgabe103.csproj" />
+    <Project Path="Kurstage/2026-07-16/Aufgabe104/Aufgabe104.csproj" />
+    <Project Path="Kurstage/2026-07-16/Aufgabe105/Aufgabe105.csproj" />
+  </Folder>
   <Project Path="Beispiele/Beispiele.csproj" />
 </Solution>

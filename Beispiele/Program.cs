@@ -1,7 +1,5 @@
-﻿using System.Reflection.Metadata;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using System.Transactions;
+﻿using Bibliothek;
+using Unternehmenszeug;
 
 internal partial class Program
 {
@@ -47,7 +45,232 @@ internal partial class Program
         // OOPAufgabe2_2();
         // StatischeAttribute();
         // StatischeAttribute_Aufgabe2();
-        StatischeAttribute_Aufgabe3();
+        // StatischeAttribute_Aufgabe3();
+        // AufgabenTeil1_1();
+        // PrivaterKonstruktorBeispiel();
+        // AufgabenTeil2_1();
+        // AufgabenTeil2_2();
+        // AufgabenTeil2_3();
+        // AufgabenTeil2_4();
+        // AufgabenTeil2_5();
+        // AufgabeIsbn();
+        // AufgabeBibiliothek2();
+        AufgabeUnternehmen5();
+    }
+
+    private static void AufgabeUnternehmen5()
+    {
+        var unternehmen = new Unternehmen("Print GmbH");
+
+        var entwicklung = new Abteilung("Entwicklung");
+        var vertrieb = new Abteilung("Vertrieb");
+        var produktion = new Abteilung("Produktion");
+        var buchhaltung = new Abteilung("Buchhaltung");
+
+        Abteilung[] abteilungen = [entwicklung, vertrieb, produktion, buchhaltung];
+
+        foreach (var abteilung in abteilungen)
+        {
+            unternehmen.AbteilungHinzufügen(abteilung);
+        }
+
+        produktion.MitarbeiterHinzufügen(unternehmen.MitarbeiterErzeugen("001", "Tunahan"));
+        produktion.MitarbeiterHinzufügen(unternehmen.MitarbeiterErzeugen("002", "Anne"));
+        produktion.MitarbeiterHinzufügen(unternehmen.MitarbeiterErzeugen("003", "Katja"));
+        produktion.MitarbeiterHinzufügen(unternehmen.MitarbeiterErzeugen("004", "Mohamad"));
+        produktion.MitarbeiterHinzufügen(unternehmen.MitarbeiterErzeugen("005", "Sebastian"));
+        produktion.MitarbeiterHinzufügen(unternehmen.MitarbeiterErzeugen("006", "Ihor"));
+        entwicklung.MitarbeiterHinzufügen(unternehmen.MitarbeiterErzeugen("007", "Ruwen"));
+        vertrieb.MitarbeiterHinzufügen(unternehmen.MitarbeiterErzeugen("008", "Nataliya"));
+        buchhaltung.MitarbeiterHinzufügen(unternehmen.MitarbeiterErzeugen("009", "Andreas"));
+        buchhaltung.MitarbeiterHinzufügen(unternehmen.MitarbeiterErzeugen("010", "Efkan"));
+
+        unternehmen.Info();
+    }
+
+    private static void AufgabeBibiliothek2()
+    {
+        var bibliothek = new Bibliothek.Bibliothek();
+
+        var benutzer1 = new Bibliothek.Benutzer("Max Mustermann");
+
+        var buch1 = new Bibliothek.Buch("Das Parfüm", 280, "Patrick Süskind");
+        var buch2 = new Bibliothek.Buch("Harry Potter der Stein der Weisen", 342, "Lord Voldemort");
+
+        var dvd1 = new Dvd("Harry Potter der Stein der Weisen", 90, "Chris Columbus");
+        var dvd2 = new Dvd("Herr der Ringe: Rückkehr des Königs", 180, "Peter Jackson");
+        dvd2.Ausleihen(benutzer1);
+
+        bibliothek.Hinzufuegen(buch1);
+        bibliothek.Hinzufuegen(buch2);
+        bibliothek.Hinzufuegen(dvd1);
+        bibliothek.Hinzufuegen(dvd2);
+
+        Console.WriteLine($"Anzahl ausgeliehener Medien: {bibliothek.AnzahlAusgeliehen}");
+        Console.WriteLine($"Anzahl Bücher: {bibliothek.AnzahlBuecher}");
+        Console.WriteLine($"Anzahl Dvds: {bibliothek.AnzahlDvds}");
+        Console.WriteLine($"Anzahl Verfügbarer Medien: {bibliothek.AnzahlVerfügbar}");
+    }
+
+    private static void MedienAusgeben(List<Medium> medien)
+    {
+        if (medien.Count == 0)
+        {
+            Console.WriteLine("Keine Medien gefunden");
+        }
+        foreach(var medium in medien)
+        {
+            Console.Write($"{medium.Titel}: ");
+
+            if (medium.IstAusgeliehen)
+            {
+                Console.WriteLine($"ausgeliehen von {medium.AusgeliehenVon.Name}");
+            }
+            else
+            {
+                Console.WriteLine("nicht ausgeliehen");
+            }
+        }
+    }
+
+    private static void AufgabeIsbn()
+    {
+        Dictionary<string,bool> isbns = new Dictionary<string, bool>
+        {
+            {"9780306406157", true}, // gültig
+            {"9783423264303", true}, // gültig
+            {"9781784878979", true}, // gültig
+            {"97817-84878-979", true}, // gültig aber mit Trennstrichen
+            {"9781784878978", false}, // ungültig
+            {"97803064061570", false}, // ungültig (zu lang), könnte aber für manche gültig aussehen
+            {"9781784871", false} // ungültig (zu kurz), könnte aber für manche gültig aussehen
+        };
+
+        foreach (var kvp in isbns)
+        {
+            var isbn = kvp.Key;
+            var valid = kvp.Value;
+            var validString = valid ? "gültig" : "ungültig";
+
+            if (Isbn.IsValid(isbn) == valid)
+            {
+                Console.WriteLine($"{isbn} erfolgreich als {validString} erkannt!");
+            }
+            else
+            {
+                Console.WriteLine($"FEHLER: {isbn} nicht als {validString} erkannt!");
+                
+            }
+        }
+    }
+
+    private static void AufgabenTeil2_5()
+    {
+        var mitarbeiter = new Mitarbeiter("Paul", 4500);
+        Console.WriteLine($"{mitarbeiter.Name}: Gehalt: {mitarbeiter.GetGehalt()}");
+
+        mitarbeiter.GehaltErhoehen(10);
+        Console.WriteLine($"{mitarbeiter.Name}: Gehalt: {mitarbeiter.GetGehalt()}");
+
+        var manager = new Manager("Max", 10000, 50000);
+        Console.WriteLine($"{manager.Name}: Gehalt: {manager.GetGehalt()}");
+
+        manager.GehaltErhoehen(10);
+        Console.WriteLine($"{manager.Name}: Gehalt: {manager.GetGehalt()}");
+    }
+
+    private static void AufgabenTeil2_4()
+    {
+        var sensor = new Temperatursensor();
+        Console.WriteLine($"{sensor.TemperaturCelsius} °C, {sensor.TemperaturFahrenheit} °F");
+
+        sensor.Erhoehen(100);
+        Console.WriteLine($"{sensor.TemperaturCelsius} °C, {sensor.TemperaturFahrenheit} °F");
+
+        sensor.Senken(373.15m);
+        Console.WriteLine($"{sensor.TemperaturCelsius} °C, {sensor.TemperaturFahrenheit} °F");
+
+        sensor.Senken(0.0001m);
+        Console.WriteLine($"{sensor.TemperaturCelsius} °C, {sensor.TemperaturFahrenheit} °F");
+    }
+
+    private static void AufgabenTeil2_3()
+    {
+        var benutzer = new Benutzer("admin", "p4ssw0rd!");
+
+        benutzer.Login("p4ssw0rd!");
+        Console.WriteLine($"Eingeloggt: {benutzer.IstEingeloggt}");
+
+        benutzer.Logout();
+        Console.WriteLine($"Eingeloggt: {benutzer.IstEingeloggt}");
+
+        if (benutzer.PasswortÄndern("p4ssw0rd!", "kurz"))
+        {
+            Console.WriteLine("Password erfolgreich geändert");
+        }
+        else
+        {
+            Console.WriteLine("Password konnte nicht geändert werden");
+        }
+    }
+
+    private static void AufgabenTeil2_2()
+    {
+        var rechteck = new Rechteck(20, 30);
+
+        Console.WriteLine($"Breite: {rechteck.Breite}, Hoehe: {rechteck.Hoehe}");
+        Console.WriteLine($"Fläche: {rechteck.Flaeche}, Umfang: {rechteck.Umfang}");
+
+        // Exception
+        rechteck.Hoehe = -30;
+    }
+
+    private static void AufgabenTeil2_1()
+    {
+        var produkt = new Produkt("Goldener Apfel", 100m);
+
+        Console.WriteLine(produkt.GetInfo());
+
+        produkt.Nachbestellen(50);
+
+        Console.WriteLine(produkt.GetInfo());
+
+        produkt.Nachbestellen(50);
+
+        Console.WriteLine(produkt.GetInfo());
+
+        produkt.Verkaufen(100);
+
+        Console.WriteLine(produkt.GetInfo());
+
+        // Müsste Exception werfen
+        produkt.Nachbestellen(1);
+    }
+
+    private static void PrivaterKonstruktorBeispiel()
+    {
+        var person = Person.Create(null);
+
+        Console.WriteLine(person.Name);
+    }
+
+    private static void AufgabenTeil1_1()
+    {
+        var auto1 = new Auto("Opel", "Astra", 1981);
+        var auto2 = new Auto("Trabant", "P 601", 1985);
+        var auto3 = new Auto("BMW", "3er", 1990);
+        Auto auto4 = new Cabrio("Opel", "Adam", 2010);
+        var lkw1 = new LKW(40000);
+
+        auto1.DisplayInfo();
+        auto2.DisplayInfo();
+        auto3.DisplayInfo();
+
+        auto4.DisplayInfo();
+
+        lkw1.Fahren();
+        lkw1.Beladung = 1000;
+        lkw1.Beladung = 40001;
     }
 
     private static void StatischeAttribute_Aufgabe3()
