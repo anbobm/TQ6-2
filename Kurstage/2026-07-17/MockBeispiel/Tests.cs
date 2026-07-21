@@ -10,7 +10,7 @@ public class Tests
         var mockLogger = new Mock<ILogger>();
         var unternehmen = new Unternehmen("Foo", mockLogger.Object);
 
-        unternehmen.AbteilungHinzufügen(new Abteilung("Testabteilung", null));
+        unternehmen.AbteilungHinzufügen(new Abteilung("Testabteilung", null!));
 
        mockLogger.Verify(logger => logger.Log("Abteilung Testabteilung wurde zum Unternehmen Foo hinzugefügt."), Times.Once);
     }
