@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="de">
   <head>
-    <meta charset="utf-8" />
-    <title>Aufgabe 110 – Anmeldeformular</title>
+    <meta charset="utf-8">
+    <title>Anmeldung Freizeitcamp</title>
   </head>
 
   <body>
-    <h1>Anmeldeformular für ein Freizeitcamp</h1>
+    <h1>Anmeldung</h1>
 
     <form>
       <p>
@@ -24,94 +24,76 @@
       </p>
 
       <p>
-  <label>
-    Email-Adresse:
-    <input type="email" name="email">
-  </label>
-</p>
+        <label>
+          Email:
+          <input type="email" name="email">
+        </label>
+      </p>
 
-            <p>
+      <p>
         <label>
           Passwort:
           <input type="password" name="passwort">
         </label>
       </p>
 
-            <p>
-        <label>
-          Geburtsdatum:
-          <input type="date" name="geburtsdatum">
-        </label>
-      </p>
-
-
-         <p>
+      <p>
         <label>
           Telefonnummer:
           <input type="tel" name="telefonnummer">
         </label>
       </p>
 
-            <p>
+      <p>
         <label>
           Lieblingsfarbe:
           <input type="color" name="lieblingsfarbe">
         </label>
       </p>
 
-            <p>
+      <p>
         <label>
           Tischtennis-Skill:
           <input type="range" name="tischtennis_skill" min="1" max="10">
         </label>
       </p>
 
-
-
-
-         
-
-
-           <p>
-        Lieblingsaktivität:
-
+      <p>
         <label>
-          <input type="radio" name="lieblingsaktivitaet" value="schwimmen">
-          Schwimmen
-        </label>
-
-        <label>
-          <input type="radio" name="lieblingsaktivitaet" value="wandern">
-          Wandern
-        </label>
-
-        <label>
-          <input type="radio" name="lieblingsaktivitaet" value="tischtennis">
-          Tischtennis
+          Lieblingsaktivität:
+          <select name="lieblingsaktivitaet">
+            <option value="wandern">Wandern</option>
+            <option value="tischtennis">Tischtennis</option>
+            <option value="lagerfeuer">Lagerfeuer</option>
+            <option value="gesellschaftsspiele">Gesellschaftsspiele</option>
+          </select>
         </label>
       </p>
 
-
-
-            <p>
-        Mahlzeiten:
-
+      <p>
         <label>
-          <input type="checkbox" name="mahlzeiten" value="fruehstueck">
-          Frühstück
-        </label>
-
-        <label>
-          <input type="checkbox" name="mahlzeiten" value="mittagessen">
-          Mittagessen
-        </label>
-
-        <label>
-          <input type="checkbox" name="mahlzeiten" value="abendessen">
-          Abendessen
+          Frühstück:
+          <input type="checkbox" name="fruehstueck">
         </label>
       </p>
-      
+
+      <p>
+        <label>
+          Mittagessen:
+          <input type="checkbox" name="mittagessen">
+        </label>
+      </p>
+
+      <p>
+        <label>
+          Abendessen:
+          <input type="checkbox" name="abendessen">
+        </label>
+      </p>
+
+      <p>
+        <input type="submit" value="Abschicken">
+      </p>
     </form>
   </body>
 </html>
