@@ -53,7 +53,7 @@ Du kannst dafür folgendes Grundgerüst verwenden:
 
 Das `div`-Element ist der Container für das Profil, im Bild zu sehen mit dem abgerundeten Rahmen. `margin: 50px auto` sorgt dafür, dass der äußere Rand nach oben und unten 50px beträgt, nach rechts und links automatisch gewählt wird und dadurch das `div` zentriert angezeigt wird.
 
-Setze auf dem `div`die `border` auf `2px solid #000000;` für einen schwarzen Rand, pder wähle eine Farbe. Mit `border-radius: 15px;` erreichst du, dass der Rand an den Ecken mit einem Radius von 15px abgerundet ist.
+Setze auf dem `div`die `border` auf `2px solid #000000;` für einen schwarzen Rand, oder wähle eine Farbe. Mit `border-radius: 15px;` erreichst du, dass der Rand an den Ecken mit einem Radius von 15px abgerundet ist.
 
 Nimm ein *quadratisches* Bild (von dir selbst oder einen Avatar).
 
