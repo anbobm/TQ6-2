@@ -57,7 +57,7 @@ Setze auf dem `div`die `border` auf `2px solid #000000;` für einen schwarzen Ra
 
 Nimm ein *quadratisches* Bild (von dir selbst oder einen Avatar).
 
-Setze verschiedene Hintergrundfarben mit `background-color` für `body`, `.card` und den `button` (Der Button ist hier einfach ein `<button>...</button>`-Element, weil das hier kein Formular ist).
+Setze verschiedene Hintergrundfarben mit `background-color` für `body`, `.card` und den `button` (Der Button ist einfach ein `<button>...</button>`-Element, weil das hier kein Formular ist).
 
 Setze Schriftgrößen und -farben nach Belieben mit `font-size` und `color`.
 
