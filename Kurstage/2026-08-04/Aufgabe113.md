@@ -8,7 +8,7 @@ Bearbeite nun die Index-Page `Page/Index.cshtml`, indem du den vorhandenen HTML-
 
 Schreibe nun Razor-Code, der folgendes auf der Index-Page anzeigt:
 
-* das aktuelle Jahr (`DateTime.Now` benutzen mit ToString() oder eine * geeignete Property finden)
+* das aktuelle Jahr (`DateTime.Now` benutzen mit ToString() oder eine geeignete Property finden)
 * die Summe `34 + 35`
 * die Summe der Zahlen von 1 bis 100
 * eine `<ul>` (unordered list), erzeugt aus dem Array `string[] array = ['dies', 'das', 'ananas']`
