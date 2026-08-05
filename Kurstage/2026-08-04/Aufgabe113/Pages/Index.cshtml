@@ -1,0 +1,30 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<p>Willkommen im Jahre @DateTime.Now.Year</p>
+<p>Die Summe von 3 + 4 ist @(3 + 4)</p>
+
+@{
+    int summe = 0;
+
+    for (int i = 1; i <= 100; i++)
+    {
+        summe += i;
+    }
+
+}
+
+<p>Summe der Zahlen von 1 bis 100: @summe</p>
+
+<ul>
+    @{
+        string[] array = ["dies", "das", "ananas"];
+
+            foreach(var element in array) {
+                <li>@element</li>
+            }
+    }
+</ul>
