@@ -43,5 +43,11 @@
         // ...
     }
 
+    @* In der aktuellen Page gibt es auch vordefinierte Properties *@
+    @* Z.B. Request, die ein HttpRequest-Objekt enthält, mit dem ich *@
+    @* Informationen über die Anfrage erhalte, die an diese Page *@
+    @* geschickt worden ist, wie beispielsweise der Port des Clients: *@
+    <p>Remote Port: @Request.HttpContext.Connection.RemotePort</p>
+
 </body>
 </html>
