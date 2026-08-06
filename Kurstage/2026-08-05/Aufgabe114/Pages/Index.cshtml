@@ -1,0 +1,20 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<form>
+    <input type="text" name="foo">
+    <input type="text" name="blub">
+    <input type="submit" value="Abschicken" />
+</form>
+
+@* .../Index?foo=bar&blub=bla *@
+<ul>
+    @{
+        foreach (var kvp in Request.Query) {
+            <li>@kvp.Key: @kvp.Value</li>
+        }
+    }
+</ul>
