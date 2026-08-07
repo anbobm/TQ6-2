@@ -9,46 +9,4 @@
     <input type="submit" value="Abschicken">
 </form>
 
-@{
-    // "2001-05-13"
-    var geburtsdatumString = Request.Query["geburtsdatum"];
-
-    var heute = DateTime.Now;
-    var monat = heute.Month;
-    var tag = heute.Day;
-
-    var parts = geburtsdatumString.ToString().Split("-");
-
-    if (parts.Length != 3) {
-        return;
-    }
-
-    var geburtstag = int.Parse(parts[2]);
-    var geburtsmonat = int.Parse(parts[1]);
-
-    if (tag == geburtstag && monat == geburtsmonat) {
-        <p>Alles Gute zum Geburtstag!</p>
-    }
-    else {
-        <p>Willkommen! (Pech gehabt, keine Geschenke heute)</p>
-    }
-
-    @* // Alternative *@
-
-    @* if (String.IsNullOrEmpty(geburtsdatumString)) {
-        return;
-    }
-
-    var geburtsdatum = DateTime.ParseExact(geburtsdatumString, "yyyy-MM-dd", null);
-
-    var heute = DateTime.Now;
-
-    if (geburtsdatum.Month == heute.Month
-        && geburtsdatum.Day == heute.Day)
-    {
-        <p>Alles Gute zum Geburtstag!</p>
-    }
-    else {
-        <p>Willkommen! (Pech gehabt, keine Geschenke heute)</p>
-    }  *@
-}
+<p>@Model.Begrüßung</p>
