@@ -49,5 +49,11 @@
     @* geschickt worden ist, wie beispielsweise der Port des Clients: *@
     <p>Remote Port: @Request.HttpContext.Connection.RemotePort</p>
 
+    <form>
+        <input type="text" name="foo" value="bar" />
+        <input type="text" name="hallo" value="welt" />
+        <input type="submit" value="Abschicken" />
+    </form>
+    <p>Wert zum Schlüssel "foo": @Request.Query["foo"]</p>
 </body>
 </html>
