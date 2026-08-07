@@ -1,0 +1,19 @@
+﻿@page
+@model IndexModel
+
+@{
+    ViewData["Title"] = "Begrüßung";
+}
+
+<h1>Begrüßung</h1>
+
+<form method="get">
+    <label for="name">Dein Name:</label>
+    <input type="text" id="name" name="name" required />
+    <button type="submit">Absenden</button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.Begruessung))
+{
+    <p>@Model.Begruessung</p>
+}
