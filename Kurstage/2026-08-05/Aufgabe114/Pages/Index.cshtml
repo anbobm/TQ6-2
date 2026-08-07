@@ -1,0 +1,15 @@
+﻿@page
+@model IndexModel
+
+@{
+    ViewData["Title"] = "Aufgabe 114";
+}
+
+<h1>Query String</h1>
+
+<ul>
+    @foreach (var pair in Request.Query)
+    {
+        <li>@pair.Key = @pair.Value</li>
+    }
+</ul>
