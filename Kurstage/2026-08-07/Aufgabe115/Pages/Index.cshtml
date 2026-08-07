@@ -1,0 +1,44 @@
+﻿@page
+@model IndexModel
+
+@{
+    ViewData["Title"] = "Geburtstag";
+
+    string? geburtsdatumText = Request.Query["geburtsdatum"];
+    string nachricht = "";
+
+    if (!string.IsNullOrWhiteSpace(geburtsdatumText))
+    {
+        if (DateTime.TryParse(geburtsdatumText, out DateTime geburtsdatum))
+        {
+            DateTime heute = DateTime.Now;
+
+            if (geburtsdatum.Day == heute.Day &&
+                geburtsdatum.Month == heute.Month)
+            {
+                nachricht = "Herzlichen Glückwunsch zum Geburtstag!";
+            }
+            else
+            {
+                nachricht = "Heute ist nicht dein Geburtstag.";
+            }
+        }
+        else
+        {
+            nachricht = "Bitte gib ein gültiges Datum ein.";
+        }
+    }
+}
+
+<h1>Geburtstagsprüfung</h1>
+
+<form method="get">
+    <label for="geburtsdatum">Geburtsdatum:</label>
+    <input type="date" id="geburtsdatum" name="geburtsdatum" required />
+    <button type="submit">Prüfen</button>
+</form>
+
+@if (!string.IsNullOrEmpty(nachricht))
+{
+    <p>@nachricht</p>
+}
