@@ -47,6 +47,24 @@ Wie man im Connection String im obigen Quellcode sehen kann, wird eine Sqlite-Da
 
 Lege diese Datei mit Hilfe des [SQLite-Browsers](https://sqlitebrowser.org) an: erstelle eine Tabelle `Bücher` (gleicher Name wie Property in `Db`, somit müssen wir nichts explizit konfigurieren) mit Spalten entsprechend der Properties der `Buch`-Klasse. (`Id` (`INTEGER`) ist Primärschlüssel, `Titel` und `Autor` sind `TEXT`)
 
+Fülle die Datenbank mit deinen eigenen Daten und/oder führe das SQL-Skript aus:
+
+```sql
+INSERT INTO Bücher (Titel, Autor)
+	VALUES
+		('Der kleine Prinz','Antoine de Saint-Exupéry'),
+		('Die Verwandlung', 'Franz Kafka'),
+		('Der alte Mann und das Meer', 'Ernest Hemingway'),
+		('Momo', 'Michael Ende'),
+		('Die unendliche Geschichte', 'Michael Ende'),
+		('Faust', 'Johann Wolfgang von Goethe'),
+		('Im Westen nichts Neues', 'Erich Maria Remarque'),
+		('Das Parfum', 'Patrick Süskind'),
+		('Der Process', 'Franz Kafka'),
+		('Effi Briest', 'Theodor Fontane')
+		;
+```
+
 ## Index-Page ändern
 
 Die Page `/Index` soll so aussehen:
