@@ -1,0 +1,25 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<h1>Artikelübersicht</h1>
+
+@if(Model.Artikel != null) {
+    <h2>@Model.Artikel.Name</h2>
+
+    <p>Preis: <strong>@Model.Artikel.Preis €</strong></p>
+
+    <p>@Model.Artikel.Beschreibung</p>
+}
+
+
+<h2>Artikelliste</h2>
+
+<ul>
+    @foreach (var artikel in Model.ArtikelListe)
+    {
+        <li><a href="/?=@artikel.Id">@artikel.Name</a></li>
+    }
+</ul>
