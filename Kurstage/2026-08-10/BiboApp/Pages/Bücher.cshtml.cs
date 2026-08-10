@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace BiboApp.Pages;
 
-public class IndexModel : PageModel
+public class BücherModel : PageModel
 {
     public List<Buch> Bücher { get; set; }
 
