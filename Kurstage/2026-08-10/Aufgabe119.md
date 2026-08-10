@@ -50,19 +50,18 @@ Lege diese Datei mit Hilfe des [SQLite-Browsers](https://sqlitebrowser.org) an: 
 Fülle die Datenbank mit deinen eigenen Daten und/oder führe das SQL-Skript aus:
 
 ```sql
-INSERT INTO Bücher (Titel, Autor)
-	VALUES
-		('Der kleine Prinz','Antoine de Saint-Exupéry'),
-		('Die Verwandlung', 'Franz Kafka'),
-		('Der alte Mann und das Meer', 'Ernest Hemingway'),
-		('Momo', 'Michael Ende'),
-		('Die unendliche Geschichte', 'Michael Ende'),
-		('Faust', 'Johann Wolfgang von Goethe'),
-		('Im Westen nichts Neues', 'Erich Maria Remarque'),
-		('Das Parfum', 'Patrick Süskind'),
-		('Der Process', 'Franz Kafka'),
-		('Effi Briest', 'Theodor Fontane')
-		;
+INSERT INTO Bücher (Titel, Autor) VALUES
+    ('Der kleine Prinz','Antoine de Saint-Exupéry'),
+    ('Die Verwandlung', 'Franz Kafka'),
+    ('Der alte Mann und das Meer', 'Ernest Hemingway'),
+    ('Momo', 'Michael Ende'),
+    ('Die unendliche Geschichte', 'Michael Ende'),
+    ('Faust', 'Johann Wolfgang von Goethe'),
+    ('Im Westen nichts Neues', 'Erich Maria Remarque'),
+    ('Das Parfum', 'Patrick Süskind'),
+    ('Der Process', 'Franz Kafka'),
+    ('Effi Briest', 'Theodor Fontane')
+    ;
 ```
 
 ## Index-Page ändern
