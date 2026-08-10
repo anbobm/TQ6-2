@@ -1,0 +1,38 @@
+@page
+@model Flugmanagementsystem.Web.Pages.Fluege.DetailsModel
+
+@{
+    var flug = Model.Flug!;
+    ViewData["Title"] = $"Flug {flug.Flugnummer}";
+}
+
+<a asp-page="/Fluege/Index" class="btn btn-outline-secondary mb-4">
+    ← Zurück zu den Flügen
+</a>
+
+<div class="card shadow-sm">
+    <div class="card-body p-4">
+        <div class="d-flex justify-content-between align-items-start mb-4">
+            <div>
+                <p class="text-muted mb-1">Flugnummer: @flug.Flugnummer</p>
+                <h1>@flug.Abflugort → @flug.Zielort</h1>
+            </div>
+            <span class="badge text-bg-success fs-6">@flug.Status</span>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-6">
+                <h2 class="h5">Flugdaten</h2>
+                <p class="mb-1"><strong>Abflug:</strong> @flug.Abflugzeit.ToString("dd.MM.yyyy HH:mm")</p>
+                <p class="mb-1"><strong>Ankunft:</strong> @flug.Ankunftszeit.ToString("dd.MM.yyyy HH:mm")</p>
+            </div>
+
+            <div class="col-md-6">
+                <h2 class="h5">Preis und Kapazität</h2>
+                <p class="mb-1"><strong>Preis:</strong> @flug.Preis.ToString("0.00") €</p>
+                <p class="mb-1"><strong>Sitzplätze:</strong> @flug.AnzahlSitzplaetze</p>
+                <p class="mb-1"><strong>Maximale Zuladung:</strong> @flug.MaximaleZuladung kg</p>
+            </div>
+        </div>
+    </div>
+</div>

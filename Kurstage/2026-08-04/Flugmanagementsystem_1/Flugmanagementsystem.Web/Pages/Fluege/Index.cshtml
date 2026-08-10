@@ -24,6 +24,7 @@
                         <th>Ankunft</th>
                         <th>Preis</th>
                         <th>Status</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,6 +39,11 @@
                             <td>
                                 <span class="badge text-bg-success">@flug.Status</span>
                             </td>
+                            <td class="text-end">
+    <a asp-page="/Fluege/Details" asp-route-id="@flug.FlugId" class="btn btn-sm btn-outline-primary">
+        Details
+    </a>
+</td>
                         </tr>
                     }
                 </tbody>
