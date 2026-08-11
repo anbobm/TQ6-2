@@ -4,7 +4,9 @@
     ViewData["Title"] = "Home page";
 }
 
-<h1>Alle Autoren:</h1>
+<a asp-page="/AutorHinzufügen">Autor hinzufügen</a>
+
+<h1>Alle Autoren</h1>
 
 <ul>
     @foreach(var autor in Model.Autoren) {
