@@ -1,0 +1,25 @@
+﻿@page
+@model IndexModel
+
+@{
+    ViewData["Title"] = "Artikelliste";
+}
+
+<h1>Artikelliste</h1>
+
+<ul>
+    @foreach (var artikel in Model.ArtikelListe)
+    {
+        <li>
+            @artikel.Id: @artikel.Name -
+            <a href="/?id=@artikel.Id">Detailansicht</a>
+        </li>
+    }
+</ul>
+
+@if (Model.AusgewaehlterArtikel is not null)
+{
+    <h2>@Model.AusgewaehlterArtikel.Name</h2>
+    <p>Preis: @Model.AusgewaehlterArtikel.Preis.ToString("0.00") € inkl. MwSt.</p>
+    <p>@Model.AusgewaehlterArtikel.Beschreibung</p>
+}
