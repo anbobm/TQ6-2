@@ -11,5 +11,10 @@ public class BücherModel : PageModel
         var db = new Db();
 
         Bücher = db.Bücher.ToList();
+
+        // // Beispiel für Bücher gefiltert anstatt alle
+        // Bücher = db.Bücher
+        //     .Where(buch => buch.Autor == "Michael Ende")
+        //     .ToList();
     }
 }
