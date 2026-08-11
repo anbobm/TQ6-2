@@ -3,12 +3,17 @@ using Microsoft.EntityFrameworkCore;
 
 public class AutorenModel : PageModel
 {
+    Db db;
+
     public List<Autor> Autoren { get; set; }
+
+    public AutorenModel(Db db)
+    {
+        this.db = db;
+    }
 
     public void OnGet()
     {
-        var db = new Db();
-
         Autoren = db.Autoren.ToList();
         
         // als Beispiel: im Allgemeinen wollen wir nicht, wie oben,

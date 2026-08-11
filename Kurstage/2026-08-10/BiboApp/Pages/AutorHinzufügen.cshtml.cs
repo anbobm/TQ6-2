@@ -2,6 +2,13 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 public class AutorHinzufügenModel : PageModel
 {
+    Db db;
+
+    public AutorHinzufügenModel(Db db)
+    {
+        this.db = db;
+    }
+
     public void OnPost(string name)
     {
         // neuen Datensatz anlegen
@@ -9,9 +16,7 @@ public class AutorHinzufügenModel : PageModel
         {
             Name = name
         };
-
-        var db = new Db();
-
+        
         db.Autoren.Add(autor);
 
         // Erst bei SaveChanges() werden Änderungen, die wir an unseren Objekten
