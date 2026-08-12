@@ -10,6 +10,6 @@
 
 <ul>
     @foreach(var autor in Model.Autoren) {
-        <li>@autor.Name</li>
+        <li><a asp-page="/AutorDetail" asp-route-id="@autor.Id">@autor.Name</a></li>
     }
 </ul>
