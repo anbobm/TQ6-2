@@ -4,5 +4,8 @@ public class Buch
 
     public string Titel { get; set; }
 
-    public string Autor { get; set; }
+    public int AutorId { get; set; }
+
+    // Navigation Property
+    public Autor Autor { get; set; }
 }

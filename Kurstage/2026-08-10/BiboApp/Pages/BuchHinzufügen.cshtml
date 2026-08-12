@@ -5,6 +5,11 @@
     Titel:
     <input type="text" name="titel" />
     Autor:
-    <input type="text" name="autor" />
+    <select name="autorId">
+        @foreach(var autor in Model.Autoren)
+        {
+            <option value="@autor.Id">@autor.Name</option>
+        }
+    </select>
     <input type="submit" value="Buch hinzufügen">
 </form>

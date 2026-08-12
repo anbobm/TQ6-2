@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace BiboApp.Pages;
 
@@ -15,7 +16,9 @@ public class BücherModel : PageModel
 
     public void OnGet()
     {
-        Bücher = db.Bücher.ToList();
+        Bücher = db.Bücher
+            .Include(buch => buch.Autor)
+            .ToList();
 
         // // Beispiel für Bücher gefiltert anstatt alle
         // Bücher = db.Bücher

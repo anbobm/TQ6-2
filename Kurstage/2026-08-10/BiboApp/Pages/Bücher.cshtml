@@ -9,5 +9,5 @@
 <h1>Alle Bücher:</h1>
 
 @foreach(var buch in Model.Bücher) {
-    <p>@buch.Autor - @buch.Titel</p>
+    <p>@buch.Autor.Name - @buch.Titel</p>
 }
