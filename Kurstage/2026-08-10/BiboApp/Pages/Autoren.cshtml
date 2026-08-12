@@ -1,0 +1,14 @@
+@page
+@model AutorenModel
+@{
+    ViewData["Title"] = "Autoren";
+}
+
+<h1>Alle Autoren:</h1>
+
+<ul>
+    @foreach (var autor in Model.Autoren)
+    {
+        <li>@autor.Name</li>
+    }
+</ul>
