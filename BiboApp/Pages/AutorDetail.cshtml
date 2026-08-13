@@ -4,3 +4,9 @@
 @if(Model.Autor != null) {
     <h1>@Model.Autor.Name</h1>
 }
+
+<ul>
+    @foreach(var buch in Model.Autor.Bücher) {
+        <li>@buch.Titel</li>
+    }
+</ul>

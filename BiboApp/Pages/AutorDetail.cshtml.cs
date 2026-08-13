@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 public class AutorDetailModel : PageModel
 {
@@ -13,6 +14,9 @@ public class AutorDetailModel : PageModel
 
     public void OnGet(int id)
     {
-        Autor = db.Autoren.Where(autor => autor.Id == id).FirstOrDefault();
+        Autor = db.Autoren
+            .Include(autor => autor.Bücher)
+            .Where(autor => autor.Id == id)
+            .FirstOrDefault();
     }
 }
