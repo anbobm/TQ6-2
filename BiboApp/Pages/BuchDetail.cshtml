@@ -5,6 +5,24 @@
     <h1>@Model.Buch.Titel</h1>
 
     <p>Autor: @Model.Buch.Autor.Name</p>
+
+    <h2>Exemplare</h2>
+    @if(Model.Exemplare.Count > 0)
+    {
+    <ul>
+        @foreach(var exemplar in Model.Exemplare)
+        {
+            <li>
+                @exemplar.Id - 
+                @(exemplar.IstAusgeliehen ? "ausgeliehen" : "verfügbar")
+            </li>
+        }
+    </ul>
+    }
+    else
+    {
+        <p>keine Exemplare vorhanden</p>
+    }
 }
 else {
     <p>Buch nicht gefunden</p>
