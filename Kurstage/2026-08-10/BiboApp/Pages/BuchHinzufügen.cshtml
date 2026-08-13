@@ -11,9 +11,14 @@
     </p>
 
     <p>
-        Autor:
-        <input type="text" name="autor" />
-    </p>
+    Autor:
+    <select name="autorId">
+        @foreach (var autor in Model.Autoren)
+        {
+            <option value="@autor.Id">@autor.Name</option>
+        }
+    </select>
+</p>
 
     <input type="submit" value="Buch hinzufügen" />
 </form>
