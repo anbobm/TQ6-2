@@ -7,6 +7,8 @@ public class BuchDetailModel : PageModel
 
     public Buch Buch { get; set; }
 
+    public List<Rubrik> Rubriken { get; set; }
+
     public BuchDetailModel(Db db)
     {
         this.db = db;
@@ -20,5 +22,7 @@ public class BuchDetailModel : PageModel
             .Include(buch => buch.Rubriken)
             .Where(buch => buch.Id == id)
             .FirstOrDefault();
+
+        Rubriken = db.Rubriken.ToList();
     }
 }

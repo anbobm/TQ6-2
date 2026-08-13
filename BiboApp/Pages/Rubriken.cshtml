@@ -1,0 +1,12 @@
+@page
+@model RubrikenModel
+
+<a asp-page="/RubrikHinzufügen">Rubrik hinzufügen</a>
+
+<h1>Rubriken</h1>
+
+<ul>
+    @foreach(var rubrik in Model.Rubriken) {
+        <li>@rubrik.Name</li>
+    }
+</ul>

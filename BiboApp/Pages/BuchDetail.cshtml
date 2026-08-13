@@ -14,6 +14,16 @@
         }
     </ul>
 
+    <h2>Rubrik zuweisen</h2>
+
+    @foreach (var rubrik in Model.Rubriken) {
+        <form asp-page="/RubrikZuweisen" method="post">
+            <input type="hidden" name="buchid" value="@Model.Buch.Id">
+            <input type="hidden" name="rubrikid" value="@rubrik.Id">
+            <input type="submit" value="@rubrik.Name" />
+        </form>
+    }
+
     <h2>Exemplare</h2>
     @if(Model.Buch.Exemplare.Count > 0)
     {
