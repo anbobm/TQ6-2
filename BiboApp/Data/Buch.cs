@@ -8,4 +8,6 @@ public class Buch
 
     // Navigation Property
     public Autor Autor { get; set; }
+
+    public List<Exemplar> Exemplare { get; set; }
 }

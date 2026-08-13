@@ -7,8 +7,6 @@ public class BuchDetailModel : PageModel
 
     public Buch Buch { get; set; }
 
-    public List<Exemplar> Exemplare { get; set; }
-
     public BuchDetailModel(Db db)
     {
         this.db = db;
@@ -18,11 +16,8 @@ public class BuchDetailModel : PageModel
     {
         Buch = db.Bücher
             .Include(buch => buch.Autor)
+            .Include(buch => buch.Exemplare)
             .Where(buch => buch.Id == id)
             .FirstOrDefault();
-        
-        Exemplare = db.Exemplare
-            .Where(exemplar => exemplar.BuchId == id)
-            .ToList();
     }
 }

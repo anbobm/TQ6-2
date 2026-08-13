@@ -7,10 +7,10 @@
     <p>Autor: @Model.Buch.Autor.Name</p>
 
     <h2>Exemplare</h2>
-    @if(Model.Exemplare.Count > 0)
+    @if(Model.Buch.Exemplare.Count > 0)
     {
     <ul>
-        @foreach(var exemplar in Model.Exemplare)
+        @foreach(var exemplar in Model.Buch.Exemplare)
         {
             <li>
                 @exemplar.Id - 
