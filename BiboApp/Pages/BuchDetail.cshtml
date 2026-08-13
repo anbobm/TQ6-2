@@ -1,0 +1,11 @@
+@page
+@model BuchDetailModel
+
+@if(Model.Buch != null) {
+    <h1>@Model.Buch.Titel</h1>
+
+    <p>Autor: @Model.Buch.Autor.Name</p>
+}
+else {
+    <p>Buch nicht gefunden</p>
+}
