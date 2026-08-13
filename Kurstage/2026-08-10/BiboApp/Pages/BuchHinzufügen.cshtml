@@ -1,0 +1,19 @@
+﻿@page
+@model BiboApp.Pages.BuchHinzufügenModel
+@{
+    ViewData["Title"] = "Buch hinzufügen";
+}
+
+<form method="post">
+    <p>
+        Titel:
+        <input type="text" name="titel" required  />
+    </p>
+
+    <p>
+        Autor:
+        <input type="text" name="autor" />
+    </p>
+
+    <input type="submit" value="Buch hinzufügen" />
+</form>

@@ -1,0 +1,14 @@
+﻿@page
+@model BiboApp.Pages.BücherModel
+@{
+    ViewData["Title"] = "Bücher";
+}
+
+<a asp-page="/BuchHinzufügen">Buch hinzufügen</a>
+
+<h1>Alle Bücher:</h1>
+
+@foreach (var buch in Model.Bücher)
+{
+    <p>@buch.Autor - @buch.Titel</p>
+}
