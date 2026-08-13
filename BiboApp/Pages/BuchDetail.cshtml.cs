@@ -17,6 +17,7 @@ public class BuchDetailModel : PageModel
         Buch = db.Bücher
             .Include(buch => buch.Autor)
             .Include(buch => buch.Exemplare)
+            .Include(buch => buch.Rubriken)
             .Where(buch => buch.Id == id)
             .FirstOrDefault();
     }

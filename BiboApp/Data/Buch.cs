@@ -10,4 +10,6 @@ public class Buch
     public Autor Autor { get; set; }
 
     public List<Exemplar> Exemplare { get; set; }
+
+    public List<Rubrik> Rubriken { get; set; }
 }

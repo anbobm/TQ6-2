@@ -8,6 +8,8 @@ public class Db : DbContext
 
     public DbSet<Exemplar> Exemplare { get; set; }
 
+    public DbSet<Rubrik> Rubriken { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlite("Data Source=bibo.db");
 }
