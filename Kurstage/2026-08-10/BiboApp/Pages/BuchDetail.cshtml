@@ -1,0 +1,15 @@
+﻿@page
+@model BiboApp.Pages.BuchDetailModel
+@{
+    ViewData["Title"] = "Buchdetail";
+}
+
+@if (Model.Buch is not null)
+{
+    <h1>@Model.Buch.Titel</h1>
+    <p>Autor: @Model.Buch.Autor.Name</p>
+}
+else
+{
+    <p>Buch nicht gefunden</p>
+}

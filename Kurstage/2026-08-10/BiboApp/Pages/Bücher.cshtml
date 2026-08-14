@@ -10,5 +10,9 @@
 
 @foreach (var buch in Model.Bücher)
 {
-    <p>@buch.Autor.Name - @buch.Titel</p>
+    <p>
+        <a asp-page="/BuchDetail" asp-route-id="@buch.Id">
+            @buch.Autor.Name - @buch.Titel
+        </a>
+    </p>
 }
