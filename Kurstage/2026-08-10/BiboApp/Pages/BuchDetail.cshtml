@@ -9,6 +9,22 @@
     <h1>@Model.Buch.Titel</h1>
     <p>Autor: @Model.Buch.Autor.Name</p>
 
+    <h2>Rubriken</h2>
+
+    @if (Model.Buch.Rubriken.Count > 0)
+    {
+        <ul>
+            @foreach (var rubrik in Model.Buch.Rubriken)
+            {
+                <li>@rubrik.Name</li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>keine Rubriken vorhanden</p>
+    }
+
     <h2>Exemplare</h2>
 
     @if (Model.Exemplare.Count > 0)

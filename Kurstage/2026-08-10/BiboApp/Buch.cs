@@ -7,4 +7,6 @@ public class Buch
     public int AutorId { get; set; }
 
     public Autor Autor { get; set; }
+
+    public List<Rubrik> Rubriken { get; set; } = [];
 }

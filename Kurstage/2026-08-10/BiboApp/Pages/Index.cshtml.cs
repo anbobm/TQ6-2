@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace BiboApp.Pages;
 
@@ -6,7 +7,7 @@ public class IndexModel : PageModel
 {
     private readonly Db _context;
 
-    public List<Buch> Bücher { get; set; }
+    public List<Buch> Bücher { get; private set; } = [];
 
     public IndexModel(Db context)
     {
@@ -15,6 +16,8 @@ public class IndexModel : PageModel
 
     public void OnGet()
     {
-        Bücher = _context.Bücher.ToList();
+        Bücher = _context.Bücher
+            .Include(buch => buch.Autor)
+            .ToList();
     }
 }

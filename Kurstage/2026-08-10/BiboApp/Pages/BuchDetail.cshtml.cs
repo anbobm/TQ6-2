@@ -20,6 +20,7 @@ public class BuchDetailModel : PageModel
     {
         Buch = _context.Bücher
             .Include(buch => buch.Autor)
+            .Include(buch => buch.Rubriken)
             .FirstOrDefault(buch => buch.Id == id);
 
         Exemplare = _context.Exemplare
