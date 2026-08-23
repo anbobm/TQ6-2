@@ -1,31 +1,32 @@
 # Flugmanagementsystem
 
-Ein Flugmanagementsystem für Mitarbeiter einer Airline und Kunden.
+Webanwendung zur Verwaltung von Flügen einer Airline.  
+Kunden können Flüge suchen, buchen und ihre Buchungen verwalten. Mitarbeiter verwalten die angebotenen Flüge.
 
 ## Funktionen
 
-### Kunden
+### Kundenbereich
 
-- Verfügbare Flüge ansehen
-- Flugdaten ansehen
-- Flüge buchen
-- Buchungen ansehen
+- Verfügbare Flüge anzeigen
+- Details eines Fluges ansehen
+- Einen Flug buchen
+- Eigene Buchungen anzeigen
 - Buchungen stornieren
-- Online Check-in
 - Gepäck hinzufügen
+- Online Check-in durchführen
 
-### Mitarbeiter
+### Mitarbeiterbereich
 
 - Neue Flüge anlegen
 - Flüge bearbeiten
 - Flüge stornieren
-- Flugdaten und Flugstatistik ansehen
+- Flugdaten und Flugstatistik anzeigen
 
-## Regeln
+## Geschäftsregeln
 
 - Ein neuer Flug darf nicht in der Vergangenheit liegen.
 - Die Ankunftszeit muss nach der Abflugzeit liegen.
-- Flugnummern dürfen nicht doppelt sein.
+- Flugnummern dürfen nicht doppelt vergeben werden.
 - Ein stornierter Flug kann nicht gebucht werden.
 - Eine Buchung kann nur im Status `Bestätigt` eingecheckt werden.
 - Online Check-in ist nur zwischen 24 und 1 Stunde vor Abflug möglich.
@@ -36,14 +37,15 @@ Ein Flugmanagementsystem für Mitarbeiter einer Airline und Kunden.
 
 ## Datenmodell
 
-```text
-Kunde
+### Kunde
+
 - KundeId
 - Vorname
 - Nachname
 - Email
 
-Flug
+### Flug
+
 - FlugId
 - Flugnummer
 - Abflugort
@@ -55,7 +57,8 @@ Flug
 - Preis
 - Status
 
-Buchung
+### Buchung
+
 - BuchungId
 - KundeId
 - FlugId
@@ -63,29 +66,33 @@ Buchung
 - Status
 - IstEingecheckt
 
-Gepaeckstueck
+### Gepaeckstueck
+
 - GepaeckstueckId
 - BuchungId
 - Gewicht
 
+### Beziehungen
 
+- Ein Kunde kann mehrere Buchungen haben.
+- Ein Flug kann von mehreren Kunden gebucht werden.
+- Eine Buchung verbindet einen Kunden mit einem Flug.
+- Zu einer Buchung können maximal zwei Gepäckstücke gehören.
 
-Kunde 1 ───── * Buchung * ───── 1 Flug
-                    |
-                    |
-                    *
-             Gepaeckstueck
+## Benutzeroberfläche
 
+- **Flüge:** Übersicht aller verfügbaren Flüge und Detailansicht.
+- **Buchungen:** Buchung erstellen, bestätigen, stornieren, Gepäck hinzufügen und Check-in.
+- **Verwaltung:** Mitarbeiterbereich zum Erstellen, Bearbeiten und Stornieren von Flügen.
 
+## Technik
 
-Benutzeroberfläche
-- Flüge: Kundenbereich mit verfügbaren Flügen.
-- Buchungen: Übersicht und Verwaltung von Buchungen.
-- Verwaltung: Mitarbeiterbereich zum Anlegen, Bearbeiten und Stornieren von Flügen.
-Technik
 - ASP.NET Core Razor Pages
 - C#
 - Entity Framework Core
 - SQLite
+- Bootstrap
+
 Die Datenbankdatei liegt in:
-DATA/flugmanagement.db
+
+`Flugmanagementsystem.Web/DATA/flugmanagement.db`

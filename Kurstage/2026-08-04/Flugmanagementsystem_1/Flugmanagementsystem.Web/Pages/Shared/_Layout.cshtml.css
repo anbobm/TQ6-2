@@ -1,105 +1,52 @@
-﻿using System.Globalization;
-using Flugmanagementsystem.Web.Services;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
 
-namespace Flugmanagementsystem.Web.Pages.Verwaltung;
+a {
+  color: #0d6efd;
+}
 
-public class FlugErstellenModel : PageModel
-{
-    private readonly FlightService _flightService;
+.btn-primary {
+  color: #fff;
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
 
-    [TempData]
-    public string? Fehlermeldung { get; set; }
+.btn-primary:hover {
+  background-color: #0b5ed7;
+  border-color: #0a58ca;
+}
 
-    public FlugErstellenModel(FlightService flightService)
-    {
-        _flightService = flightService;
-    }
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
 
-    public void OnGet()
-    {
-    }
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
 
-    public IActionResult OnPost(
-        string flugnummer,
-        string abflugort,
-        string zielort,
-        DateTime abflugzeit,
-        DateTime ankunftszeit,
-        int anzahlSitzplaetze,
-        decimal maximaleZuladung,
-        string preis)
-    {
-        decimal preisWert;
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
 
-        var preisIstGueltig =
-            decimal.TryParse(
-                preis,
-                NumberStyles.Number,
-                CultureInfo.InvariantCulture,
-                out preisWert)
-            ||
-            decimal.TryParse(
-                preis,
-                NumberStyles.Number,
-                CultureInfo.GetCultureInfo("de-DE"),
-                out preisWert);
+.box-shadow {
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+}
 
-        if (!preisIstGueltig || preisWert <= 0)
-        {
-            Fehlermeldung =
-                "Der Preis muss größer als 0 sein.";
-            return RedirectToPage();
-        }
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
 
-        if (abflugzeit <= DateTime.Now)
-        {
-            Fehlermeldung =
-                "Die Abflugzeit muss in der Zukunft liegen.";
-            return RedirectToPage();
-        }
-
-        if (ankunftszeit <= abflugzeit)
-        {
-            Fehlermeldung =
-                "Die Ankunftszeit muss nach der Abflugzeit liegen.";
-            return RedirectToPage();
-        }
-
-        if (anzahlSitzplaetze <= 0)
-        {
-            Fehlermeldung =
-                "Die Anzahl der Sitzplätze muss größer als 0 sein.";
-            return RedirectToPage();
-        }
-
-        if (maximaleZuladung <= 0)
-        {
-            Fehlermeldung =
-                "Die maximale Zuladung muss größer als 0 sein.";
-            return RedirectToPage();
-        }
-
-        var flug = _flightService.CreateFlug(
-            flugnummer,
-            abflugort,
-            zielort,
-            abflugzeit,
-            ankunftszeit,
-            anzahlSitzplaetze,
-            maximaleZuladung,
-            preisWert);
-
-        if (flug is null)
-        {
-            Fehlermeldung =
-                "Die Flugnummer existiert bereits oder Angaben sind ungültig.";
-            return RedirectToPage();
-        }
-
-        return RedirectToPage(
-            "/Fluege/Details",
-            new { id = flug.FlugId });
-    }
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;
 }
