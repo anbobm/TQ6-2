@@ -8,12 +8,20 @@ namespace Flugmanagementsystem.Web.Pages.Fluege;
 public class DetailsModel : PageModel
 {
     private readonly FlightService _flightService;
+    private readonly BookingService _bookingService;
 
     public Flug? Flug { get; private set; }
 
-    public DetailsModel(FlightService flightService)
+    public int AnzahlAktiverBuchungen { get; private set; }
+
+    public decimal GesamtGepaeckgewicht { get; private set; }
+
+    public DetailsModel(
+        FlightService flightService,
+        BookingService bookingService)
     {
         _flightService = flightService;
+        _bookingService = bookingService;
     }
 
     public IActionResult OnGet(int id)
@@ -24,6 +32,12 @@ public class DetailsModel : PageModel
         {
             return NotFound();
         }
+
+        AnzahlAktiverBuchungen =
+            _bookingService.GetAnzahlAktiverBuchungenByFlugId(Flug.FlugId);
+
+        GesamtGepaeckgewicht =
+            _bookingService.GetGesamtGepaeckgewichtByFlugId(Flug.FlugId);
 
         return Page();
     }

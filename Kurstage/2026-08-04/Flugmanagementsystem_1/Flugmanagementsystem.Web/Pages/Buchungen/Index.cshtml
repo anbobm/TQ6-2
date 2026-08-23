@@ -1,0 +1,134 @@
+@page
+@model Flugmanagementsystem.Web.Pages.Buchungen.IndexModel
+
+@{
+    ViewData["Title"] = "Meine Buchungen";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1>Meine Buchungen</h1>
+        <p class="text-muted mb-0">
+            Übersicht aller erstellten Buchungen
+        </p>
+    </div>
+
+    <a asp-page="/Fluege/Index" class="btn btn-primary">
+        Flug buchen
+    </a>
+</div>
+
+
+@if (TempData["Fehlermeldung"] is string fehlermeldung)
+{
+    <div class="alert alert-warning">
+        @fehlermeldung
+    </div>
+}
+
+@if (Model.Buchungen.Count == 0)
+{
+    <div class="alert alert-info">
+        Es gibt noch keine Buchungen.
+    </div>
+}
+else
+{
+    <div class="card shadow-sm">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Buchungsnummer</th>
+                            <th>Kunde</th>
+                            <th>E-Mail</th>
+                            <th>Flug</th>
+                            <th>Buchungsdatum</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var buchung in Model.Buchungen)
+                        {
+                            var kunde = Model.GetKunde(buchung.KundeId);
+                            var flug = Model.GetFlug(buchung.FlugId);
+
+                            <tr>
+                                <td>@buchung.BuchungId</td>
+                                <td>@kunde?.Vorname @kunde?.Nachname</td>
+                                <td>@kunde?.Email</td>
+                                <td>
+                                    @flug?.Flugnummer:
+                                    @flug?.Abflugort → @flug?.Zielort
+                                </td>
+                                <td>
+                                    @buchung.Buchungsdatum.ToString("dd.MM.yyyy HH:mm")
+                                </td>
+                                <td>
+                                    @if (buchung.Status == "Storniert")
+                                    {
+                                        <span class="badge text-bg-secondary">
+                                            @buchung.Status
+                                        </span>
+                                    }
+                                    else if (buchung.Status == "Eingecheckt")
+                                    {
+                                        <span class="badge text-bg-info">
+                                            @buchung.Status
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge text-bg-success">
+                                            @buchung.Status
+                                        </span>
+                                    }
+                                </td>
+                                <td class="text-end">
+                                    @if (buchung.Status == "Bestätigt")
+                                    {
+
+                                        <a asp-page="/Buchungen/Gepaeck"
+                                        asp-route-buchungId="@buchung.BuchungId"
+                                        class="btn btn-sm btn-outline-primary">
+                                        Gepäck
+                                        </a>
+
+
+                                        <form method="post"
+                                              asp-page-handler="CheckIn"
+                                              class="d-inline">
+                                            <input type="hidden"
+                                                   name="id"
+                                                   value="@buchung.BuchungId" />
+
+                                            <button type="submit"
+                                                    class="btn btn-sm btn-outline-success">
+                                                Check-in
+                                            </button>
+                                        </form>
+
+                                        <form method="post"
+                                              asp-page-handler="Stornieren"
+                                              class="d-inline ms-1">
+                                            <input type="hidden"
+                                                   name="id"
+                                                   value="@buchung.BuchungId" />
+
+                                            <button type="submit"
+                                                    class="btn btn-sm btn-outline-danger">
+                                                Stornieren
+                                            </button>
+                                        </form>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}

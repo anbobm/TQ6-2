@@ -1,0 +1,95 @@
+@page
+@model Flugmanagementsystem.Web.Pages.Verwaltung.FlugBearbeitenModel
+
+@{
+    ViewData["Title"] = "Flug bearbeiten";
+}
+
+<a asp-page="/Verwaltung/Fluege" class="btn btn-outline-secondary mb-4">
+    ← Zurück zur Verwaltung
+</a>
+
+<div class="card shadow-sm">
+    <div class="card-body p-4">
+        <h1 class="h3 mb-1">Flug bearbeiten</h1>
+        <p class="text-muted mb-4">Flugnummer: @Model.Flugnummer</p>
+
+        @if (Model.Fehlermeldung is not null)
+        {
+            <div class="alert alert-danger">
+                @Model.Fehlermeldung
+            </div>
+        }
+
+        <form method="post">
+            <input asp-for="FlugId" type="hidden" />
+
+            <div class="mb-3">
+                <label asp-for="Abflugort" class="form-label">Abflugort</label>
+                <input asp-for="Abflugort" class="form-control" required />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Zielort" class="form-label">Zielort</label>
+                <input asp-for="Zielort" class="form-control" required />
+            </div>
+
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <label asp-for="Abflugzeit" class="form-label">Abflugzeit</label>
+                    <input asp-for="Abflugzeit"
+                           type="datetime-local"
+                           class="form-control"
+                           value="@Model.Abflugzeit.ToString("yyyy-MM-ddTHH:mm")"
+                           required />
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="Ankunftszeit" class="form-label">Ankunftszeit</label>
+                    <input asp-for="Ankunftszeit"
+                           type="datetime-local"
+                           class="form-control"
+                           value="@Model.Ankunftszeit.ToString("yyyy-MM-ddTHH:mm")"
+                           required />
+                </div>
+            </div>
+
+            <div class="row g-3 mb-4">
+                <div class="col-md-4">
+                    <label asp-for="AnzahlSitzplaetze" class="form-label">
+                        Sitzplätze
+                    </label>
+                    <input asp-for="AnzahlSitzplaetze"
+                           type="number"
+                           min="1"
+                           class="form-control"
+                           required />
+                </div>
+
+                <div class="col-md-4">
+                    <label asp-for="MaximaleZuladung" class="form-label">
+                        Maximale Zuladung (kg)
+                    </label>
+                    <input asp-for="MaximaleZuladung"
+                           type="number"
+                           min="1"
+                           class="form-control"
+                           required />
+                </div>
+
+                <div class="col-md-4">
+                    <label asp-for="Preis" class="form-label">Preis (€)</label>
+                    <input asp-for="Preis"
+                           type="text"
+                           inputmode="decimal"
+                           class="form-control"
+                           required />
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                Änderungen speichern
+            </button>
+        </form>
+    </div>
+</div>

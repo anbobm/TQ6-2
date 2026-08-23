@@ -1,4 +1,4 @@
-﻿using System.Globalization;
+using System.Globalization;
 using Flugmanagementsystem.Web.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;

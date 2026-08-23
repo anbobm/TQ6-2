@@ -17,22 +17,57 @@
                 <p class="text-muted mb-1">Flugnummer: @flug.Flugnummer</p>
                 <h1>@flug.Abflugort → @flug.Zielort</h1>
             </div>
-            <span class="badge text-bg-success fs-6">@flug.Status</span>
+
+            @if (flug.Status == "Storniert")
+            {
+                <span class="badge text-bg-secondary fs-6">@flug.Status</span>
+            }
+            else
+            {
+                <span class="badge text-bg-success fs-6">@flug.Status</span>
+            }
         </div>
 
-        <div class="row g-4">
-            <div class="col-md-6">
+        <div class="row g-4 mb-4">
+            <div class="col-md-4">
                 <h2 class="h5">Flugdaten</h2>
                 <p class="mb-1"><strong>Abflug:</strong> @flug.Abflugzeit.ToString("dd.MM.yyyy HH:mm")</p>
                 <p class="mb-1"><strong>Ankunft:</strong> @flug.Ankunftszeit.ToString("dd.MM.yyyy HH:mm")</p>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <h2 class="h5">Preis und Kapazität</h2>
                 <p class="mb-1"><strong>Preis:</strong> @flug.Preis.ToString("0.00") €</p>
                 <p class="mb-1"><strong>Sitzplätze:</strong> @flug.AnzahlSitzplaetze</p>
                 <p class="mb-1"><strong>Maximale Zuladung:</strong> @flug.MaximaleZuladung kg</p>
             </div>
+
+            <div class="col-md-4">
+                <h2 class="h5">Flugstatistik</h2>
+                <p class="mb-1">
+                    <strong>Aktive Buchungen:</strong>
+                    @Model.AnzahlAktiverBuchungen
+                </p>
+                <p class="mb-1">
+                    <strong>Gebuchtes Gepäck:</strong>
+                    @Model.GesamtGepaeckgewicht.ToString("0.##") kg
+                </p>
+            </div>
         </div>
+
+        @if (flug.Status == "Storniert")
+        {
+            <div class="alert alert-secondary mb-0">
+                Dieser Flug wurde storniert und kann nicht gebucht werden.
+            </div>
+        }
+        else
+        {
+            <a asp-page="/Buchungen/Erstellen"
+               asp-route-flugId="@flug.FlugId"
+               class="btn btn-primary">
+                Diesen Flug buchen
+            </a>
+        }
     </div>
 </div>

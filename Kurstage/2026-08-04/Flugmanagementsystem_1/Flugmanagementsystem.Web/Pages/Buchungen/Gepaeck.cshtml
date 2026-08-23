@@ -1,0 +1,104 @@
+@page
+@model Flugmanagementsystem.Web.Pages.Buchungen.GepaeckModel
+
+@{
+    var buchung = Model.Buchung!;
+    var flug = Model.Flug!;
+
+    ViewData["Title"] = "Gepäck hinzufügen";
+}
+
+<a asp-page="/Buchungen/Index" class="btn btn-outline-secondary mb-4">
+    ← Zurück zu meinen Buchungen
+</a>
+
+<div class="card shadow-sm mb-4">
+    <div class="card-body p-4">
+        <h1 class="h3">Gepäck hinzufügen</h1>
+
+        <p class="mb-1">
+            <strong>Buchung:</strong> @buchung.BuchungId
+        </p>
+        <p class="mb-4">
+            <strong>Flug:</strong>
+            @flug.Flugnummer – @flug.Abflugort → @flug.Zielort
+        </p>
+
+
+        @if (!string.IsNullOrEmpty(Model.Fehlermeldung))
+{
+    <div class="alert alert-danger">
+        @Model.Fehlermeldung
+    </div>
+}
+
+
+        <form method="post">
+            <input type="hidden"
+                   name="buchungId"
+                   value="@buchung.BuchungId" />
+
+            <div class="mb-3">
+                <label for="gewicht" class="form-label">
+                    Gewicht in kg
+                </label>
+
+                <input id="gewicht"
+                       name="gewicht"
+                       type="number"
+                       min="0.1"
+                       max="32"
+                       step="0.1"
+                       class="form-control"
+                       required />
+
+                <div class="form-text">
+                    Bis 23 kg kostenlos. Über 23 kg bis 32 kg: 50 € Zuschlag.
+                    Maximal 2 Gepäckstücke.
+                    
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                Gepäck hinzufügen
+            </button>
+        </form>
+    </div>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body p-4">
+        <h2 class="h5">Zugebuchtes Gepäck</h2>
+
+        @if (Model.Gepaeckstuecke.Count == 0)
+        {
+            <p class="text-muted mb-0">
+                Es wurde noch kein Gepäck hinzugefügt.
+            </p>
+        }
+        else
+        {
+            <ul class="mb-0">
+                @foreach (var gepaeck in Model.Gepaeckstuecke)
+                {
+                    <li>
+        Gepäckstück: @gepaeck.Gewicht kg
+
+        @if (gepaeck.IstUebergepaeck)
+        {
+            <span class="text-danger">
+                – Übergepäck: +@gepaeck.Zuschlag.ToString("0.00") €
+            </span>
+        }
+        else
+        {
+            <span class="text-success">
+                – kostenlos
+            </span>
+        }
+    </li>
+                }
+            </ul>
+        }
+    </div>
+</div>                                                      

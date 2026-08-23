@@ -1,0 +1,61 @@
+﻿@page
+@model Flugmanagementsystem.Web.Pages.Buchungen.ErstellenModel
+
+@{
+    ViewData["Title"] = "Flug buchen";
+}
+
+<a asp-page="/Fluege/Index" class="btn btn-outline-secondary mb-4">
+    ← Zurück zu den Flügen
+</a>
+
+<div class="card shadow-sm">
+    <div class="card-body p-4">
+        <h1 class="h3 mb-4">Flug buchen</h1>
+
+        <form method="post">
+            <div class="mb-3">
+                <label for="vorname" class="form-label">Vorname</label>
+                <input id="vorname" name="vorname" type="text" class="form-control" required />
+            </div>
+
+            <div class="mb-3">
+                <label for="nachname" class="form-label">Nachname</label>
+                <input id="nachname" name="nachname" type="text" class="form-control" required />
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">E-Mail</label>
+                <input id="email" name="email" type="email" class="form-control" required />
+            </div>
+
+            <div class="mb-4">
+                <label for="flugId" class="form-label">Flug</label>
+                
+
+                 <select id="flugId" name="flugId" class="form-select" required>
+    @foreach (var flug in Model.Fluege)
+    {
+        if (flug.FlugId == Model.AusgewaehlteFlugId)
+        {
+            <option value="@flug.FlugId" selected>
+                @flug.Flugnummer – @flug.Abflugort → @flug.Zielort
+            </option>
+        }
+        else
+        {
+            <option value="@flug.FlugId">
+                @flug.Flugnummer – @flug.Abflugort → @flug.Zielort
+            </option>
+        }
+    }
+</select>
+
+
+
+            </div>
+
+            <button type="submit" class="btn btn-primary">Buchung bestätigen</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+@page
+@model Flugmanagementsystem.Web.Pages.Buchungen.BestaetigungModel
+
+@{
+    var buchung = Model.Buchung!;
+    var kunde = Model.Kunde!;
+    var flug = Model.Flug!;
+
+    ViewData["Title"] = "Buchung bestätigt";
+}
+
+<div class="card shadow-sm">
+    <div class="card-body p-4">
+        <div class="alert alert-success">
+            <h1 class="h3">Buchung erfolgreich erstellt</h1>
+            <p class="mb-0">
+                Vielen Dank für Ihre Buchung, @kunde.Vorname!
+            </p>
+        </div>
+
+        <h2 class="h5 mt-4">Buchungsdaten</h2>
+
+        <p class="mb-1">
+            <strong>Buchungsnummer:</strong> @buchung.BuchungId
+        </p>
+        <p class="mb-1">
+            <strong>Kunde:</strong> @kunde.Vorname @kunde.Nachname
+        </p>
+        <p class="mb-1">
+            <strong>E-Mail:</strong> @kunde.Email
+        </p>
+        <p class="mb-1">
+            <strong>Flug:</strong>
+            @flug.Flugnummer – @flug.Abflugort → @flug.Zielort
+        </p>
+        <p class="mb-4">
+            <strong>Abflug:</strong>
+            @flug.Abflugzeit.ToString("dd.MM.yyyy HH:mm")
+        </p>
+
+        <a asp-page="/Buchungen/Index" class="btn btn-primary">
+            Meine Buchungen
+        </a>
+
+        <a asp-page="/Fluege/Index" class="btn btn-outline-secondary ms-2">
+            Weitere Flüge ansehen
+        </a>
+    </div>
+</div>

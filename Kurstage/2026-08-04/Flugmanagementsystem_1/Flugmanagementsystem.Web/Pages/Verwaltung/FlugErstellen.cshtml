@@ -1,0 +1,85 @@
+@page
+@model Flugmanagementsystem.Web.Pages.Verwaltung.FlugErstellenModel
+
+@{
+    ViewData["Title"] = "Flug anlegen";
+}
+
+<a asp-page="/Fluege/Index" class="btn btn-outline-secondary mb-4">
+    ← Zurück zu den Flügen
+</a>
+
+<div class="card shadow-sm">
+    <div class="card-body p-4">
+        <h1 class="h3 mb-4">Neuen Flug anlegen</h1>
+
+        @if (!string.IsNullOrEmpty(Model.Fehlermeldung))
+        {
+            <div class="alert alert-danger">
+                @Model.Fehlermeldung
+            </div>
+        }
+
+        <form method="post">
+            <div class="mb-3">
+                <label for="flugnummer" class="form-label">Flugnummer</label>
+                <input id="flugnummer" name="flugnummer" type="text"
+                       class="form-control" placeholder="z. B. AN600" required />
+            </div>
+
+            <div class="mb-3">
+                <label for="abflugort" class="form-label">Abflugort</label>
+                <input id="abflugort" name="abflugort" type="text"
+                       class="form-control" placeholder="z. B. Köln (CGN)" required />
+            </div>
+
+            <div class="mb-3">
+                <label for="zielort" class="form-label">Zielort</label>
+                <input id="zielort" name="zielort" type="text"
+                       class="form-control" placeholder="z. B. Wien (VIE)" required />
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="abflugzeit" class="form-label">Abflugzeit</label>
+                    <input id="abflugzeit" name="abflugzeit"
+                           type="datetime-local" class="form-control" required />
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="ankunftszeit" class="form-label">Ankunftszeit</label>
+                    <input id="ankunftszeit" name="ankunftszeit"
+                           type="datetime-local" class="form-control" required />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label for="anzahlSitzplaetze" class="form-label">Sitzplätze</label>
+                    <input id="anzahlSitzplaetze" name="anzahlSitzplaetze"
+                           type="number" min="1" class="form-control" required />
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <label for="maximaleZuladung" class="form-label">
+                        Maximale Zuladung (kg)
+                    </label>
+                    <input id="maximaleZuladung" name="maximaleZuladung"
+                           type="number" min="1" step="0.1"
+                           class="form-control" required />
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <label for="preis" class="form-label">Preis (€)</label>
+                    <input id="preis" name="preis"
+                           type="number" min="0.01" step="0.01"
+                           class="form-control" required />
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                Flug anlegen
+            </button>
+        </form>
+    </div>
+</div>

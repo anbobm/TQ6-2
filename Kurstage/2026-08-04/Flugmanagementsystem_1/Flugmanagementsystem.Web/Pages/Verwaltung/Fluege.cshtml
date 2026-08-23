@@ -1,17 +1,19 @@
 @page
-@model Flugmanagementsystem.Web.Pages.Fluege.IndexModel
+@model Flugmanagementsystem.Web.Pages.Verwaltung.FluegeModel
 
 @{
-    ViewData["Title"] = "Flüge";
+    ViewData["Title"] = "Flüge verwalten";
 }
 
 <div class="d-flex justify-content-between align-items-center mb-4">
     <div>
-        <h1>Flüge</h1>
-        <p class="text-muted mb-0">
-            Verfügbare Flüge unserer Airline
-        </p>
+        <h1>Flüge verwalten</h1>
+        <p class="text-muted mb-0">Mitarbeiterbereich</p>
     </div>
+
+    <a asp-page="/Verwaltung/FlugErstellen" class="btn btn-primary">
+        Neuen Flug anlegen
+    </a>
 </div>
 
 <div class="card shadow-sm">
@@ -24,11 +26,13 @@
                         <th>Strecke</th>
                         <th>Abflug</th>
                         <th>Ankunft</th>
+                        <th>Sitzplätze</th>
                         <th>Preis</th>
                         <th>Status</th>
                         <th></th>
                     </tr>
                 </thead>
+
                 <tbody>
                     @foreach (var flug in Model.Fluege)
                     {
@@ -37,6 +41,7 @@
                             <td>@flug.Abflugort → @flug.Zielort</td>
                             <td>@flug.Abflugzeit.ToString("dd.MM.yyyy HH:mm")</td>
                             <td>@flug.Ankunftszeit.ToString("dd.MM.yyyy HH:mm")</td>
+                            <td>@flug.AnzahlSitzplaetze</td>
                             <td>@flug.Preis.ToString("0.00") €</td>
                             <td>
                                 @if (flug.Status == "Storniert")
@@ -52,20 +57,25 @@
                                     </span>
                                 }
                             </td>
+
                             <td class="text-end">
                                 @if (flug.Status != "Storniert")
                                 {
-                                    <a asp-page="/Fluege/Details"
+                                    <a asp-page="/Verwaltung/FlugBearbeiten"
                                        asp-route-id="@flug.FlugId"
                                        class="btn btn-sm btn-outline-primary">
-                                        Details
+                                        Bearbeiten
                                     </a>
-                                }
-                                else
-                                {
-                                    <span class="text-muted">
-                                        Nicht buchbar
-                                    </span>
+
+                                    <form method="post"
+                                          asp-page-handler="Stornieren"
+                                          asp-route-id="@flug.FlugId"
+                                          class="d-inline">
+                                        <button type="submit"
+                                                class="btn btn-sm btn-outline-danger">
+                                            Flug stornieren
+                                        </button>
+                                    </form>
                                 }
                             </td>
                         </tr>
