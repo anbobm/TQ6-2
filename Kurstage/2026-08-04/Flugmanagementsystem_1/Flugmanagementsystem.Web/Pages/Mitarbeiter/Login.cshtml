@@ -1,0 +1,47 @@
+@page
+@model Flugmanagementsystem.Web.Pages.Mitarbeiter.LoginModel
+
+@{
+    ViewData["Title"] = "Mitarbeiter-Login";
+}
+
+<div class="row justify-content-center py-5">
+    <div class="col-md-6 col-lg-5">
+        <div class="card shadow-sm">
+            <div class="card-body p-4">
+                <h1 class="h3 mb-3">Mitarbeiter-Login</h1>
+
+                <p class="text-muted">
+                    Dieser Bereich ist nur für Mitarbeitende von GermanyFly.
+                </p>
+
+                @if (!string.IsNullOrEmpty(Model.Fehlermeldung))
+                {
+                    <div class="alert alert-danger">
+                        @Model.Fehlermeldung
+                    </div>
+                }
+
+                <form method="post">
+                    <div class="mb-3">
+                        <label asp-for="Email" class="form-label">E-Mail</label>
+                        <input asp-for="Email" class="form-control" />
+                    </div>
+
+                    <div class="mb-4">
+                        <label asp-for="Passwort" class="form-label">Passwort</label>
+                        <input asp-for="Passwort" type="password" class="form-control" />
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100">
+                        Anmelden
+                    </button>
+                </form>
+
+                <p class="small text-muted mt-4 mb-0">
+                    Demo-Zugang: mitarbeiter@germanyfly.de
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

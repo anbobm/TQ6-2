@@ -5,65 +5,63 @@
     ViewData["Title"] = "GermanyFly";
 }
 
-<section class="text-center py-5">
-    <div class="mb-4">
-        <span class="badge bg-dark">Germany</span>
-        <span class="badge bg-danger">Fly</span>
-        <span class="badge text-dark" style="background-color: #ffce00;">Airline</span>
+<section class="py-5 text-center">
+    <div class="d-inline-flex rounded overflow-hidden mb-4" aria-hidden="true">
+        <span class="bg-dark" style="width: 42px; height: 7px;"></span>
+        <span class="bg-danger" style="width: 42px; height: 7px;"></span>
+        <span class="bg-warning" style="width: 42px; height: 7px;"></span>
     </div>
 
-    <h1 class="display-4 fw-bold mb-3">GermanyFly</h1>
+    <h1 class="display-3 fw-bold mb-3">GermanyFly</h1>
 
-    <p class="lead text-muted mx-auto mb-4" style="max-width: 650px;">
-        Flüge finden, buchen und Ihre Reise bequem verwalten.
+    <p class="lead text-muted mx-auto mb-0" style="max-width: 700px;">
+        Flüge suchen, buchen und bequem verwalten.
     </p>
-
-    <a asp-page="/Fluege/Index" class="btn btn-primary btn-lg me-2">
-        Flüge entdecken
-    </a>
-
-    <a asp-page="/Buchungen/Index" class="btn btn-outline-primary btn-lg">
-        Meine Buchungen
-    </a>
 </section>
 
-<section class="row g-4 pb-5">
-    <div class="col-md-4">
-        <a asp-page="/Fluege/Index" class="text-decoration-none text-dark">
-            <div class="card h-100 shadow-sm">
-                <div class="card-body">
-                    <h2 class="h4">Flüge buchen</h2>
-                    <p class="mb-0">
-                        Verfügbare Verbindungen ansehen und direkt buchen.
-                    </p>
-                </div>
-            </div>
-        </a>
+<section class="mx-auto pb-5" style="max-width: 900px;">
+    <div class="bg-white border rounded-3 p-4 p-md-5 mb-5">
+        <h2 class="h3 mb-3">Ihr Flug mit GermanyFly</h2>
+
+        <p class="mb-0 text-muted">
+            GermanyFly unterstützt Sie von der Auswahl einer Verbindung bis zur
+            Verwaltung Ihrer bestehenden Buchung. Verfügbare Flüge finden Sie
+            über die Navigation. Nach einer Buchung können Sie Gepäck hinzufügen,
+            stornieren oder den Online-Check-in durchführen.
+        </p>
     </div>
 
-    <div class="col-md-4">
-        <a asp-page="/Buchungen/Index" class="text-decoration-none text-dark">
-            <div class="card h-100 shadow-sm">
-                <div class="card-body">
-                    <h2 class="h4">Buchungen verwalten</h2>
-                    <p class="mb-0">
-                        Buchungen ansehen, stornieren oder online einchecken.
-                    </p>
-                </div>
-            </div>
-        </a>
+    <div class="row g-4 text-center mb-5">
+        <div class="col-md-4">
+            <h2 class="h5 mb-2">Einfache Buchung</h2>
+            <p class="text-muted mb-0">
+                Verbindungen ansehen, Details prüfen und einen Flug buchen.
+            </p>
+        </div>
+
+        <div class="col-md-4">
+            <h2 class="h5 mb-2">Sichere Verwaltung</h2>
+            <p class="text-muted mb-0">
+                Buchungen, Gepäck und Check-in übersichtlich an einem Ort verwalten.
+            </p>
+        </div>
+
+        <div class="col-md-4">
+            <h2 class="h5 mb-2">Schneller Überblick</h2>
+            <p class="text-muted mb-0">
+                Wichtige Flugdaten und den aktuellen Status jederzeit sehen.
+            </p>
+        </div>
     </div>
 
-    <div class="col-md-4">
-        <a asp-page="/Buchungen/Index" class="text-decoration-none text-dark">
-            <div class="card h-100 shadow-sm">
-                <div class="card-body">
-                    <h2 class="h4">Gepäck hinzufügen</h2>
-                    <p class="mb-0">
-                        Gepäck zu einer bestehenden Buchung hinzufügen.
-                    </p>
-                </div>
-            </div>
-        </a>
-    </div>
+    <section class="border-top pt-4">
+        <h2 class="h4 mb-3">Aktuelle Hinweise</h2>
+
+        <ul class="text-muted mb-0">
+            <li>Online-Check-in ist zwischen 24 und 1 Stunde vor Abflug möglich.</li>
+            <li>Bis 23 kg ist ein Gepäckstück kostenlos.</li>
+            <li>Für Gepäck über 23 kg bis 32 kg fällt ein Zuschlag von 50 € an.</li>
+            <li>Gepäck über 32 kg ist nicht erlaubt.</li>
+        </ul>
+    </section>
 </section>
