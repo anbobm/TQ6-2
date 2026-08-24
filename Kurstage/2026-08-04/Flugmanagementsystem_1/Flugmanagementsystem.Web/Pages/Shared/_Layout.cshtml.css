@@ -1,52 +1,80 @@
-﻿.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+﻿:root {
+    --gf-navy: #0b1f3a;
+    --gf-blue: #1769aa;
+    --gf-sky: #eaf4ff;
+    --gf-red: #b42318;
+    --gf-border: #d8e1ea;
 }
 
-a {
-  color: #0d6efd;
+html {
+    font-size: 16px;
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin: 0 0 70px;
+    background: #f6f8fb;
+    color: #172033;
+}
+
+.germanyfly-navbar {
+    background: linear-gradient(90deg, var(--gf-navy), #123d68);
+}
+
+.germanyfly-navbar .navbar-brand {
+    font-size: 1.35rem;
+    letter-spacing: 0.03em;
+}
+
+.germanyfly-navbar .nav-link {
+    color: rgba(255, 255, 255, 0.86);
+}
+
+.germanyfly-navbar .nav-link:hover {
+    color: #ffffff;
+}
+
+main .card,
+main .table {
+    background: #ffffff;
+    border: 1px solid var(--gf-border);
+    border-radius: 0.75rem;
+    box-shadow: 0 0.25rem 0.75rem rgba(11, 31, 58, 0.08);
+}
+
+main .table {
+    overflow: hidden;
+}
+
+main .table th {
+    background: var(--gf-sky);
+    color: var(--gf-navy);
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #0d6efd;
-  border-color: #0d6efd;
+    background-color: var(--gf-blue);
+    border-color: var(--gf-blue);
 }
 
-.btn-primary:hover {
-  background-color: #0b5ed7;
-  border-color: #0a58ca;
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #0d5792;
+    border-color: #0d5792;
 }
 
-.nav-pills .nav-link.active,
-.nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #0d6efd;
-  border-color: #0d6efd;
-}
-
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow {
-  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
-}
-
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+.btn-outline-danger {
+    color: var(--gf-red);
+    border-color: var(--gf-red);
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    line-height: normal;
 }

@@ -1,10 +1,69 @@
 ﻿@page
 @model IndexModel
+
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "GermanyFly";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Willkommen beim Flugmanagementsystem.</p>
-</div>
+<section class="text-center py-5">
+    <div class="mb-4">
+        <span class="badge bg-dark">Germany</span>
+        <span class="badge bg-danger">Fly</span>
+        <span class="badge text-dark" style="background-color: #ffce00;">Airline</span>
+    </div>
+
+    <h1 class="display-4 fw-bold mb-3">GermanyFly</h1>
+
+    <p class="lead text-muted mx-auto mb-4" style="max-width: 650px;">
+        Flüge finden, buchen und Ihre Reise bequem verwalten.
+    </p>
+
+    <a asp-page="/Fluege/Index" class="btn btn-primary btn-lg me-2">
+        Flüge entdecken
+    </a>
+
+    <a asp-page="/Buchungen/Index" class="btn btn-outline-primary btn-lg">
+        Meine Buchungen
+    </a>
+</section>
+
+<section class="row g-4 pb-5">
+    <div class="col-md-4">
+        <a asp-page="/Fluege/Index" class="text-decoration-none text-dark">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h2 class="h4">Flüge buchen</h2>
+                    <p class="mb-0">
+                        Verfügbare Verbindungen ansehen und direkt buchen.
+                    </p>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-4">
+        <a asp-page="/Buchungen/Index" class="text-decoration-none text-dark">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h2 class="h4">Buchungen verwalten</h2>
+                    <p class="mb-0">
+                        Buchungen ansehen, stornieren oder online einchecken.
+                    </p>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-4">
+        <a asp-page="/Buchungen/Index" class="text-decoration-none text-dark">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h2 class="h4">Gepäck hinzufügen</h2>
+                    <p class="mb-0">
+                        Gepäck zu einer bestehenden Buchung hinzufügen.
+                    </p>
+                </div>
+            </div>
+        </a>
+    </div>
+</section>
