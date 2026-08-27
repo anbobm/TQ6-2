@@ -2,8 +2,16 @@ using Flugmanagementsystem.Web.Models;
 
 namespace Flugmanagementsystem.Web.Data;
 
+/// <summary>
+/// Stellt die initialen Testdaten für die GermanyFly-Datenbank bereit.
+/// </summary>
 public static class DbSeeder
 {
+    /// <summary>
+    /// Fügt der Datenbank Beispiel-Flüge hinzu, wenn noch keine Flüge
+    /// gespeichert sind.
+    /// </summary>
+    /// <param name="db">Der Datenbankkontext der Anwendung.</param>
     public static void Seed(AppDbContext db)
     {
         if (db.Fluege.Any())

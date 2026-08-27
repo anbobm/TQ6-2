@@ -3,15 +3,27 @@ using Flugmanagementsystem.Web.Models;
 
 namespace Flugmanagementsystem.Web.Services;
 
+/// <summary>
+/// Stellt Funktionen zum Anzeigen, Erstellen, Bearbeiten und Stornieren
+/// von Flügen bereit.
+/// </summary>
 public class FlightService
 {
     private readonly AppDbContext _db;
 
+    /// <summary>
+    /// Initialisiert eine neue Instanz des <see cref="FlightService"/>.
+    /// </summary>
+    /// <param name="db">Der Datenbankkontext der Anwendung.</param>
     public FlightService(AppDbContext db)
     {
         _db = db;
     }
 
+    /// <summary>
+    /// Gibt alle Flüge nach der Abflugzeit sortiert zurück.
+    /// </summary>
+    /// <returns>Eine Liste aller gespeicherten Flüge.</returns>
     public IReadOnlyList<Flug> GetAlleFluege()
     {
         return _db.Fluege
@@ -19,11 +31,34 @@ public class FlightService
             .ToList();
     }
 
+    /// <summary>
+    /// Sucht einen Flug anhand seiner Kennung.
+    /// </summary>
+    /// <param name="flugId">Die eindeutige Kennung des Fluges.</param>
+    /// <returns>
+    /// Den gefundenen Flug oder <see langword="null"/>, wenn kein Flug
+    /// mit dieser Kennung vorhanden ist.
+    /// </returns>
     public Flug? GetFlugById(int flugId)
     {
         return _db.Fluege.Find(flugId);
     }
 
+    /// <summary>
+    /// Prüft die eingegebenen Flugdaten und erstellt einen neuen Flug.
+    /// </summary>
+    /// <param name="flugnummer">Die eindeutige Flugnummer.</param>
+    /// <param name="abflugort">Der Abflugort.</param>
+    /// <param name="zielort">Der Zielort.</param>
+    /// <param name="abflugzeit">Das Datum und die Uhrzeit des Abflugs.</param>
+    /// <param name="ankunftszeit">Das Datum und die Uhrzeit der Ankunft.</param>
+    /// <param name="anzahlSitzplaetze">Die Anzahl der Sitzplätze.</param>
+    /// <param name="maximaleZuladung">Die maximale Zuladung in Kilogramm.</param>
+    /// <param name="preis">Der Preis eines Flugtickets.</param>
+    /// <returns>
+    /// Den erstellten Flug oder <see langword="null"/>, wenn die Daten
+    /// ungültig sind oder die Flugnummer bereits existiert.
+    /// </returns>
     public Flug? CreateFlug(
         string flugnummer,
         string abflugort,
@@ -67,6 +102,14 @@ public class FlightService
         return flug;
     }
 
+    /// <summary>
+    /// Storniert einen vorhandenen aktiven Flug.
+    /// </summary>
+    /// <param name="flugId">Die eindeutige Kennung des Fluges.</param>
+    /// <returns>
+    /// <see langword="true"/>, wenn der Flug storniert wurde;
+    /// andernfalls <see langword="false"/>.
+    /// </returns>
     public bool StorniereFlug(int flugId)
     {
         var flug = GetFlugById(flugId);
@@ -82,6 +125,21 @@ public class FlightService
         return true;
     }
 
+    /// <summary>
+    /// Prüft und aktualisiert die Daten eines aktiven Fluges.
+    /// </summary>
+    /// <param name="flugId">Die eindeutige Kennung des Fluges.</param>
+    /// <param name="abflugort">Der neue Abflugort.</param>
+    /// <param name="zielort">Der neue Zielort.</param>
+    /// <param name="abflugzeit">Die neue Abflugzeit.</param>
+    /// <param name="ankunftszeit">Die neue Ankunftszeit.</param>
+    /// <param name="anzahlSitzplaetze">Die neue Anzahl der Sitzplätze.</param>
+    /// <param name="maximaleZuladung">Die neue maximale Zuladung.</param>
+    /// <param name="preis">Der neue Ticketpreis.</param>
+    /// <returns>
+    /// <see langword="true"/>, wenn der Flug aktualisiert wurde;
+    /// andernfalls <see langword="false"/>.
+    /// </returns>
     public bool BearbeiteFlug(
         int flugId,
         string abflugort,
