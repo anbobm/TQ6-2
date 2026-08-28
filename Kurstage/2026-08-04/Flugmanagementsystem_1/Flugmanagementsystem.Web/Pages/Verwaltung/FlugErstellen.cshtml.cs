@@ -5,22 +5,51 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Flugmanagementsystem.Web.Pages.Verwaltung;
 
+/// <summary>
+/// Stellt die Seite zum Erstellen eines neuen Fluges bereit.
+/// </summary>
 public class FlugErstellenModel : PageModel
 {
     private readonly FlightService _flightService;
 
+    /// <summary>
+    /// Ruft eine Fehlermeldung ab oder legt sie fest.
+    /// Die Meldung bleibt nach einer Weiterleitung verfügbar.
+    /// </summary>
     [TempData]
     public string? Fehlermeldung { get; set; }
 
+    /// <summary>
+    /// Initialisiert die Seite zum Erstellen eines Fluges.
+    /// </summary>
+    /// <param name="flightService">Der Dienst zur Verwaltung von Flügen.</param>
     public FlugErstellenModel(FlightService flightService)
     {
         _flightService = flightService;
     }
 
+    /// <summary>
+    /// Lädt das Formular zum Erstellen eines Fluges.
+    /// </summary>
     public void OnGet()
     {
     }
 
+    /// <summary>
+    /// Prüft die Formulardaten und erstellt einen neuen Flug.
+    /// </summary>
+    /// <param name="flugnummer">Die eindeutige Flugnummer.</param>
+    /// <param name="abflugort">Der Abflugort.</param>
+    /// <param name="zielort">Der Zielort.</param>
+    /// <param name="abflugzeit">Die Abflugzeit.</param>
+    /// <param name="ankunftszeit">Die Ankunftszeit.</param>
+    /// <param name="anzahlSitzplaetze">Die Anzahl der Sitzplätze.</param>
+    /// <param name="maximaleZuladung">Die maximale Zuladung in Kilogramm.</param>
+    /// <param name="preis">Der Ticketpreis als Texteingabe.</param>
+    /// <returns>
+    /// Eine Weiterleitung zur Erstellungsseite bei ungültigen Daten oder
+    /// zur Detailseite des neuen Fluges nach erfolgreicher Erstellung.
+    /// </returns>
     public IActionResult OnPost(
         string flugnummer,
         string abflugort,
