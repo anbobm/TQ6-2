@@ -18,6 +18,9 @@
     </a>
 </div>
 
+<div class="alert alert-info py-2">
+    Online-Check-in ist zwischen 24 und 1 Stunde vor Abflug möglich.
+</div>
 
 @if (TempData["Fehlermeldung"] is string fehlermeldung)
 {
@@ -44,16 +47,23 @@ else
                             <th>Kunde</th>
                             <th>E-Mail</th>
                             <th>Flug</th>
+                            <th>Abflug</th>
                             <th>Buchungsdatum</th>
                             <th>Status</th>
                             <th></th>
                         </tr>
                     </thead>
+
                     <tbody>
                         @foreach (var buchung in Model.Buchungen)
                         {
                             var kunde = Model.GetKunde(buchung.KundeId);
                             var flug = Model.GetFlug(buchung.FlugId);
+
+                            var checkInMoeglich = flug is not null
+                                && buchung.Status == "Bestätigt"
+                                && flug.Abflugzeit - DateTime.Now <= TimeSpan.FromHours(24)
+                                && flug.Abflugzeit - DateTime.Now >= TimeSpan.FromHours(1);
 
                             <tr>
                                 <td>@buchung.BuchungId</td>
@@ -62,6 +72,11 @@ else
                                 <td>
                                     @flug?.Flugnummer:
                                     @flug?.Abflugort → @flug?.Zielort
+                                </td>
+                                <td>
+                                    @(flug is null
+                                        ? "–"
+                                        : flug.Abflugzeit.ToString("dd.MM.yyyy HH:mm"))
                                 </td>
                                 <td>
                                     @buchung.Buchungsdatum.ToString("dd.MM.yyyy HH:mm")
@@ -89,26 +104,27 @@ else
                                 <td class="text-end">
                                     @if (buchung.Status == "Bestätigt")
                                     {
-
                                         <a asp-page="/Buchungen/Gepaeck"
-                                        asp-route-buchungId="@buchung.BuchungId"
-                                        class="btn btn-sm btn-outline-primary">
-                                        Gepäck
+                                           asp-route-buchungId="@buchung.BuchungId"
+                                           class="btn btn-sm btn-outline-primary">
+                                            Gepäck
                                         </a>
 
+                                        @if (checkInMoeglich)
+                                        {
+                                            <form method="post"
+                                                  asp-page-handler="CheckIn"
+                                                  class="d-inline">
+                                                <input type="hidden"
+                                                       name="id"
+                                                       value="@buchung.BuchungId" />
 
-                                        <form method="post"
-                                              asp-page-handler="CheckIn"
-                                              class="d-inline">
-                                            <input type="hidden"
-                                                   name="id"
-                                                   value="@buchung.BuchungId" />
-
-                                            <button type="submit"
-                                                    class="btn btn-sm btn-outline-success">
-                                                Check-in
-                                            </button>
-                                        </form>
+                                                <button type="submit"
+                                                        class="btn btn-sm btn-outline-success">
+                                                    Check-in
+                                                </button>
+                                            </form>
+                                        }
 
                                         <form method="post"
                                               asp-page-handler="Stornieren"
