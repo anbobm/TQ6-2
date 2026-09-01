@@ -52,4 +52,21 @@ public class FluegeModel : PageModel
 
         return RedirectToPage();
     }
+
+    /// <summary>
+    /// Ändert den Status eines aktiven Fluges.
+    /// </summary>
+    /// <param name="id">Die Kennung des Fluges.</param>
+    /// <param name="status">Der neue Flugstatus.</param>
+    /// <returns>Eine Weiterleitung zur aktualisierten Verwaltungsseite.</returns>
+    public IActionResult OnPostStatusAendern(int id, string status)
+    {
+        if (!_flightService.AktualisiereFlugStatus(id, status))
+        {
+            TempData["Fehlermeldung"] =
+                "Der Flugstatus konnte nicht geändert werden.";
+        }
+
+        return RedirectToPage();
+    }
 }

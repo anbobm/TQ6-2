@@ -45,6 +45,12 @@
                                         @flug.Status
                                     </span>
                                 }
+                                else if (flug.Status == "Verspätet")
+                                {
+                                    <span class="badge text-bg-warning">
+                                        @flug.Status
+                                    </span>
+                                }
                                 else
                                 {
                                     <span class="badge text-bg-success">

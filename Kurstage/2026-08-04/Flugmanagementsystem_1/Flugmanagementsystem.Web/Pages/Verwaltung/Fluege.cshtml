@@ -16,6 +16,13 @@
     </a>
 </div>
 
+@if (TempData["Fehlermeldung"] is string fehlermeldung)
+{
+    <div class="alert alert-warning">
+        @fehlermeldung
+    </div>
+}
+
 <div class="card shadow-sm">
     <div class="card-body p-0">
         <div class="table-responsive">
@@ -50,6 +57,12 @@
                                         @flug.Status
                                     </span>
                                 }
+                                else if (flug.Status == "Verspätet")
+                                {
+                                    <span class="badge text-bg-warning">
+                                        @flug.Status
+                                    </span>
+                                }
                                 else
                                 {
                                     <span class="badge text-bg-success">
@@ -66,6 +79,27 @@
                                        class="btn btn-sm btn-outline-primary">
                                         Bearbeiten
                                     </a>
+
+                                    <form method="post"
+                                          asp-page-handler="StatusAendern"
+                                          asp-route-id="@flug.FlugId"
+                                          class="d-inline">
+                                        <select name="status"
+                                                class="form-select form-select-sm d-inline-block w-auto">
+                                            <option value="Geplant"
+                                                    selected="@(flug.Status == "Geplant" ? "selected" : null)">
+                                                Geplant
+                                            </option>
+                                            <option value="Verspätet"
+                                                    selected="@(flug.Status == "Verspätet" ? "selected" : null)">
+                                                Verspätet
+                                            </option>
+                                        </select>
+                                        <button type="submit"
+                                                class="btn btn-sm btn-outline-warning">
+                                            Status speichern
+                                        </button>
+                                    </form>
 
                                     <form method="post"
                                           asp-page-handler="Stornieren"

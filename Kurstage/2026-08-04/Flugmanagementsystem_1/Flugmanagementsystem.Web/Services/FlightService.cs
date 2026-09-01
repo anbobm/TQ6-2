@@ -126,6 +126,32 @@ public class FlightService
     }
 
     /// <summary>
+    /// Ändert den Status eines aktiven Fluges.
+    /// </summary>
+    /// <param name="flugId">Die eindeutige Kennung des Fluges.</param>
+    /// <param name="status">Der neue Status des Fluges.</param>
+    /// <returns>
+    /// <see langword="true"/>, wenn der Status aktualisiert wurde;
+    /// andernfalls <see langword="false"/>.
+    /// </returns>
+    public bool AktualisiereFlugStatus(int flugId, string status)
+    {
+        var flug = GetFlugById(flugId);
+
+        if (flug is null ||
+            flug.Status == "Storniert" ||
+            (status != "Geplant" && status != "Verspätet"))
+        {
+            return false;
+        }
+
+        flug.Status = status;
+        _db.SaveChanges();
+
+        return true;
+    }
+
+    /// <summary>
     /// Prüft und aktualisiert die Daten eines aktiven Fluges.
     /// </summary>
     /// <param name="flugId">Die eindeutige Kennung des Fluges.</param>

@@ -3,6 +3,7 @@
 
 @{
     var flug = Model.Flug!;
+    var flugHatBereitsStattgefunden = flug.Abflugzeit <= DateTime.Now;
     ViewData["Title"] = $"Flug {flug.Flugnummer}";
 }
 
@@ -21,6 +22,10 @@
             @if (flug.Status == "Storniert")
             {
                 <span class="badge text-bg-secondary fs-6">@flug.Status</span>
+            }
+            else if (flug.Status == "Verspätet")
+            {
+                <span class="badge text-bg-warning fs-6">@flug.Status</span>
             }
             else
             {
@@ -61,8 +66,21 @@
                 Dieser Flug wurde storniert und kann nicht gebucht werden.
             </div>
         }
+        else if (flugHatBereitsStattgefunden)
+        {
+            <div class="alert alert-secondary mb-0">
+                Dieser Flug hat bereits stattgefunden. Eine Buchung ist nicht mehr möglich.
+            </div>
+        }
         else
         {
+            @if (flug.Status == "Verspätet")
+            {
+                <div class="alert alert-warning">
+                    Dieser Flug ist verspätet. Bitte prüfe die aktuelle Abflugzeit.
+                </div>
+            }
+
             <a asp-page="/Buchungen/Erstellen"
                asp-route-flugId="@flug.FlugId"
                class="btn btn-primary">

@@ -43,10 +43,19 @@ public class ErstellenModel : PageModel
     /// <param name="flugId">Die optional vorausgewählte Flugkennung.</param>
     public void OnGet(int? flugId)
     {
-        Fluege = _flightService.GetAlleFluege();
+        Fluege = _flightService.GetAlleFluege()
+            .Where(flug =>
+                flug.Status != "Storniert" &&
+                flug.Abflugzeit > DateTime.Now)
+            .ToList();
 
-        if (flugId.HasValue &&
-            _flightService.GetFlugById(flugId.Value) is not null)
+        var ausgewaehlterFlug = flugId.HasValue
+            ? _flightService.GetFlugById(flugId.Value)
+            : null;
+
+        if (ausgewaehlterFlug is not null &&
+            ausgewaehlterFlug.Status != "Storniert" &&
+            ausgewaehlterFlug.Abflugzeit > DateTime.Now)
         {
             AusgewaehlteFlugId = flugId;
         }
@@ -76,7 +85,8 @@ public class ErstellenModel : PageModel
             return NotFound();
         }
 
-        if (flug.Status == "Storniert")
+        if (flug.Status == "Storniert" ||
+            flug.Abflugzeit <= DateTime.Now)
         {
             return RedirectToPage(
                 "/Fluege/Details",
